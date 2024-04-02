@@ -6,13 +6,18 @@
 Assignments
 ============
 
-The lecture will be held in person in the summer semester 2024, but all online resources will be available as well. We will supply also the problem sets every week to all students. The assignments come as a Jupyter Notebook, with individual problems. Please fill in the code or answers your are asked for and return the notebooks **before the lecture** every Tuesday morning. You will receive the web address of our assignment server as well as a login and password. Find also below a short video on how to download and return the assignments.
+We will supply also the problem sets (assignments) every week to all students. The assignments come as a Jupyter Notebook, with individual problems. Please fill in the code or answers your are asked for and return the notebooks **before the next weeks lecture (1pm!)** on Tuesdays directly on the server. You will receive the web address of our assignment server as well as a login and password. **Your password for your account is set at first login. Please be aware of that and remember the password.**
 
 
 Assignment Rules
 ================
 
-Here are some rules that are important for the assignments. The assignments are part of the 
+Here are some rules that are important for the assignments. 
+
+- **The assignments are part of the exam and needs to be your own work. Copying from others and group work means violating the exam rules!** 
+- You need to hand in 6 out of all exercise sheets with solutions handed in in time to pass this part of the exam.
+- Solutions to the assignments will be discussed and presented in the exercises tuesday after the lecture.
+
 
 .. raw:: html
 

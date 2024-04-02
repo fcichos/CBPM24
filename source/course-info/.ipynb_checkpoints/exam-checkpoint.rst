@@ -8,9 +8,15 @@ Exam
 
 We will close this course with an exam in form of a final project. This final project shall be on a topic of your choice or on one of the topics we provide as example topics. Each individual student is required to hand in a Jupyter Notebook. No group work is allowed for the final project.
 
-The final project is in the form of a **portfolio exam** as it consists of **two parts**, which will be equally weighted:
+The final project is in the form of a **portfolio exam** as it consists of **two parts**. Each part has to be passed. If you fail in one part, the whole exam counts as failed!
 
-**1. Jupyter notebook containing the final project**
+
+**1. Successfull submission of exercise solutions**
+
+We will hand out assignments weekly. You will have to hand in the solutions within a week with a strict deadline. 
+Successful submission of 6 out of all exercise sheets in time means you have passed this part of the portfolio exam.
+
+**2. Jupyter notebook containing the final project**
 
 Notebooks shall follow the following outline
 
@@ -21,25 +27,11 @@ Notebooks shall follow the following outline
 Grading: Notebooks will be graded based on:
 
 - structure of the notebook (outline, citations, ...)
-- quality of the code (use of functions, classes, modules, function of the notebook)
+- quality of the code (use of functions for repeated code, classes, modules, function of the notebook)
 - quality of the plots (axis labels, readability of the labels)
+- use of concepts we used for the notebooks (use of markdown, multiple code cells )
 
-**2. Video explaining the notebook**
-
-The videos shall 
-
-- explain what topic you have chosen and why
-- explain how you tackled the problem
-- show the main results
-- summarize what you think you have achieved
-- be not longer than **5 min**
-
-Grading: Videos will be graded based on:
-    
-- quality of the presentation (structure, oral and visual presentation)
-- sticking to maximum time
-
-The deadline for handing in the project is **September 1, 2024** 
+The deadline for handing in the project is **September 4, 2024** 
 
 Please submit your projects via email to Andrea Kramer,  **firstname.surname@uni-leipzig.de**.
 
