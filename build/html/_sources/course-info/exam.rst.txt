@@ -31,7 +31,7 @@ Grading: Notebooks will be graded based on:
 - quality of the plots (axis labels, readability of the labels)
 - use of concepts we used for the notebooks (use of markdown, multiple code cells )
 
-The deadline for handing in the project is **September 4, 2024** 
+The deadline for handing in the project is **September 4, 2024, at 1pm sharp! Do not miss the deadline!!!!!!**
 
 Please submit your projects via email to Andrea Kramer,  **firstname.surname@uni-leipzig.de**.
 
