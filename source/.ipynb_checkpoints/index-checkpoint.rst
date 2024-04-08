@@ -56,13 +56,28 @@ We will not present a comprehensive list of numerical simulation schemes, but us
    :maxdepth: 2
    :caption: Lecture 1:
 
+   lectures/L1/overview_1.rst
    notebooks/L1/1_variables.ipynb
    notebooks/L1/2_operators.ipynb
    notebooks/L1/3_datatypes.ipynb
    notebooks/L1/4_modules.ipynb
    lectures/L1/assignment_1.rst
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 2:
 
+   lectures/L2/overview_2.rst
+   notebooks/L2/1_numpy.ipynb   
+   notebooks/L2/2_plotting.ipynb
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Exercise 2:
+
+   notebooks/L2/25_publication_ready_figures.ipynb
+   
+   
 Indices and tables
 ==================
 
