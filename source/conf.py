@@ -128,6 +128,8 @@ nbsphinx_prolog = r"""
 """
 
 nbsphinx_allow_errors = True
+numfig_secnum_depth = 3
+
 
 # Sphinx versioning settings
 scv_show_banner = True
