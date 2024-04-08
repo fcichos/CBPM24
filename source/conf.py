@@ -3,8 +3,7 @@
 # This file only contains a selection of the most common options. For a full
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
-
-# -- Path setup --------------------------------------------------------------
+# -- Path setup -------------------------------------------------------------
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -37,6 +36,7 @@ extensions = [
     'nbsphinx',
     'IPython.sphinxext.ipython_console_highlighting',
     'IPython.sphinxext.ipython_directive',
+    'sphinx_multitoc_numbering',
     'furo.sphinxext',
 ]
 
@@ -104,6 +104,17 @@ html_context = {
 }
 
 html_logo = 'img/mona_logo.png'
+
+html_sidebars = {
+  "": [
+    "sidebar/scroll-start.html",
+    "sidebar/brand.html",
+    "sidebar/search.html",
+    "sidebar/navigation.html",
+    "sidebar/ethical-ads.html",
+    "sidebar/scroll-end.html",
+  ]
+}
 
 # -- Extension configuration -------------------------------------------------
 # This is processed by Jinja2 and inserted before each notebook
