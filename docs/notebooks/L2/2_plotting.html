@@ -395,10 +395,9 @@ plt.legend(loc=&#39;lower left&#39;)
 <section id="Histograms">
 <h3>Histograms<a class="headerlink" href="#Histograms" title="Permalink to this heading">#</a></h3>
 <p>A very useful plotting command is also the <em>hist</em> command. It generates a histogram of the data provided. If only the data is given, bins are calculated automatically. If you supply an array of intervalls with <code class="docutils literal notranslate"><span class="pre">hist(data,bins=b)</span></code>, where <code class="docutils literal notranslate"><span class="pre">b</span></code> is and array, the hist command calculates the histogram for the supplied bins. <code class="docutils literal notranslate"><span class="pre">density=True</span></code> normalizes the area below the histogram to 1. The hist command not only returns the graph, but also the occurrences and bins.</p>
-<div class="admonition note">
-<p class="admonition-title"><strong>Note:</strong> Physics Interlude</p>
+<div class="alert alert-info"><section id="Physics-Interlude">
+<h4>Physics Interlude<a class="headerlink" href="#Physics-Interlude" title="Permalink to this heading">#</a></h4>
 <p>Probability density for finding an oscillating particle</p>
-</div>
 <p>We want to use this occasion to combine histograms with some physics problem. Lets have a look at the simple harmonic oscillators in one dimension, which as you remember follows the following equation of motion.</p>
 <p><span class="math">\begin{equation}
 \ddot{x}(t)=-\omega^{2}x(t)
@@ -421,6 +420,9 @@ p(x)dx=\frac{1}{\pi \Delta x}\frac{dx}{\sqrt{1-\left (\frac{x(t)}{\Delta x}\righ
 \end{equation}</span></p>
 <p>This is the probability density of finding an oscillating spring at a certain elongation <span class="math notranslate nohighlight">\(x(t)\)</span>. If you look at the example more closely, it tells you, that you find and elongation more likely when the speed of the mass is low. This is even a more general issue in non-equilibrium physics. If cells or cars are moving with variable speed, they are more likely to be found at places where they are slow.</p>
 <p>This can be also addressed with the histogram function. If we use the solution of the equation of motion and evaluate the position at equidistant times, the the historgram over the corresponding positions will tell us the probability of finding a certain position value if normalized properly.</p>
+</div></section>
+<section id="Solution:">
+<h4>Solution:<a class="headerlink" href="#Solution:" title="Permalink to this heading">#</a></h4>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[116]:
 </pre></div>
@@ -457,9 +459,10 @@ p(x)dx=\frac{1}{\pi \Delta x}\frac{dx}{\sqrt{1-\left (\frac{x(t)}{\Delta x}\righ
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_30_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_30_0.png" style="width: 590px; height: 449px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_24_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_24_0.png" style="width: 590px; height: 449px;" />
 </div>
 </div>
+</section>
 </section>
 <section id="Combined-plots">
 <h3>Combined plots<a class="headerlink" href="#Combined-plots" title="Permalink to this heading">#</a></h3>
@@ -495,7 +498,7 @@ p(x)dx=\frac{1}{\pi \Delta x}\frac{dx}{\sqrt{1-\left (\frac{x(t)}{\Delta x}\righ
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_33_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_33_0.png" style="width: 684px; height: 485px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_27_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_27_0.png" style="width: 684px; height: 485px;" />
 </div>
 </div>
 </section>
@@ -522,7 +525,7 @@ p(x)dx=\frac{1}{\pi \Delta x}\frac{dx}{\sqrt{1-\left (\frac{x(t)}{\Delta x}\righ
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_36_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_36_0.png" style="width: 723px; height: 541px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_30_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_30_0.png" style="width: 723px; height: 541px;" />
 </div>
 </div>
 </section>
@@ -558,7 +561,7 @@ p(x)dx=\frac{1}{\pi \Delta x}\frac{dx}{\sqrt{1-\left (\frac{x(t)}{\Delta x}\righ
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_39_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_39_0.png" style="width: 715px; height: 541px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_33_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_33_0.png" style="width: 715px; height: 541px;" />
 </div>
 </div>
 <section id="Setting-plotting-limits-and-excluding-data">
@@ -584,7 +587,7 @@ p(x)dx=\frac{1}{\pi \Delta x}\frac{dx}{\sqrt{1-\left (\frac{x(t)}{\Delta x}\righ
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_42_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_42_0.png" style="width: 682px; height: 509px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_36_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_36_0.png" style="width: 682px; height: 509px;" />
 </div>
 </div>
 <section id="Masked-arrays">
@@ -618,11 +621,11 @@ p(x)dx=\frac{1}{\pi \Delta x}\frac{dx}{\sqrt{1-\left (\frac{x(t)}{\Delta x}\righ
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_44_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_44_0.png" style="width: 669px; height: 509px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_38_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_38_0.png" style="width: 669px; height: 509px;" />
 </div>
 </div>
 <p>If you look at the resulting array, you will find, that the entries have not been removed but replaced by <code class="docutils literal notranslate"><span class="pre">--</span></code>, so the values are not existent and thefore not plotted.</p>
-<p><img alt="d56b2e2125b344d6b710c538495a1de9" class="no-scaled-link" src="../../_images/masked.png" style="width: 400px;" /></p>
+<p><img alt="700d26042e254f83b3996be1e42ef175" class="no-scaled-link" src="../../_images/masked.png" style="width: 400px;" /></p>
 </section>
 </section>
 </section>
@@ -660,7 +663,7 @@ p(x)dx=\frac{1}{\pi \Delta x}\frac{dx}{\sqrt{1-\left (\frac{x(t)}{\Delta x}\righ
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_48_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_48_0.png" style="width: 559px; height: 461px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_42_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_42_0.png" style="width: 559px; height: 461px;" />
 </div>
 </div>
 </section>
@@ -694,7 +697,7 @@ p(x)dx=\frac{1}{\pi \Delta x}\frac{dx}{\sqrt{1-\left (\frac{x(t)}{\Delta x}\righ
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_50_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_50_0.png" style="width: 566px; height: 388px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_44_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_44_0.png" style="width: 566px; height: 388px;" />
 </div>
 </div>
 </section>
@@ -744,7 +747,7 @@ p(x)dx=\frac{1}{\pi \Delta x}\frac{dx}{\sqrt{1-\left (\frac{x(t)}{\Delta x}\righ
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_53_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_53_0.png" style="width: 758px; height: 761px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_47_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_47_0.png" style="width: 758px; height: 761px;" />
 </div>
 </div>
 </section>
@@ -811,7 +814,7 @@ I(r)\propto |U(r)|^2
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_60_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_60_0.png" style="width: 495px; height: 504px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_54_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_54_0.png" style="width: 495px; height: 504px;" />
 </div>
 </div>
 </section>
@@ -832,7 +835,7 @@ I(r)\propto |U(r)|^2
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_62_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_62_0.png" style="width: 561px; height: 509px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_56_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_56_0.png" style="width: 561px; height: 509px;" />
 </div>
 </div>
 </section>
@@ -854,7 +857,7 @@ I(r)\propto |U(r)|^2
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_64_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_64_0.png" style="width: 561px; height: 489px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_58_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_58_0.png" style="width: 561px; height: 489px;" />
 </div>
 </div>
 </section>
@@ -911,7 +914,7 @@ I(r)\propto |U(r)|^2
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_71_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_71_0.png" style="width: 651px; height: 455px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_65_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_65_0.png" style="width: 651px; height: 455px;" />
 </div>
 </div>
 </section>
@@ -955,7 +958,7 @@ I(r)\propto |U(r)|^2
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_75_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_75_0.png" style="width: 660px; height: 541px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_69_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_69_0.png" style="width: 660px; height: 541px;" />
 </div>
 </div>
 </section>
@@ -985,7 +988,7 @@ I(r)\propto |U(r)|^2
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_77_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_77_0.png" style="width: 519px; height: 389px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_71_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_71_0.png" style="width: 519px; height: 389px;" />
 </div>
 </div>
 </section>
@@ -1007,7 +1010,7 @@ I(r)\propto |U(r)|^2
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_79_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_79_0.png" style="width: 366px; height: 353px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_73_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_73_0.png" style="width: 366px; height: 353px;" />
 </div>
 </div>
 </section>
@@ -1031,7 +1034,7 @@ I(r)\propto |U(r)|^2
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_82_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_82_0.png" style="width: 561px; height: 410px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_76_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_76_0.png" style="width: 561px; height: 410px;" />
 </div>
 </div>
 </section>
@@ -1069,7 +1072,7 @@ I(r)\propto |U(r)|^2
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_87_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_87_0.png" style="width: 556px; height: 513px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_81_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_81_0.png" style="width: 556px; height: 513px;" />
 </div>
 </div>
 <p>With this three-dimensional axes enabled, we can now plot a variety of three-dimensional plot types. Three-dimensional plotting is one of the functionalities that benefits immensely from viewing figures interactively rather than statically in the notebook; recall that to use interactive figures, you can use %matplotlib notebook rather than %matplotlib inline when running this code.</p>
@@ -1105,7 +1108,7 @@ I(r)\propto |U(r)|^2
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_90_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_90_0.png" style="width: 496px; height: 482px;" />
+<img alt="../../_images/notebooks_L2_2_plotting_84_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_84_0.png" style="width: 496px; height: 482px;" />
 </div>
 </div>
 <p>Notice that by default, the scatter points have their transparency adjusted to give a sense of depth on the page. While the three-dimensional effect is sometimes difficult to see within a static image, an interactive view can lead to some nice intuition about the layout of the points. Use the <code class="docutils literal notranslate"><span class="pre">scatter3D</span></code> or the <code class="docutils literal notranslate"><span class="pre">plot3D</span></code> method to plot a random walk in 3-dimensions in your exercise.</p>
@@ -1160,15 +1163,7 @@ I(r)\propto |U(r)|^2
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_2_plotting_95_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_95_0.png" style="width: 504px; height: 517px;" />
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
+<img alt="../../_images/notebooks_L2_2_plotting_89_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_2_plotting_89_0.png" style="width: 504px; height: 517px;" />
 </div>
 </div>
 <script type="application/vnd.jupyter.widget-state+json">
@@ -1213,7 +1208,7 @@ I(r)\propto |U(r)|^2
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Apr 08, 2024</div>
+              Last updated on Apr 09, 2024</div>
           </div>
           <div class="right-details">
             
@@ -1242,7 +1237,11 @@ I(r)\propto |U(r)|^2
 </ul>
 </li>
 <li><a class="reference internal" href="#Scatter-plot">Scatter plot</a></li>
-<li><a class="reference internal" href="#Histograms">Histograms</a></li>
+<li><a class="reference internal" href="#Histograms">Histograms</a><ul>
+<li><a class="reference internal" href="#Physics-Interlude">Physics Interlude</a></li>
+<li><a class="reference internal" href="#Solution:">Solution:</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#Combined-plots">Combined plots</a></li>
 </ul>
 </li>
