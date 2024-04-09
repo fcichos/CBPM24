@@ -72,9 +72,9 @@ We will not present a comprehensive list of numerical simulation schemes, but us
 
 .. toctree::
    :maxdepth: 2
-   :caption: Exercise 2:
+   :caption: Notebook for Exercise 2:
 
-   notebooks/L2/25_publication_ready_figures.ipynb
+   notebooks/L2/datatype_fun.ipynb
    
    
 Indices and tables
