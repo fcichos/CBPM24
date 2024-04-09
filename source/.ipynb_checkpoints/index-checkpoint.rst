@@ -74,7 +74,7 @@ We will not present a comprehensive list of numerical simulation schemes, but us
    :maxdepth: 2
    :caption: Notebook for Exercise 2:
 
-   notebooks/L2/datatype_fun.ipynb
+   notebooks/L2/datatypes_fun.ipynb
    
    
 Indices and tables
