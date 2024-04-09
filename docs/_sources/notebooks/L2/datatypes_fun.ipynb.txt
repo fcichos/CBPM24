@@ -10,6 +10,14 @@
   },
   {
    "cell_type": "markdown",
+   "id": "ac2e9c54-1311-4e48-9e8c-51cc291d6486",
+   "metadata": {},
+   "source": [
+    "[File as PDF](https://github.com/fcichos/CBPM24/blob/c0177739917eaff9b6921476e2756ba46d80ee83/source/notebooks/L2/datatypes_fun.pdf)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
    "id": "e0a46bc8-8d62-40b2-887f-489712f4e9ab",
    "metadata": {
     "jp-MarkdownHeadingCollapsed": true,
