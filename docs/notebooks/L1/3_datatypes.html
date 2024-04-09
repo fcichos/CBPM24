@@ -437,6 +437,34 @@ True
 &#39;World!&#39;
 </pre></div></div>
 </div>
+<div class="alert alert-info"><section id="Common-String-Methods">
+<h3>Common String Methods<a class="headerlink" href="#Common-String-Methods" title="Permalink to this heading">#</a></h3>
+<p>Here’s a summary of commonly used string methods :</p>
+<ol class="arabic simple">
+<li><p><strong>``.join(iterable)``</strong>: Concatenates the elements of an iterable (such as a list) into a single string, with the string acting as the delimiter.</p></li>
+<li><p><strong>``.split(separator=None, maxsplit=-1)``</strong>: Splits a string into a list of substrings based on a separator. If no separator is specified, whitespace is used.</p></li>
+<li><p><strong>``.replace(old, new[, count])``</strong>: Returns a new string with all occurrences of the substring <code class="docutils literal notranslate"><span class="pre">old</span></code> replaced by <code class="docutils literal notranslate"><span class="pre">new</span></code>. If the optional argument <code class="docutils literal notranslate"><span class="pre">count</span></code> is given, only the first <code class="docutils literal notranslate"><span class="pre">count</span></code> occurrences are replaced.</p></li>
+<li><p><strong>``.strip([chars])``</strong>: Removes leading and trailing characters (whitespace by default) from the string. The <code class="docutils literal notranslate"><span class="pre">chars</span></code> argument is a string specifying the set of characters to be removed.</p></li>
+<li><p><strong>``.lower()``</strong>: Converts all uppercase characters in a string to lowercase.</p></li>
+<li><p><strong>``.upper()``</strong>: Converts all lowercase characters in a string to uppercase.</p></li>
+<li><p><strong>``.title()``</strong>: Returns a title-cased version of the string where the first character of each word is capitalized.</p></li>
+<li><p><strong>``.capitalize()``</strong>: Converts the first character of the string to uppercase and the rest to lowercase.</p></li>
+<li><p><strong>``.startswith(prefix[, start[, end]])``</strong>: Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the string starts with the specified <code class="docutils literal notranslate"><span class="pre">prefix</span></code> (and optionally within a specified slice <code class="docutils literal notranslate"><span class="pre">start</span></code> to <code class="docutils literal notranslate"><span class="pre">end</span></code>).</p></li>
+<li><p><strong>``.endswith(suffix[, start[, end]])``</strong>: Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the string ends with the specified <code class="docutils literal notranslate"><span class="pre">suffix</span></code> (and optionally within a specified slice <code class="docutils literal notranslate"><span class="pre">start</span></code> to <code class="docutils literal notranslate"><span class="pre">end</span></code>).</p></li>
+<li><p><strong>``.count(sub[, start[, end]])``</strong>: Returns the number of non-overlapping occurrences of the substring <code class="docutils literal notranslate"><span class="pre">sub</span></code> in the string (optionally within a specified slice <code class="docutils literal notranslate"><span class="pre">start</span></code> to <code class="docutils literal notranslate"><span class="pre">end</span></code>).</p></li>
+<li><p><strong>``.find(sub[, start[, end]])``</strong>: Returns the lowest index in the string where the substring <code class="docutils literal notranslate"><span class="pre">sub</span></code> is found (optionally within a specified slice <code class="docutils literal notranslate"><span class="pre">start</span></code> to <code class="docutils literal notranslate"><span class="pre">end</span></code>). Returns <code class="docutils literal notranslate"><span class="pre">-1</span></code> if the substring is not found.</p></li>
+<li><p><strong>``.index(sub[, start[, end]])``</strong>: Like <code class="docutils literal notranslate"><span class="pre">.find()</span></code>, but raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> when the substring <code class="docutils literal notranslate"><span class="pre">sub</span></code> is not found[6][7].</p></li>
+<li><p><strong>``.rfind(sub[, start[, end]])``</strong>: Returns the highest index in the string where the substring <code class="docutils literal notranslate"><span class="pre">sub</span></code> is found (optionally within a specified slice <code class="docutils literal notranslate"><span class="pre">start</span></code> to <code class="docutils literal notranslate"><span class="pre">end</span></code>). Returns <code class="docutils literal notranslate"><span class="pre">-1</span></code> if the substring is not found.</p></li>
+<li><p><strong>``.rindex(sub[, start[, end]])``</strong>: Like <code class="docutils literal notranslate"><span class="pre">.rfind()</span></code>, but raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> when the substring <code class="docutils literal notranslate"><span class="pre">sub</span></code> is not found[6].</p></li>
+<li><p><strong>``.isalpha()``</strong>: Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if all characters in the string are alphabetic and there is at least one character, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></li>
+<li><p><strong>``.isdigit()``</strong>: Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if all characters in the string are digits and there is at least one character, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></li>
+<li><p><strong>``.isnumeric()``</strong>: Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if all characters in the string are numeric characters, and there is at least one character, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></li>
+<li><p><strong>``.isspace()``</strong>: Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there are only whitespace characters in the string and there is at least one character, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></li>
+<li><p><strong>``.islower()``</strong>: Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if all cased characters in the string are lowercase and there is at least one cased character, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></li>
+<li><p><strong>``.isupper()``</strong>: Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if all cased characters in the string are uppercase and there is at least one cased character, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p></li>
+<li><p><strong>``.istitle()``</strong>: Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the string is title-cased (i.e., uppercase characters may only follow uncased characters and lowercase characters only cased ones).</p></li>
+</ol>
+</div></section>
 </section>
 <section id="Lists">
 <h2>Lists<a class="headerlink" href="#Lists" title="Permalink to this heading">#</a></h2>
@@ -795,6 +823,23 @@ True
 11
 </pre></div></div>
 </div>
+<div class="alert alert-info"><section id="Common-List-Methods">
+<h3>Common List Methods<a class="headerlink" href="#Common-List-Methods" title="Permalink to this heading">#</a></h3>
+<p>Here’s a summary of commonly used list methods including a short description:</p>
+<ol class="arabic simple">
+<li><p><strong>``.append(x)``</strong>: Adds an item <code class="docutils literal notranslate"><span class="pre">x</span></code> to the end of the list.</p></li>
+<li><p><strong>``.extend(iterable)``</strong>: Extends the list by appending all the items from the given <code class="docutils literal notranslate"><span class="pre">iterable</span></code>.</p></li>
+<li><p><strong>``.insert(i, x)``</strong>: Inserts an item <code class="docutils literal notranslate"><span class="pre">x</span></code> at a given position <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p></li>
+<li><p><strong>``.remove(x)``</strong>: Removes the first item from the list whose value is equal to <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+<li><p><strong>``.pop([i])``</strong>: Removes the item at the given position in the list and returns it. If no index is specified, <code class="docutils literal notranslate"><span class="pre">pop()</span></code> removes and returns the last item in the list.</p></li>
+<li><p><strong>``.clear()``</strong>: Removes all items from the list.</p></li>
+<li><p><strong>``.index(x[, start[, end]])``</strong>: Returns the zero-based index in the list of the first item whose value is equal to <code class="docutils literal notranslate"><span class="pre">x</span></code>. Optional arguments <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> are used to limit the search to a particular subsequence of the list.</p></li>
+<li><p><strong>``.count(x)``</strong>: Returns the number of times <code class="docutils literal notranslate"><span class="pre">x</span></code> appears in the list.</p></li>
+<li><p><strong>``.sort(*, key=None, reverse=False)``</strong>: Sorts the items of the list in place. The arguments can be used for sort customization.</p></li>
+<li><p><strong>``.reverse()``</strong>: Reverses the elements of the list in place.</p></li>
+<li><p><strong>``.copy()``</strong>: Returns a shallow copy of the list.</p></li>
+</ol>
+</div></section>
 </section>
 <section id="Tuples">
 <h2>Tuples<a class="headerlink" href="#Tuples" title="Permalink to this heading">#</a></h2>
@@ -855,6 +900,14 @@ x = 10
 y = 20
 </pre></div></div>
 </div>
+<div class="alert alert-info"><section id="Common-Methods-for-Tuples:">
+<h3>Common Methods for Tuples:<a class="headerlink" href="#Common-Methods-for-Tuples:" title="Permalink to this heading">#</a></h3>
+<p>Common methods for tuples in Python are:</p>
+<ol class="arabic simple">
+<li><p><strong>``count()``</strong>: This method returns the number of times a specified value occurs in a tuple.</p></li>
+<li><p><strong>``index()``</strong>: This method searches the tuple for a specified value and returns the position of where it was found. If the value is not found, a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> is raised.</p></li>
+</ol>
+</div></section>
 </section>
 <section id="Dictionaries">
 <h2>Dictionaries<a class="headerlink" href="#Dictionaries" title="Permalink to this heading">#</a></h2>
@@ -919,6 +972,23 @@ dict_keys([&#39;Ralf&#39;, &#39;Frank&#39;, &#39;Dekan&#39;])
 dict_values([422, 322, 550])
 </pre></div></div>
 </div>
+<div class="alert alert-info"><section id="Common-Methods-for-Dictionaries">
+<h3>Common Methods for Dictionaries<a class="headerlink" href="#Common-Methods-for-Dictionaries" title="Permalink to this heading">#</a></h3>
+<p>Here is a summary of common methods for dictionaries:</p>
+<ol class="arabic simple">
+<li><p><strong>``clear()``</strong>: Removes all items from the dictionary, leaving it empty.</p></li>
+<li><p><strong>``copy()``</strong>: Returns a shallow copy of the dictionary.</p></li>
+<li><p><strong>``fromkeys()``</strong>: Creates a new dictionary with keys from an iterable and values set to a specified value[8].</p></li>
+<li><p><strong>``get(key[, default])``</strong>: Returns the value for a specified key. If the key is not found, it returns the default value (None if not specified).</p></li>
+<li><p><strong>``items()``</strong>: Returns a view object that displays a list of dictionary’s key-value tuple pairs.</p></li>
+<li><p><strong>``keys()``</strong>: Returns a view object that displays a list of all the keys in the dictionary.</p></li>
+<li><p><strong>``pop(key[, default])``</strong>: Removes the specified key and returns the corresponding value. If the key is not found, the default value is returned. If the default is not provided and the key is not found, a KeyError is raised.</p></li>
+<li><p><strong>``popitem()``</strong>: Removes and returns a (key, value) pair from the dictionary. Pairs are returned in a LIFO (Last In, First Out) order.</p></li>
+<li><p><strong>``setdefault(key[, default])``</strong>: Returns the value of the specified key. If the key does not exist: insert the key, with the specified value, default is None if not specified.</p></li>
+<li><p><strong>``update([other])``</strong>: Updates the dictionary with the key-value pairs from another dictionary object or from an iterable of key-value pairs.</p></li>
+<li><p><strong>``values()``</strong>: Returns a view object that displays a list of all the values in the dictionary.</p></li>
+</ol>
+</div></section>
 </section>
 <section id="Sets">
 <h2>Sets<a class="headerlink" href="#Sets" title="Permalink to this heading">#</a></h2>
@@ -1065,9 +1135,30 @@ Set of mixed data types: {112, &#39;Python&#39;, -2, &#39;Good&#39;}
 {1, 2, 3, 5}
 </pre></div></div>
 </div>
-<script type="application/vnd.jupyter.widget-state+json">
+<div class="alert alert-info"><section id="Common-Methods-for-Sets">
+<h3>Common Methods for Sets<a class="headerlink" href="#Common-Methods-for-Sets" title="Permalink to this heading">#</a></h3>
+<p>Here is a summary for common methods for sets:</p>
+<ol class="arabic simple">
+<li><p><strong>``add(element)``</strong>: Adds an element to the set.</p></li>
+<li><p><strong>``clear()``</strong>: Removes all elements from the set.</p></li>
+<li><p><strong>``copy()``</strong>: Returns a shallow copy of the set.</p></li>
+<li><p><strong>``difference(other_set)``</strong>: Returns a new set containing elements in the set that are not in the <code class="docutils literal notranslate"><span class="pre">other_set</span></code>.</p></li>
+<li><p><strong>``difference_update(other_set)``</strong>: Removes all elements of another set from this set.</p></li>
+<li><p><strong>``discard(element)``</strong>: Removes an element from the set if it is a member (does nothing if the element is not in the set).</p></li>
+<li><p><strong>``intersection(other_set)``</strong>: Returns a new set with elements common to the set and <code class="docutils literal notranslate"><span class="pre">other_set</span></code>.</p></li>
+<li><p><strong>``intersection_update(other_set)``</strong>: Updates the set with the intersection of itself and another set.</p></li>
+<li><p><strong>``isdisjoint(other_set)``</strong>: Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if two sets have a null intersection.</p></li>
+<li><p><strong>``issubset(other_set)``</strong>: Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if another set contains this set.</p></li>
+<li><p><strong>``issuperset(other_set)``</strong>: Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if this set contains another set.</p></li>
+<li><p><strong>``pop()``</strong>: Removes and returns an arbitrary set element. Raises <code class="docutils literal notranslate"><span class="pre">KeyError</span></code> if the set is empty.</p></li>
+<li><p><strong>``remove(element)``</strong>: Removes an element from the set. If the element is not a member, raises a <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>.</p></li>
+<li><p><strong>``union(other_set)``</strong>: Returns a new set with all elements from the set and <code class="docutils literal notranslate"><span class="pre">other_set</span></code>.</p></li>
+<li><p><strong>``update(other_set)``</strong>: Adds elements from <code class="docutils literal notranslate"><span class="pre">other_set</span></code> to the set.</p></li>
+</ol>
+</div><script type="application/vnd.jupyter.widget-state+json">
 {"state": {}, "version_major": 2, "version_minor": 0}
 </script></section>
+</section>
 </section>
 
         </article>
@@ -1105,7 +1196,7 @@ Set of mixed data types: {112, &#39;Python&#39;, -2, &#39;Good&#39;}
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Apr 08, 2024</div>
+              Last updated on Apr 09, 2024</div>
           </div>
           <div class="right-details">
             
@@ -1127,11 +1218,26 @@ Set of mixed data types: {112, &#39;Python&#39;, -2, &#39;Good&#39;}
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Data Types in Python</a><ul>
-<li><a class="reference internal" href="#Strings">Strings</a></li>
-<li><a class="reference internal" href="#Lists">Lists</a></li>
-<li><a class="reference internal" href="#Tuples">Tuples</a></li>
-<li><a class="reference internal" href="#Dictionaries">Dictionaries</a></li>
-<li><a class="reference internal" href="#Sets">Sets</a></li>
+<li><a class="reference internal" href="#Strings">Strings</a><ul>
+<li><a class="reference internal" href="#Common-String-Methods">Common String Methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Lists">Lists</a><ul>
+<li><a class="reference internal" href="#Common-List-Methods">Common List Methods</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Tuples">Tuples</a><ul>
+<li><a class="reference internal" href="#Common-Methods-for-Tuples:">Common Methods for Tuples:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Dictionaries">Dictionaries</a><ul>
+<li><a class="reference internal" href="#Common-Methods-for-Dictionaries">Common Methods for Dictionaries</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Sets">Sets</a><ul>
+<li><a class="reference internal" href="#Common-Methods-for-Sets">Common Methods for Sets</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

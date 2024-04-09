@@ -366,6 +366,42 @@
   },
   {
    "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<div class=\"alert alert-info\">\n",
+    "\n",
+    "### Common String Methods\n",
+    "\n",
+    "Here's a summary of commonly used string methods :\n",
+    "\n",
+    "1. **`.join(iterable)`**: Concatenates the elements of an iterable (such as a list) into a single string, with the string acting as the delimiter.\n",
+    "2. **`.split(separator=None, maxsplit=-1)`**: Splits a string into a list of substrings based on a separator. If no separator is specified, whitespace is used.\n",
+    "3. **`.replace(old, new[, count])`**: Returns a new string with all occurrences of the substring `old` replaced by `new`. If the optional argument `count` is given, only the first `count` occurrences are replaced.\n",
+    "4. **`.strip([chars])`**: Removes leading and trailing characters (whitespace by default) from the string. The `chars` argument is a string specifying the set of characters to be removed.\n",
+    "5. **`.lower()`**: Converts all uppercase characters in a string to lowercase.\n",
+    "6. **`.upper()`**: Converts all lowercase characters in a string to uppercase.\n",
+    "7. **`.title()`**: Returns a title-cased version of the string where the first character of each word is capitalized.\n",
+    "8. **`.capitalize()`**: Converts the first character of the string to uppercase and the rest to lowercase.\n",
+    "9. **`.startswith(prefix[, start[, end]])`**: Returns `True` if the string starts with the specified `prefix` (and optionally within a specified slice `start` to `end`).\n",
+    "10. **`.endswith(suffix[, start[, end]])`**: Returns `True` if the string ends with the specified `suffix` (and optionally within a specified slice `start` to `end`).\n",
+    "11. **`.count(sub[, start[, end]])`**: Returns the number of non-overlapping occurrences of the substring `sub` in the string (optionally within a specified slice `start` to `end`).\n",
+    "12. **`.find(sub[, start[, end]])`**: Returns the lowest index in the string where the substring `sub` is found (optionally within a specified slice `start` to `end`). Returns `-1` if the substring is not found.\n",
+    "13. **`.index(sub[, start[, end]])`**: Like `.find()`, but raises a `ValueError` when the substring `sub` is not found[6][7].\n",
+    "14. **`.rfind(sub[, start[, end]])`**: Returns the highest index in the string where the substring `sub` is found (optionally within a specified slice `start` to `end`). Returns `-1` if the substring is not found.\n",
+    "15. **`.rindex(sub[, start[, end]])`**: Like `.rfind()`, but raises a `ValueError` when the substring `sub` is not found[6].\n",
+    "16. **`.isalpha()`**: Returns `True` if all characters in the string are alphabetic and there is at least one character, `False` otherwise.\n",
+    "17. **`.isdigit()`**: Returns `True` if all characters in the string are digits and there is at least one character, `False` otherwise.\n",
+    "18. **`.isnumeric()`**: Returns `True` if all characters in the string are numeric characters, and there is at least one character, `False` otherwise.\n",
+    "19. **`.isspace()`**: Returns `True` if there are only whitespace characters in the string and there is at least one character, `False` otherwise.\n",
+    "20. **`.islower()`**: Returns `True` if all cased characters in the string are lowercase and there is at least one cased character, `False` otherwise.\n",
+    "21. **`.isupper()`**: Returns `True` if all cased characters in the string are uppercase and there is at least one cased character, `False` otherwise.\n",
+    "22. **`.istitle()`**: Returns `True` if the string is title-cased (i.e., uppercase characters may only follow uncased characters and lowercase characters only cased ones).\n",
+    "\n",
+    "</div>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
    "metadata": {
     "slideshow": {
      "slide_type": "slide"
@@ -1113,6 +1149,31 @@
   },
   {
    "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<div class=\"alert alert-info\">\n",
+    "\n",
+    "\n",
+    "### Common List Methods\n",
+    "\n",
+    "Here's a summary of commonly used list methods including a short description:\n",
+    "\n",
+    "1. **`.append(x)`**: Adds an item `x` to the end of the list.\n",
+    "2. **`.extend(iterable)`**: Extends the list by appending all the items from the given `iterable`.\n",
+    "3. **`.insert(i, x)`**: Inserts an item `x` at a given position `i`.\n",
+    "4. **`.remove(x)`**: Removes the first item from the list whose value is equal to `x`.\n",
+    "5. **`.pop([i])`**: Removes the item at the given position in the list and returns it. If no index is specified, `pop()` removes and returns the last item in the list.\n",
+    "6. **`.clear()`**: Removes all items from the list.\n",
+    "7. **`.index(x[, start[, end]])`**: Returns the zero-based index in the list of the first item whose value is equal to `x`. Optional arguments `start` and `end` are used to limit the search to a particular subsequence of the list.\n",
+    "8. **`.count(x)`**: Returns the number of times `x` appears in the list.\n",
+    "9. **`.sort(*, key=None, reverse=False)`**: Sorts the items of the list in place. The arguments can be used for sort customization.\n",
+    "10. **`.reverse()`**: Reverses the elements of the list in place.\n",
+    "11. **`.copy()`**: Returns a shallow copy of the list.\n",
+    "</div>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
    "metadata": {
     "slideshow": {
      "slide_type": "slide"
@@ -1205,6 +1266,23 @@
     "\n",
     "print(\"x =\", x)\n",
     "print(\"y =\", y)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<div class=\"alert alert-info\">\n",
+    "\n",
+    "### Common Methods for Tuples:\n",
+    "\n",
+    "Common methods for tuples in Python are:\n",
+    "\n",
+    "1. **`count()`**: This method returns the number of times a specified value occurs in a tuple.\n",
+    "\n",
+    "2. **`index()`**: This method searches the tuple for a specified value and returns the position of where it was found. If the value is not found, a `ValueError` is raised.\n",
+    "\n",
+    "</div>"
    ]
   },
   {
@@ -1328,6 +1406,30 @@
    ],
    "source": [
     "room.values()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<div class=\"alert alert-info\">\n",
+    "\n",
+    "### Common Methods for Dictionaries\n",
+    "    \n",
+    "Here is a summary of common methods for dictionaries:\n",
+    "\n",
+    "1. **`clear()`**: Removes all items from the dictionary, leaving it empty.\n",
+    "2. **`copy()`**: Returns a shallow copy of the dictionary.\n",
+    "3. **`fromkeys()`**: Creates a new dictionary with keys from an iterable and values set to a specified value[8].\n",
+    "4. **`get(key[, default])`**: Returns the value for a specified key. If the key is not found, it returns the default value (None if not specified).\n",
+    "5. **`items()`**: Returns a view object that displays a list of dictionary's key-value tuple pairs.\n",
+    "6. **`keys()`**: Returns a view object that displays a list of all the keys in the dictionary.\n",
+    "7. **`pop(key[, default])`**: Removes the specified key and returns the corresponding value. If the key is not found, the default value is returned. If the default is not provided and the key is not found, a KeyError is raised.\n",
+    "8. **`popitem()`**: Removes and returns a (key, value) pair from the dictionary. Pairs are returned in a LIFO (Last In, First Out) order.\n",
+    "9. **`setdefault(key[, default])`**: Returns the value of the specified key. If the key does not exist: insert the key, with the specified value, default is None if not specified.\n",
+    "10. **`update([other])`**: Updates the dictionary with the key-value pairs from another dictionary object or from an iterable of key-value pairs.\n",
+    "11. **`values()`**: Returns a view object that displays a list of all the values in the dictionary.\n",
+    "</div>"
    ]
   },
   {
@@ -1537,6 +1639,37 @@
    "source": [
     "# union\n",
     "A | B"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": []
+   },
+   "source": [
+    "<div class=\"alert alert-info\">\n",
+    "\n",
+    "### Common Methods for Sets\n",
+    "\n",
+    "Here is a summary for common methods for sets:\n",
+    "\n",
+    "\n",
+    "1. **`add(element)`**: Adds an element to the set.\n",
+    "2. **`clear()`**: Removes all elements from the set.\n",
+    "3. **`copy()`**: Returns a shallow copy of the set.\n",
+    "4. **`difference(other_set)`**: Returns a new set containing elements in the set that are not in the `other_set`.\n",
+    "5. **`difference_update(other_set)`**: Removes all elements of another set from this set.\n",
+    "6. **`discard(element)`**: Removes an element from the set if it is a member (does nothing if the element is not in the set).\n",
+    "7. **`intersection(other_set)`**: Returns a new set with elements common to the set and `other_set`.\n",
+    "8. **`intersection_update(other_set)`**: Updates the set with the intersection of itself and another set.\n",
+    "9. **`isdisjoint(other_set)`**: Returns `True` if two sets have a null intersection.\n",
+    "10. **`issubset(other_set)`**: Returns `True` if another set contains this set.\n",
+    "11. **`issuperset(other_set)`**: Returns `True` if this set contains another set.\n",
+    "12. **`pop()`**: Removes and returns an arbitrary set element. Raises `KeyError` if the set is empty.\n",
+    "13. **`remove(element)`**: Removes an element from the set. If the element is not a member, raises a `KeyError`.\n",
+    "14. **`union(other_set)`**: Returns a new set with all elements from the set and `other_set`.\n",
+    "15. **`update(other_set)`**: Adds elements from `other_set` to the set.\n",
+    "</div>"
    ]
   }
  ],
