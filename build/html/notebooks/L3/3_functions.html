@@ -199,6 +199,7 @@
 <li class="toctree-l1"><a class="reference internal" href="2_flowcontrol.html">Flow Control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L2/2_plotting.html">Plotting data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L2/3_randomnumbers.html">Random numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/L2/assignment_2.html">Exercise 2</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Notebook for Exercise 3:</span></p>
 <ul>
@@ -246,7 +247,7 @@
 <h1>Functions<a class="headerlink" href="#Functions" title="Permalink to this heading">#</a></h1>
 <p>Python allows to define functions. Functions collect code that you would use repeatedly in your program.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># include the required modules</span>
@@ -256,18 +257,20 @@
 
 <span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
 
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.labelpad&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
                      <span class="s1">&#39;lines.linewidth&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                     <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                     <span class="s1">&#39;xtick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
-                     <span class="s1">&#39;ytick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+                     <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                     <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                     <span class="s1">&#39;xtick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                     <span class="s1">&#39;ytick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                     <span class="s1">&#39;legend.fontsize&#39;</span> <span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                     <span class="s1">&#39;contour.linewidth&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
                      <span class="s1">&#39;xtick.top&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
                      <span class="s1">&#39;xtick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span>
                      <span class="s1">&#39;ytick.right&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-                     <span class="s1">&#39;ytick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,})</span>
+                     <span class="s1">&#39;ytick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                     <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span> <span class="mi">150</span> <span class="p">})</span>
 </pre></div>
 </div>
 </div>

@@ -83,7 +83,7 @@ We will not present a comprehensive list of numerical simulation schemes, but us
    notebooks/L3/2_flowcontrol.ipynb
    notebooks/L2/2_plotting.ipynb
    notebooks/L2/3_randomnumbers.ipynb
-   ectures/L2/assignment_2.rst
+   lectures/L2/assignment_2.rst
 
 .. toctree::
    :maxdepth: 2
