@@ -68,7 +68,6 @@ We will not present a comprehensive list of numerical simulation schemes, but us
    notebooks/L1/3_datatypes.ipynb
    notebooks/L1/4_modules.ipynb
    notebooks/L2/1_numpy.ipynb   
-   notebooks/L2/2_plotting.ipynb
 
 .. toctree::
    :maxdepth: 2
@@ -83,7 +82,14 @@ We will not present a comprehensive list of numerical simulation schemes, but us
    notebooks/L3/1_input_output.ipynb
    notebooks/L3/2_flowcontrol.ipynb
    notebooks/L2/2_plotting.ipynb
+   notebooks/L2/3_randomnumbers.ipynb
+   ectures/L2/assignment_2.rst
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Notebook for Exercise 3:
+
+   notebooks/L2/25_publication_ready_figures.ipynb
    
 Indices and tables
 ==================

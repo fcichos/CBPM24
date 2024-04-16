@@ -26,9 +26,11 @@
      "end_time": "2019-04-23T12:57:22.018368Z",
      "start_time": "2019-04-23T12:57:22.002149Z"
     },
+    "nbsphinx": "hidden",
     "slideshow": {
      "slide_type": "skip"
-    }
+    },
+    "tags": []
    },
    "outputs": [],
    "source": [
@@ -36,21 +38,7 @@
     "\n",
     "import numpy as np\n",
     "import matplotlib.pyplot as plt\n",
-    "\n",
-    "%config InlineBackend.figure_format = 'retina' \n",
-    "\n",
-    "plt.rcParams.update({'font.size': 12,\n",
-    "                     'axes.titlesize': 18,\n",
-    "                     'axes.labelsize': 16,\n",
-    "                     'axes.labelpad': 14,\n",
-    "                     'lines.linewidth': 1,\n",
-    "                     'lines.markersize': 10,\n",
-    "                     'xtick.labelsize' : 16,\n",
-    "                     'ytick.labelsize' : 16,\n",
-    "                     'xtick.top' : True,\n",
-    "                     'xtick.direction' : 'in',\n",
-    "                     'ytick.right' : True,\n",
-    "                     'ytick.direction' : 'in',}) "
+    "%config InlineBackend.figure_format = 'retina' \n"
    ]
   },
   {
