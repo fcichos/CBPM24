@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Exercise 3" href="../../lectures/L3/assignment_3.html" /><link rel="prev" title="Random numbers" href="../L2/3_randomnumbers.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
         <title>Functions - Introduction to Computer-based Physical Modeling 24 documentation</title>
@@ -204,11 +204,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../L2/25_publication_ready_figures.html">Add On: Making publication ready figures</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Lecture 4:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../L2/2_plotting.html">Plotting data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L2/3_randomnumbers.html">Random numbers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../L4/1_classes.html">Classes and Objects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../L4/2_brownian_motion.html">Brownian Motion</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/L3/assignment_3.html">Exercise 3</a></li>
 </ul>
 
 </div>
@@ -293,7 +293,7 @@
 </div>
 <p>The following example calculates <span class="math notranslate nohighlight">\(sinc(x) = \sin(x)/x\)</span> and sets it equal to y. The return statement of the last line tells Python to return the value of y to the user.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sinc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -308,7 +308,7 @@
 </div>
 <p>The code for <code class="docutils literal notranslate"><span class="pre">sinc(x)</span></code> works just fine when the argument is a single number or a variable that represents a single number. However, if the argument is a NumPy array, we run into an error.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
@@ -316,7 +316,7 @@
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
@@ -324,7 +324,7 @@
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -333,7 +333,7 @@ array([0. , 0.5, 1. , 1.5, 2. , 2.5, 3. , 3.5, 4. , 4.5])
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sinc</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -345,12 +345,12 @@ array([0. , 0.5, 1. , 1.5, 2. , 2.5, 3. , 3.5, 4. , 4.5])
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/tmp/ipykernel_835348/3738885869.py:6: RuntimeWarning: invalid value encountered in true_divide
+/tmp/ipykernel_1425885/3738885869.py:6: RuntimeWarning: invalid value encountered in true_divide
   y = np.sin(x)/x
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -361,7 +361,7 @@ array([        nan,  0.95885108,  0.84147098,  0.66499666,  0.45464871,
 </div>
 <p>We may intercept the error by checking if the supplied array contains a <code class="docutils literal notranslate"><span class="pre">0</span></code>. This can be done by looping through all elements of the array and using our flow control <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code> statements.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sinc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -380,7 +380,7 @@ array([        nan,  0.95885108,  0.84147098,  0.66499666,  0.45464871,
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
@@ -397,7 +397,7 @@ array([        nan,  0.95885108,  0.84147098,  0.66499666,  0.45464871,
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L3_3_functions_13_0.png" class="no-scaled-link" src="../../_images/notebooks_L3_3_functions_13_0.png" style="width: 574px; height: 415px;" />
+<img alt="../../_images/notebooks_L3_3_functions_13_0.png" class="no-scaled-link" src="../../_images/notebooks_L3_3_functions_13_0.png" style="width: 547px; height: 401px;" />
 </div>
 </div>
 <p>Loops are in general slowly executed and there is a faster way of checking the elements of an array by the <code class="docutils literal notranslate"><span class="pre">np.where</span></code> function of the NumPy library. There where function has the form</p>
@@ -406,7 +406,7 @@ array([        nan,  0.95885108,  0.84147098,  0.66499666,  0.45464871,
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">where</span></code> function applies the condition to the array element by element, and returns the second argument for those array elements for which the condition is True, and returns the third argument for those array elements that are False.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sinc</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -433,7 +433,7 @@ array([        nan,  0.95885108,  0.84147098,  0.66499666,  0.45464871,
 </div>
 <p>Here is an example to illustrate the scope of a variable inside a function.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_function</span><span class="p">():</span>
@@ -470,7 +470,7 @@ This is a changed global : 45
 <h2>Functions with more than one input or output<a class="headerlink" href="#Functions-with-more-than-one-input-or-output" title="Permalink to this heading">#</a></h2>
 <p>Python functions can have any number of input arguments and can return any number of variables. For example, suppose you want a function that outputs n (x, y) coordinates around a circle of radius r centered at the point (x0 , y0 ). The inputs to the function would be r, x0, y0, and n. The outputs would be the n (x, y) coordinates. The following code implements this function.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">circle</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
@@ -1074,8 +1074,26 @@ Then I execute the original function!
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="../../lectures/L3/assignment_3.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Exercise 3</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../L2/3_randomnumbers.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Random numbers</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
