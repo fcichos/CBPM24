@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Plotting data" href="../L2/2_plotting.html" /><link rel="prev" title="Input and output" href="1_input_output.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Exercise 2" href="../../lectures/L2/assignment_2.html" /><link rel="prev" title="Input and output" href="1_input_output.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
         <title>Flow Control - Introduction to Computer-based Physical Modeling 24 documentation</title>
@@ -197,13 +197,18 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="1_input_output.html">Input and output</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Flow Control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../L2/2_plotting.html">Plotting data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../L2/3_randomnumbers.html">Random numbers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/L2/assignment_2.html">Exercise 2</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Notebook for Exercise 3:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../L2/25_publication_ready_figures.html">Add On: Making publication ready figures</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 4:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../L2/2_plotting.html">Plotting data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L2/3_randomnumbers.html">Random numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L4/1_classes.html">Classes and Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L4/2_brownian_motion.html">Brownian Motion</a></li>
 </ul>
 
 </div>
@@ -265,7 +270,7 @@ if number ==  42:
 <section id="If-example">
 <h3>If example<a class="headerlink" href="#If-example" title="Permalink to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please input a number: &quot;</span><span class="p">))</span>
@@ -274,6 +279,8 @@ if number ==  42:
     <span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The absolute value is </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+
+<span class="s2">&quot;outside this block&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -282,22 +289,23 @@ if number ==  42:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Please input a number:  -10030
+Please input a number:  124351
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-The absolute value is 10030
+&#39;outside this block&#39;
 </pre></div></div>
 </div>
 </section>
 <section id="If-else-example">
 <h3>If else example<a class="headerlink" href="#If-else-example" title="Permalink to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please input an integer: &quot;</span><span class="p">))</span>
@@ -313,7 +321,7 @@ The absolute value is 10030
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Please input an integer:  7
+Please input an integer:  4
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -321,7 +329,7 @@ Please input an integer:  7
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-7 is an odd number.
+4 is an even number.
 </pre></div></div>
 </div>
 </section>
@@ -334,7 +342,7 @@ ax^2+bx+c=0
 <p>are real, imaginary, or complex for a given set of coefficients a, b, and c. Of course, the answer to that question depends on the value of the discriminant <span class="math notranslate nohighlight">\(d = b^2 − 4ac\)</span>. The solutions are real if <span class="math notranslate nohighlight">\(d \ge 0\)</span>, imaginary if <span class="math notranslate nohighlight">\(b=0\)</span> and <span class="math notranslate nohighlight">\(d &lt; 0\)</span>,and complex if <span class="math notranslate nohighlight">\(b\ne 0\)</span> and <span class="math notranslate nohighlight">\(d &lt; 0\)</span>. The program below implements the above logic in a Python program. Each part of these statements has a code block to be executed. The code block to be executed is discriminated from the
 others by an indentation. Usually this is done with a <em>tab</em>, which indents 4 characters. You can either insert 4 spaces or press <em>tab</em>. Play around with the <em>tab</em> to get a feeling how the Jupyter notebook responds to that.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;What is the coefficients a? &quot;</span><span class="p">))</span>
@@ -357,9 +365,9 @@ others by an indentation. Usually this is done with a <em>tab</em>, which indent
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-What is the coefficients a?  3
-What is the coefficients b?  4
-What is the coefficients c?  2
+What is the coefficients a?  4
+What is the coefficients b?  5
+What is the coefficients c?  6
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -801,12 +809,12 @@ array operations over loops.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../L2/2_plotting.html">
+          <a class="next-page" href="../../lectures/L2/assignment_2.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Plotting data</div>
+                <div class="title">Exercise 2</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -831,7 +839,7 @@ array operations over loops.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Apr 16, 2024</div>
+              Last updated on Apr 22, 2024</div>
           </div>
           <div class="right-details">
             

@@ -81,8 +81,6 @@ We will not present a comprehensive list of numerical simulation schemes, but us
    
    notebooks/L3/1_input_output.ipynb
    notebooks/L3/2_flowcontrol.ipynb
-   notebooks/L2/2_plotting.ipynb
-   notebooks/L2/3_randomnumbers.ipynb
    lectures/L2/assignment_2.rst
 
 .. toctree::
@@ -90,7 +88,16 @@ We will not present a comprehensive list of numerical simulation schemes, but us
    :caption: Notebook for Exercise 3:
 
    notebooks/L2/25_publication_ready_figures.ipynb
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 4:
    
+   notebooks/L2/2_plotting.ipynb
+   notebooks/L2/3_randomnumbers.ipynb
+   notebooks/L4/1_classes.ipynb
+   notebooks/L4/2_brownian_motion.ipynb   
+
 Indices and tables
 ==================
 
