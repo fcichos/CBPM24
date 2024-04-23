@@ -8,6 +8,7 @@ It is all about input/output, flow control and functions.
 2. Flow Control
 3. Functions
 
+The assignment is due **April 30th, 12:00!**
 
 You will most likely have fun with those unnamed function!
 
