@@ -1,5 +1,5 @@
-Exercise 3
-==========
+Assignment 3
+============
 
 The third assignment is also available now. Please have a look and not only a look! 
 It is all about input/output, flow control and functions.
