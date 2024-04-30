@@ -93,8 +93,7 @@ We will not present a comprehensive list of numerical simulation schemes, but us
    :maxdepth: 2
    :caption: Lecture 4:
    
-   notebooks/L2/2_plotting.ipynb
-   notebooks/L2/3_randomnumbers.ipynb
+   notebooks/L2/2_plotting.ipynb   
    notebooks/L3/3_functions.ipynb
    lectures/L3/assignment_3.rst
 
@@ -103,6 +102,7 @@ We will not present a comprehensive list of numerical simulation schemes, but us
    :caption: Lecture 5:
 
    notebooks/L4/1_classes.ipynb
+   notebooks/L2/3_randomnumbers.ipynb
    notebooks/L4/2_brownian_motion.ipynb   
    notebooks/L4/3_animations.ipynb  
 
