@@ -105,7 +105,13 @@ We will not present a comprehensive list of numerical simulation schemes, but us
    notebooks/L2/3_randomnumbers.ipynb
    notebooks/L4/2_brownian_motion.ipynb   
    notebooks/L4/3_animations.ipynb  
+   lectures/L4/assignment_4.rst
+   
+.. toctree::
+   :maxdepth: 2
+   :caption: Notebook for Exercise 4:
 
+   notebooks/L4/Collision_Detection.ipynb
 
 Indices and tables
 ==================

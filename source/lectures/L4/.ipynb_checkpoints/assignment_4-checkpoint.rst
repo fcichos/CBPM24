@@ -1,25 +1,18 @@
 Exercise 4
 ==========
 
-The fourth assignment will be about the topic COVID19! You will apply your knowledge about 
+The fourth assignment is also available now. Please have a look and not only a look! 
+It is all about plotting. So test your plotting skills!
 
-1. Classes and objects
-2. Flow Control
-3. Animation
+1. Projectile Motion
+2. Damped Oscillation
+3. Electrostatic Potential of a Dipole
 
-an create a simple simulation of the spreading of COVID19.
+The assignment is due **May 7th, 12:00!**
 
-Since this might be a bit more demanding you have may take some additional time. Don't hestitate to ask in the forum.
-Have fun!
+You will most likely have fun with those unnamed function!
 
-    .. image:: img/assignment_4.png
+    .. image:: img/assignment_41.png
        :width: 600px
        :alt: forum screen
        :align: center
-
-
-.. raw:: html
-
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto;">
-        <iframe src="https://www.youtube.com/embed/rTv4BmTpDs4" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-    </div>
