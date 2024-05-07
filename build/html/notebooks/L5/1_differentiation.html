@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Numerical Integration" href="2_integration.html" /><link rel="prev" title="Simple Collision Detection" href="../L4/Collision_Detection.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
         <title>Numerical Differentiation - Introduction to Computer-based Physical Modeling 24 documentation</title>
@@ -221,6 +221,12 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../L4/Collision_Detection.html">Simple Collision Detection</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 6:</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Numerical Differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_integration.html">Numerical Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_solving_ODEs.html">Solving ODEs</a></li>
+</ul>
 
 </div>
 </div>
@@ -261,6 +267,7 @@
 </div>
 <section id="Numerical-Differentiation">
 <h1>Numerical Differentiation<a class="headerlink" href="#Numerical-Differentiation" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://github.com/fcichos/CBPM24/blob/cb4cdd123685863a57ead46c8cc25bc9de8f41a0/source/notebooks/L5/1_differentiation.pdf">File as PDF</a></p>
 <p>We did already have a look at the numerical differentiation in Lecture 3. We therefore don’t have to extend that to much here. Yet we want to formalize the numerical differentiation a bit.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -374,7 +381,7 @@ f_{i}^{\prime}=\frac{1}{12 \Delta x}(f_{i-2}-8f_{i-1}+8f_{i+1}-f_{i+2})
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L5_1_differentiation_10_1.png" class="no-scaled-link" src="../../_images/notebooks_L5_1_differentiation_10_1.png" style="width: 631px; height: 415px;" />
+<img alt="../../_images/notebooks_L5_1_differentiation_11_1.png" class="no-scaled-link" src="../../_images/notebooks_L5_1_differentiation_11_1.png" style="width: 631px; height: 415px;" />
 </div>
 </div>
 <section id="Matrix-version-of-the-first-derivative">
@@ -532,7 +539,7 @@ matrix([[-1.,  1.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.],
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L5_1_differentiation_32_0.png" class="no-scaled-link" src="../../_images/notebooks_L5_1_differentiation_32_0.png" style="width: 780px; height: 581px;" />
+<img alt="../../_images/notebooks_L5_1_differentiation_33_0.png" class="no-scaled-link" src="../../_images/notebooks_L5_1_differentiation_33_0.png" style="width: 780px; height: 581px;" />
 </div>
 </div>
 <p>Check yourself, that the following line of code will calculate the second derivative.</p>
@@ -550,8 +557,26 @@ matrix([[-1.,  1.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.],
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="2_integration.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Numerical Integration</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../L4/Collision_Detection.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Simple Collision Detection</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -562,7 +587,7 @@ matrix([[-1.,  1.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.],
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Apr 30, 2024</div>
+              Last updated on May 07, 2024</div>
           </div>
           <div class="right-details">
             
