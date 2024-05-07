@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="Numerical Integration" href="2_integration.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Exercise 5" href="../../lectures/L5/assignment_5.html" /><link rel="prev" title="Numerical Integration" href="2_integration.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
         <title>Solving ODEs - Introduction to Computer-based Physical Modeling 24 documentation</title>
@@ -226,6 +226,7 @@
 <li class="toctree-l1"><a class="reference internal" href="1_differentiation.html">Numerical Differentiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_integration.html">Numerical Integration</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Solving ODEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/L5/assignment_5.html">Exercise 5</a></li>
 </ul>
 
 </div>
@@ -281,18 +282,20 @@
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
 
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.labelpad&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
                      <span class="s1">&#39;lines.linewidth&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                     <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                     <span class="s1">&#39;xtick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
-                     <span class="s1">&#39;ytick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+                     <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                     <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                     <span class="s1">&#39;xtick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                     <span class="s1">&#39;ytick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                     <span class="s1">&#39;legend.fontsize&#39;</span> <span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                     <span class="s1">&#39;contour.linewidth&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
                      <span class="s1">&#39;xtick.top&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
                      <span class="s1">&#39;xtick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span>
                      <span class="s1">&#39;ytick.right&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-                     <span class="s1">&#39;ytick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,})</span>
+                     <span class="s1">&#39;ytick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                     <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span> <span class="mi">150</span> <span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -362,8 +365,16 @@ v_{0}\delta t\\
 <section id="Solution">
 <h3>Solution<a class="headerlink" href="#Solution" title="Permalink to this heading">#</a></h3>
 <p>This is the final system of coupled equations which we can supply to any matrix solver. We will use a solver from the <code class="docutils literal notranslate"><span class="pre">scipy.linalg</span></code> module. Lets have a look at the details below.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span><span class="o">=</span><span class="mi">5</span>
+</pre></div>
+</div>
+</div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">diags</span><span class="p">([</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span><span class="o">+</span><span class="n">diags</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span><span class="o">*</span> <span class="n">omega</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">dt</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
@@ -371,17 +382,17 @@ v_{0}\delta t\\
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;500x500 sparse matrix of type &#39;&lt;class &#39;numpy.float64&#39;&gt;&#39;
-        with 1497 stored elements (3 diagonals) in DIAgonal format&gt;
+&lt;5x5 sparse matrix of type &#39;&lt;class &#39;numpy.float64&#39;&gt;&#39;
+        with 12 stored elements (3 diagonals) in DIAgonal format&gt;
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -417,10 +428,10 @@ v_{0}\delta t\\
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;time t&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;elongation x(t)&#39;</span><span class="p">)</span>
@@ -432,7 +443,7 @@ v_{0}\delta t\\
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L5_3_solving_ODEs_20_0.png" class="no-scaled-link" src="../../_images/notebooks_L5_3_solving_ODEs_20_0.png" style="width: 732px; height: 549px;" />
+<img alt="../../_images/notebooks_L5_3_solving_ODEs_21_0.png" class="no-scaled-link" src="../../_images/notebooks_L5_3_solving_ODEs_21_0.png" style="width: 571px; height: 431px;" />
 </div>
 </div>
 </section>
@@ -511,7 +522,7 @@ x(t+\Delta t) = x(t) + \frac{\dot{x}(t+\Delta t)+\dot{x}(t)}{2} \Delta t
 <p>The error of this method scales now with <span class="math notranslate nohighlight">\(\Delta t^3\)</span>. The quality of these three methods is displayed in by the code and the graph below.</p>
 <img alt="Derivative" src="../../_images/derivative.png" />
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## high precision</span>
@@ -524,7 +535,7 @@ x(t+\Delta t) = x(t) + \frac{\dot{x}(t+\Delta t)+\dot{x}(t)}{2} \Delta t
 <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
 <span class="n">dt</span><span class="o">=</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mf">3.5</span><span class="p">)</span> <span class="p">)</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">g</span><span class="o">*</span><span class="n">dt</span>
@@ -598,7 +609,7 @@ x(t+\Delta t) = x(t) + \frac{\dot{x}(t+\Delta t)+\dot{x}(t)}{2} \Delta t
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L5_3_solving_ODEs_33_0.png" class="no-scaled-link" src="../../_images/notebooks_L5_3_solving_ODEs_33_0.png" style="width: 514px; height: 441px;" />
+<img alt="../../_images/notebooks_L5_3_solving_ODEs_34_0.png" class="no-scaled-link" src="../../_images/notebooks_L5_3_solving_ODEs_34_0.png" style="width: 635px; height: 516px;" />
 </div>
 </div>
 </section>
@@ -638,7 +649,7 @@ x(t+\Delta t) = x(t) + \frac{\dot{x}(t+\Delta t)+\dot{x}(t)}{2} \Delta t
 method and the <em>Runge Kutta</em> method (which we have not really addressed).</p>
 <p>Play around with the time period, the number of steps and the initial conditions to observe the changes in the output, or possible errors of the solvers!</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">2000</span>  <span class="c1"># number of steps</span>
@@ -692,7 +703,7 @@ method and the <em>Runge Kutta</em> method (which we have not really addressed).
 <span class="n">vdata</span> <span class="o">=</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
 
 
-<span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">xdata</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Position&quot;</span><span class="p">)</span>
@@ -716,7 +727,7 @@ method and the <em>Runge Kutta</em> method (which we have not really addressed).
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L5_3_solving_ODEs_38_0.png" class="no-scaled-link" src="../../_images/notebooks_L5_3_solving_ODEs_38_0.png" style="width: 981px; height: 482px;" />
+<img alt="../../_images/notebooks_L5_3_solving_ODEs_39_0.png" class="no-scaled-link" src="../../_images/notebooks_L5_3_solving_ODEs_39_0.png" style="width: 1185px; height: 585px;" />
 </div>
 </div>
 </section>
@@ -734,7 +745,7 @@ method and the <em>Runge Kutta</em> method (which we have not really addressed).
 <section id="Setup">
 <h3>Setup<a class="headerlink" href="#Setup" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">odeint</span>
@@ -742,7 +753,7 @@ method and the <em>Runge Kutta</em> method (which we have not really addressed).
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># number of steps</span>
@@ -766,7 +777,7 @@ method and the <em>Runge Kutta</em> method (which we have not really addressed).
 <section id="Definition">
 <h3>Definition<a class="headerlink" href="#Definition" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##  defining the problem</span>
@@ -781,7 +792,7 @@ method and the <em>Runge Kutta</em> method (which we have not really addressed).
 <section id="id1">
 <h3>Solution<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">answer</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span> <span class="n">free_fall</span><span class="p">,</span> <span class="n">y</span> <span class="p">,</span> <span class="n">time</span> <span class="p">)</span>
@@ -792,7 +803,7 @@ method and the <em>Runge Kutta</em> method (which we have not really addressed).
 <section id="Plotting">
 <h3>Plotting<a class="headerlink" href="#Plotting" title="Permalink to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
@@ -818,7 +829,7 @@ method and the <em>Runge Kutta</em> method (which we have not really addressed).
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L5_3_solving_ODEs_49_0.png" class="no-scaled-link" src="../../_images/notebooks_L5_3_solving_ODEs_49_0.png" style="width: 981px; height: 482px;" />
+<img alt="../../_images/notebooks_L5_3_solving_ODEs_50_0.png" class="no-scaled-link" src="../../_images/notebooks_L5_3_solving_ODEs_50_0.png" style="width: 1482px; height: 735px;" />
 </div>
 </div>
 </section>
@@ -833,7 +844,7 @@ method and the <em>Runge Kutta</em> method (which we have not really addressed).
 <section id="id2">
 <h3>Setup<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># number of steps</span>
@@ -860,7 +871,7 @@ method and the <em>Runge Kutta</em> method (which we have not really addressed).
 <section id="id3">
 <h3>Definition<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pendulum_def</span><span class="p">(</span><span class="n">state</span> <span class="p">,</span> <span class="n">time</span><span class="p">):</span>
@@ -874,7 +885,7 @@ method and the <em>Runge Kutta</em> method (which we have not really addressed).
 <section id="id4">
 <h3>Solution<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">answer</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span> <span class="n">pendulum_def</span><span class="p">,</span> <span class="n">y</span> <span class="p">,</span> <span class="n">time</span> <span class="p">)</span>
@@ -885,7 +896,7 @@ method and the <em>Runge Kutta</em> method (which we have not really addressed).
 <section id="id5">
 <h3>Plotting<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="p">)</span>
@@ -902,15 +913,7 @@ method and the <em>Runge Kutta</em> method (which we have not really addressed).
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L5_3_solving_ODEs_59_0.png" class="no-scaled-link" src="../../_images/notebooks_L5_3_solving_ODEs_59_0.png" style="width: 726px; height: 546px;" />
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
+<img alt="../../_images/notebooks_L5_3_solving_ODEs_60_0.png" class="no-scaled-link" src="../../_images/notebooks_L5_3_solving_ODEs_60_0.png" style="width: 1070px; height: 800px;" />
 </div>
 </div>
 <script type="application/vnd.jupyter.widget-state+json">
@@ -924,7 +927,15 @@ method and the <em>Runge Kutta</em> method (which we have not really addressed).
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="../../lectures/L5/assignment_5.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Exercise 5</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
           <a class="prev-page" href="2_integration.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">

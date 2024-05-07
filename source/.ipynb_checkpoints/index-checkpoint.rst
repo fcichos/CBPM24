@@ -121,6 +121,7 @@ We will not present a comprehensive list of numerical simulation schemes, but us
    notebooks/L5/1_differentiation.ipynb
    notebooks/L5/2_integration.ipynb   
    notebooks/L5/3_solving_ODEs.ipynb 
+   lectures/L5/assignment_5.rst
 
 Indices and tables
 ==================

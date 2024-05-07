@@ -226,6 +226,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../L5/1_differentiation.html">Numerical Differentiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L5/2_integration.html">Numerical Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L5/3_solving_ODEs.html">Solving ODEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/L5/assignment_5.html">Exercise 5</a></li>
 </ul>
 
 </div>
@@ -515,6 +516,72 @@ simulation.start()
 <li><p><strong>Introduce a drift velocity:</strong> Particles may not only move diffusively but also with a constant drift velocity in a certain direction. We want to introduce that feature to tackle a COVID-19 spreading.</p></li>
 <li><p><strong>Introduce collisions:</strong> To study the spreading of an infection, we have to introduce collisions between particles.</p></li>
 </ol>
+</section>
+<section id="Animations-with-Matplotlib">
+<h2>Animations with Matplotlib<a class="headerlink" href="#Animations-with-Matplotlib" title="Permalink to this heading">#</a></h2>
+<p>While we have done all animations before with the help of the <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> module, it is also possible to use the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> module as well. There are several options,e.g., precalculating and displaying the animation. Yet, we want to use is the direct drawing. The code below demonstrates this option for 400 particles.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">clear_output</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial.distance</span> <span class="kn">import</span> <span class="n">cdist</span>
+
+<span class="n">n_side</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="n">n_side</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="n">n_side</span><span class="p">)</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">particles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">velocities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_side</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">radius</span> <span class="o">=</span> <span class="mf">0.0177</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+
+<span class="n">n_steps</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
+    <span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">particles</span> <span class="o">+=</span> <span class="n">velocities</span>
+    <span class="n">particles</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">particles</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">%</span> <span class="mi">1</span>
+    <span class="n">particles</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">particles</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">%</span> <span class="mi">1</span>
+    <span class="n">distances</span> <span class="o">=</span> <span class="n">cdist</span><span class="p">(</span><span class="n">particles</span><span class="p">,</span> <span class="n">particles</span><span class="p">)</span>
+
+    <span class="n">collisions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">triu</span><span class="p">(</span><span class="n">distances</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">*</span><span class="n">radius</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">collisions</span><span class="p">)):</span>
+        <span class="n">velocities</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">velocities</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">velocities</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">velocities</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="n">overlap</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">radius</span> <span class="o">-</span> <span class="n">distances</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+        <span class="n">direction</span> <span class="o">=</span> <span class="n">particles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">particles</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">direction</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+        <span class="n">particles</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">overlap</span> <span class="o">*</span> <span class="n">direction</span>
+        <span class="n">particles</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">overlap</span> <span class="o">*</span> <span class="n">direction</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">particles</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">particles</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">particles</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">particles</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">velocities</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">velocities</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+    <span class="n">display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">pause</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_L4_3_animations_38_0.png" src="../../_images/notebooks_L4_3_animations_38_0.png" />
+</div>
+</div>
 <script type="application/vnd.jupyter.widget-state+json">
 {"state": {"462436e50e31485aacd61d187183ba91": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "63121b75a6354c5aa4c072c44c6baeb3": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasManagerModel", "state": {"_model_module_version": "^0.13", "_view_module": null, "_view_module_version": ""}}, "6a4fd0f36e314512a9e0e94183fbb7b6": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "7a1b0a9b684c4e3982a8f097d74fc119": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_63121b75a6354c5aa4c072c44c6baeb3", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 300, "layout": "IPY_MODEL_b68fac5b4d83498a8363c913007fb05b", "width": 300}}, "8971111cb49e41e1884d4efa41172ccd": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_63121b75a6354c5aa4c072c44c6baeb3", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 300, "layout": "IPY_MODEL_462436e50e31485aacd61d187183ba91", "width": 300}}, "ae61f605952a4668ad0e32cf39416a2d": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_63121b75a6354c5aa4c072c44c6baeb3", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 300, "layout": "IPY_MODEL_6a4fd0f36e314512a9e0e94183fbb7b6", "width": 300}}, "b68fac5b4d83498a8363c913007fb05b": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}}, "version_major": 2, "version_minor": 0}
 </script></section>
@@ -582,6 +649,7 @@ simulation.start()
 <li><a class="reference internal" href="#Create-a-set-of-particles">Create a set of particles</a></li>
 <li><a class="reference internal" href="#Canvas-and-drawing-function">Canvas and drawing function</a></li>
 <li><a class="reference internal" href="#Threading-for-animation">Threading for animation</a></li>
+<li><a class="reference internal" href="#Animations-with-Matplotlib">Animations with Matplotlib</a></li>
 </ul>
 </li>
 </ul>
