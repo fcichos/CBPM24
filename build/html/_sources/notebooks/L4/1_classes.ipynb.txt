@@ -131,7 +131,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 4,
    "metadata": {
     "ExecuteTime": {
      "end_time": "2018-07-03T09:32:18.621027Z",
@@ -146,7 +146,7 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "<__main__.Colloid object at 0x7f620c61ad00>\n"
+      "<__main__.Colloid object at 0x7f6b6a1fec40>\n"
      ]
     }
    ],
@@ -204,7 +204,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 8,
    "metadata": {
     "slideshow": {
      "slide_type": "subslide"
@@ -247,7 +247,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 16,
    "metadata": {
     "ExecuteTime": {
      "end_time": "2018-07-03T09:32:20.896170Z",
@@ -265,15 +265,15 @@
     "        self.R = R\n",
     "        \n",
     "    # class method    \n",
-    "    def get_size(self):\n",
-    "        return(self.R)\n",
+    "    def get_size(self,dt):\n",
+    "        return(self.R*dt)\n",
     "    \n",
     "    "
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 17,
    "metadata": {
     "ExecuteTime": {
      "end_time": "2018-07-03T09:32:21.509797Z",
@@ -291,7 +291,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 18,
    "metadata": {
     "ExecuteTime": {
      "end_time": "2018-07-03T09:32:22.038721Z",
@@ -306,12 +306,12 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "Colloid radius is 2 µm \n"
+      "Colloid radius is 0.5 µm \n"
      ]
     }
    ],
    "source": [
-    "print('Colloid radius is {} µm '.format(str(b.get_size())))"
+    "print('Colloid radius is {} µm '.format(str(p.get_size(0.1))))"
    ]
   },
   {
@@ -349,7 +349,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
+   "execution_count": 19,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
@@ -372,7 +372,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": 20,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
@@ -385,7 +385,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 10,
+   "execution_count": 24,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
@@ -431,7 +431,23 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 11,
+   "execution_count": 31,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "class Sphere:\n",
+    "\n",
+    "    \n",
+    "    # constructor of the class\n",
+    "    def __init__(self, D):\n",
+    "        self.Diameter = D \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 41,
    "metadata": {
     "slideshow": {
      "slide_type": "subslide"
@@ -455,7 +471,49 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 12,
+   "execution_count": 40,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "please provide some int\n"
+     ]
+    }
+   ],
+   "source": [
+    "p1=Colloid(3.4)\n",
+    "s1=Sphere(5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 37,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "int"
+      ]
+     },
+     "execution_count": 37,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "type(s1.Diameter)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
    "metadata": {
     "slideshow": {
      "slide_type": "subslide"
@@ -472,7 +530,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 13,
+   "execution_count": 27,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
@@ -494,7 +552,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 14,
+   "execution_count": 28,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
@@ -516,7 +574,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 15,
+   "execution_count": 29,
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
@@ -530,7 +588,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 16,
+   "execution_count": 30,
    "metadata": {},
    "outputs": [
     {

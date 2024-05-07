@@ -273,12 +273,12 @@ overlapping and then pushes them apart.</p>
 </ul>
 <p>For the moment we would like to skip these physical complications and just implement a simple version. Later in the notebook you will get a more physically correct version.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">bqplot.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1">#import bqplot.pyplot as plt</span>
 <span class="kn">from</span> <span class="nn">ipycanvas</span> <span class="kn">import</span> <span class="n">Canvas</span><span class="p">,</span> <span class="n">hold_canvas</span>
 <span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">mcolors</span>
 </pre></div>
@@ -288,7 +288,7 @@ overlapping and then pushes them apart.</p>
 <p>The main ingredient for the solver is the solve_collision. This function looks for the overlap of two particles by calculating their distance. If the distance is smaller than the sum of their radii, then a collision occurs. To correct this collision, both particles involved in the colision are pushed back by the same amount <code class="docutils literal notranslate"><span class="pre">delta*(distance_vec/dist)</span></code>. While this is only done for a pair always, it might create trouble for other pairs. Yet we ignore all that. Also note that this is not
 according to the momentum conservation, as both particle are pushed along the connecting line by the same amount.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Solver</span><span class="p">:</span>
@@ -340,7 +340,7 @@ according to the momentum conservation, as both particle are pushed along the co
 </div>
 <p>The class below is the particle class, which holds all details of the particle and updates the particles position according to acceleration and speed. It ignores, however, all the collision, which are addressed by the Solver.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Particle</span><span class="p">:</span>
@@ -349,7 +349,6 @@ according to the momentum conservation, as both particle are pushed along the co
         <span class="bp">self</span><span class="o">.</span><span class="n">last_position</span><span class="o">=</span><span class="n">p</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">acceleration</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="o">=</span><span class="n">R</span>
-        <span class="c1">#self.velocity=v</span>
 
     <span class="k">def</span> <span class="nf">set_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">position</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">=</span><span class="n">position</span>
@@ -365,10 +364,10 @@ according to the momentum conservation, as both particle are pushed along the co
 </div>
 <p>Below we just generate a list of particles that we can supply to the solver.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[97]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">Particle</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">400</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(),</span><span class="mi">400</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()]))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">Particle</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">400</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(),</span><span class="mi">400</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()]))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -376,7 +375,7 @@ according to the momentum conservation, as both particle are pushed along the co
 <h2>Initializing the simulation<a class="headerlink" href="#Initializing-the-simulation" title="Permalink to this heading">#</a></h2>
 <p>This creates a solver object and initializes a list of positions for drawing.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[98]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="n">Solver</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
@@ -393,7 +392,7 @@ according to the momentum conservation, as both particle are pushed along the co
 <h2>Function to run the simulation<a class="headerlink" href="#Function-to-run-the-simulation" title="Permalink to this heading">#</a></h2>
 <p>This holds our animation plotting with <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[99]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">runsimIPC</span><span class="p">():</span>
@@ -408,7 +407,7 @@ according to the momentum conservation, as both particle are pushed along the co
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">=</span><span class="n">Canvas</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
@@ -417,17 +416,25 @@ according to the momentum conservation, as both particle are pushed along the co
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "93b1c1ed7c8b484d81fafa0470c9df44", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "44272680bf1443de8a5803f164518832", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[101]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">runsimIPC</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -461,7 +468,7 @@ according to the momentum conservation, as both particle are pushed along the co
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Apr 30, 2024</div>
+              Last updated on May 07, 2024</div>
           </div>
           <div class="right-details">
             
