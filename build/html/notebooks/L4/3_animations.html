@@ -306,12 +306,13 @@ from ipycanvas import MultiCanvas, hold_canvas,Canvas
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span><span class="n">time</span>
 <span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+<span class="kn">import</span> <span class="nn">threading</span>
 
 <span class="kn">from</span> <span class="nn">ipycanvas</span> <span class="kn">import</span> <span class="n">MultiCanvas</span><span class="p">,</span> <span class="n">hold_canvas</span><span class="p">,</span><span class="n">Canvas</span>
 </pre></div>
@@ -516,6 +517,59 @@ simulation.start()
 <li><p><strong>Introduce a drift velocity:</strong> Particles may not only move diffusively but also with a constant drift velocity in a certain direction. We want to introduce that feature to tackle a COVID-19 spreading.</p></li>
 <li><p><strong>Introduce collisions:</strong> To study the spreading of an infection, we have to introduce collisions between particles.</p></li>
 </ol>
+<section id="Threading-and-Stopping">
+<h3>Threading and Stopping<a class="headerlink" href="#Threading-and-Stopping" title="Permalink to this heading">#</a></h3>
+<p>Threading is nice, but gets easily confusing if running a thread multiple times without closing and stopping. You will end up with many threads that rush around somewhere in memory, which is of course not nice. Here is a small code snippet, you may want to consider, when you running your tasks in threads. It helps you to end a thread properly.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">self._stop_event.set()</span></code> method is used to set the internal flag of a threading.Event object to true.</p>
+<p>In the context of the <code class="docutils literal notranslate"><span class="pre">StoppableThread</span></code> class, <code class="docutils literal notranslate"><span class="pre">self._stop_event</span></code> is a threading.Event object that is used to signal the thread to stop executing.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">self._stop_event.set()</span></code> is called, it sets the internal flag of the Event object to true. The thread checks this flag in its <code class="docutils literal notranslate"><span class="pre">run</span></code> method with <code class="docutils literal notranslate"><span class="pre">self._stop_event.is_set()</span></code>. If the flag is true, the thread stops executing.</p>
+<p>Here’s a simplified explanation of how it works:</p>
+<ol class="arabic simple">
+<li><p>Initially, the <code class="docutils literal notranslate"><span class="pre">self._stop_event</span></code> flag is false.</p></li>
+<li><p>When the <code class="docutils literal notranslate"><span class="pre">stop</span></code> method is called, it sets the <code class="docutils literal notranslate"><span class="pre">self._stop_event</span></code> flag to true using <code class="docutils literal notranslate"><span class="pre">self._stop_event.set()</span></code>.</p></li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">run</span></code> method, the thread continually checks whether <code class="docutils literal notranslate"><span class="pre">self._stop_event.is_set()</span></code> is true. If it is, the thread stops executing. If it’s not, the thread continues to execute.</p></li>
+</ol>
+<p>This is a common pattern for stopping a thread in Python because Python does not provide a built-in way to stop threads directly.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">StoppableThread</span><span class="p">(</span><span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Event</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span><span class="o">.</span><span class="n">is_set</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Doing something&quot;</span><span class="p">)</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_stop_event</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">StoppableThread</span><span class="p">()</span>
+<span class="n">t</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">t</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">t</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Doing something
+Doing something
+Doing something
+Doing something
+Doing something
+Doing something
+</pre></div></div>
+</div>
+</section>
 </section>
 <section id="Animations-with-Matplotlib">
 <h2>Animations with Matplotlib<a class="headerlink" href="#Animations-with-Matplotlib" title="Permalink to this heading">#</a></h2>
@@ -579,7 +633,15 @@ simulation.start()
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L4_3_animations_38_0.png" src="../../_images/notebooks_L4_3_animations_38_0.png" />
+<img alt="../../_images/notebooks_L4_3_animations_41_0.png" src="../../_images/notebooks_L4_3_animations_41_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
 </div>
 </div>
 <script type="application/vnd.jupyter.widget-state+json">
@@ -648,7 +710,10 @@ simulation.start()
 <li><a class="reference internal" href="#Particle-class">Particle class</a></li>
 <li><a class="reference internal" href="#Create-a-set-of-particles">Create a set of particles</a></li>
 <li><a class="reference internal" href="#Canvas-and-drawing-function">Canvas and drawing function</a></li>
-<li><a class="reference internal" href="#Threading-for-animation">Threading for animation</a></li>
+<li><a class="reference internal" href="#Threading-for-animation">Threading for animation</a><ul>
+<li><a class="reference internal" href="#Threading-and-Stopping">Threading and Stopping</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#Animations-with-Matplotlib">Animations with Matplotlib</a></li>
 </ul>
 </li>
