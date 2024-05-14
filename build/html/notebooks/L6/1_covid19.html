@@ -338,7 +338,7 @@
 </div>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
-\[\frac{dR}{dt} = \gammaI\]</div>
+\[\frac{dR}{dt} = \gamma I\]</div>
 </div>
 <p>Where: - <span class="math notranslate nohighlight">\(\beta\)</span> is the effective contact rate (average number of adequate contacts per unit time) - <span class="math notranslate nohighlight">\(\gamma\)</span> is the recovery rate (<span class="math notranslate nohighlight">\(1/\gamma\)</span> is the mean infectious period) - <span class="math notranslate nohighlight">\(N\)</span> is the total population size (N = S + I + R)</p>
 <p>The key parameter is the basic reproduction number <span class="math notranslate nohighlight">\(R0 = \beta/\gamma\)</span>, which represents the average number of secondary infections caused by a single infected individual in a fully susceptible population. If <span class="math notranslate nohighlight">\(R0 &lt; 1\)</span>, the disease will die out. If <span class="math notranslate nohighlight">\(R0 &gt; 1\)</span>, the disease can spread and cause an epidemic.</p>
@@ -347,20 +347,6 @@
 <p>The Kermack-McKendrick model (KM) was an early compartmental model. It divides the population into three groups: Susceptible (S), Infected (I) and Removed (R). These models are often referred to as <strong>SIR</strong> models. However, in the simple model below, there is no population that is removed by death or so, but we will implement the removal as well.</p>
 <p>Kermack and McKendrick developed their model to further their understanding of epidemics, where an infected individual enters a population and suddenly begins to spread the disease. They assumed that the population remains constant (apart from deaths, which are represented in the model by the term R), so that all effects of births, non-disease-related deaths and migration into or out of the target area are ignored. In addition, all individuals are equally susceptible, so there are no bonus
 points in this model for those who are healthier or have better hygiene habits. These are all limitations of the model, but they also make it an excellent starting point for epidemiological studies.</p>
-<section id="Model-Equation">
-<h3>Model Equation<a class="headerlink" href="#Model-Equation" title="Permalink to this heading">#</a></h3>
-<p>The differential equations of the model are simple rate equations for the susceptibel <span class="math notranslate nohighlight">\(x\)</span>, the infected <span class="math notranslate nohighlight">\(y\)</span> and the recovered <span class="math notranslate nohighlight">\(z\)</span> population. There are two rate constants in the model, one for getting infected <span class="math notranslate nohighlight">\(k_{I}\)</span> and one for recovering <span class="math notranslate nohighlight">\(k_{R}\)</span>. If you look at the equations below, you see that the number of people removed from the suceptible population per timestep is just the infection rate times the number of people that can be infected <span class="math notranslate nohighlight">\(x\)</span> times the
-number of people who are infected <span class="math notranslate nohighlight">\(y\)</span>. That seems to be clear as none can be infected if there none to infect and none the can infect others.</p>
-<p><span class="math">\begin{equation}
-\dot{x}=-k_{I}xy
-\end{equation}</span></p>
-<p><span class="math">\begin{equation}
-\dot{y}=k_{I}xy-k_{R}y
-\end{equation}</span></p>
-<p><span class="math">\begin{equation}
-\dot{z}=k_{R}y
-\end{equation}</span></p>
-</section>
 </section>
 <section id="Setup">
 <h2>Setup<a class="headerlink" href="#Setup" title="Permalink to this heading">#</a></h2>
@@ -452,7 +438,7 @@ number of people who are infected <span class="math notranslate nohighlight">\(y
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_1_covid19_21_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_21_0.png" style="width: 1318px; height: 1008px;" />
+<img alt="../../_images/notebooks_L6_1_covid19_18_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_18_0.png" style="width: 1318px; height: 1008px;" />
 </div>
 </div>
 </section>
@@ -496,7 +482,7 @@ is a cummulative number.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_1_covid19_27_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_27_0.png" style="width: 768px; height: 448px;" />
+<img alt="../../_images/notebooks_L6_1_covid19_24_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_24_0.png" style="width: 768px; height: 448px;" />
 </div>
 </div>
 </section>
@@ -528,7 +514,7 @@ is a cummulative number.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_1_covid19_30_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_30_0.png" style="width: 768px; height: 448px;" />
+<img alt="../../_images/notebooks_L6_1_covid19_27_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_27_0.png" style="width: 768px; height: 448px;" />
 </div>
 </div>
 </section>
@@ -562,7 +548,7 @@ is a cummulative number.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_1_covid19_33_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_33_0.png" style="width: 771px; height: 448px;" />
+<img alt="../../_images/notebooks_L6_1_covid19_30_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_30_0.png" style="width: 771px; height: 448px;" />
 </div>
 </div>
 </section>
@@ -594,7 +580,7 @@ is a cummulative number.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_1_covid19_36_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_36_0.png" style="width: 783px; height: 448px;" />
+<img alt="../../_images/notebooks_L6_1_covid19_33_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_33_0.png" style="width: 783px; height: 448px;" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -668,10 +654,7 @@ is a cummulative number.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">COVID19</a><ul>
-<li><a class="reference internal" href="#The-Kermack-McKendrick-Model">The Kermack-McKendrick Model</a><ul>
-<li><a class="reference internal" href="#Model-Equation">Model Equation</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#The-Kermack-McKendrick-Model">The Kermack-McKendrick Model</a></li>
 <li><a class="reference internal" href="#Setup">Setup</a></li>
 <li><a class="reference internal" href="#Definition">Definition</a></li>
 <li><a class="reference internal" href="#Solution">Solution</a></li>
