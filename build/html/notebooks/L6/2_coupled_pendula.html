@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Fourier Analysis" href="3_fourier_analysis.html" /><link rel="prev" title="COVID19" href="1_covid19.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
         <title>Coupled Pendula - Introduction to Computer-based Physical Modeling 24 documentation</title>
@@ -228,6 +228,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../L5/3_solving_ODEs.html">Solving ODEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/L5/assignment_5.html">Exercise 5</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 7:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_covid19.html">COVID19</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Coupled Pendula</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_fourier_analysis.html">Fourier Analysis</a></li>
+</ul>
 
 </div>
 </div>
@@ -268,8 +274,9 @@
 </div>
 <section id="Coupled-Pendula">
 <h1>Coupled Pendula<a class="headerlink" href="#Coupled-Pendula" title="Permalink to this heading">#</a></h1>
-<p>We will continue our course with some physical problems, we are going to tackle. One of the more extensive solutions will consider two coupled pendula. This belongs to the class of coupled oscillators, which are extremely important. They will later yield propagating waves. They are important for phonons, i.e. coupled vibration of atoms in solids, but there are also many other axamples. One can realize the coupled oscillation on different ways. He we will do that not with spring oscillators, by
-with pendula.</p>
+<p><a href="#id1"><span class="problematic" id="id2">`File as PDF &lt;&gt;`__</span></a></p>
+<p>We will continue our course with some physics problems that we will tackle. One of the more comprehensive solutions will look at two coupled pendulums. This belongs to the class of coupled oscillators, which are extremely important. They will later lead to propagating waves. They are important for phonons, i.e. coupled oscillations of atoms in solids, but there are also many other axamples. The coupled oscillation can be realised in different ways. We will not do this with spring oscillators,
+but with pendulums.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
 </pre></div>
@@ -344,8 +351,8 @@ with pendula.</p>
 <h2>Description of the problem<a class="headerlink" href="#Description-of-the-problem" title="Permalink to this heading">#</a></h2>
 <section id="Sketch">
 <h3>Sketch<a class="headerlink" href="#Sketch" title="Permalink to this heading">#</a></h3>
-<p>The image below depicts the sitution we would like to cover in our first project. These are two pendula, which have the length <span class="math notranslate nohighlight">\(L_{1}\)</span> and <span class="math notranslate nohighlight">\(L_{2}\)</span>. Both are coupled with a spring of spring constant <span class="math notranslate nohighlight">\(k\)</span>, which is relaxed, when both pendula are at rest. You may want to include a generalized version where the spring is mounted at a distance <span class="math notranslate nohighlight">\(c\)</span> from the turning points of the pendula.</p>
-<p>If you develop the equation of motion, write down as a sum of torques. Use one equation of motion for each pendulum. The result will be two coupled differential equations for the angular coordinates. They are solved by the scipy odeint function without any friction.</p>
+<p>The picture below shows the situation that we want to deal with in our first project. There are two pendulums with lengths <span class="math notranslate nohighlight">\(L_{1}\)</span> and <span class="math notranslate nohighlight">\(L_{2}\)</span>. Both are coupled with a spring of spring constant <span class="math notranslate nohighlight">\(k\)</span>, which is relaxed when both pendulums are at rest. You can include a generalised version where the spring is placed at a distance <span class="math notranslate nohighlight">\(c\)</span> from the pendulums’ pivots.</p>
+<p>When developing the equation of motion, write it as a sum of torques. Use one equation of motion for each pendulum. The result is two coupled differential equations for the angular coordinates. They are solved with the function <code class="docutils literal notranslate"><span class="pre">scipy</span> <span class="pre">odeint</span></code> without friction.</p>
 <img alt="Figure 1" src="../../_images/Pendulum.png" />
 </section>
 <section id="Equations-of-motion">
@@ -507,7 +514,7 @@ state[1] -&gt; velocity
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_2_coupled_pendula_26_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_26_0.png" style="width: 999px; height: 482px;" />
+<img alt="../../_images/notebooks_L6_2_coupled_pendula_27_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_27_0.png" style="width: 999px; height: 482px;" />
 </div>
 </div>
 </section>
@@ -657,7 +664,7 @@ state[1] -&gt; velocity
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_2_coupled_pendula_43_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_43_0.png" style="width: 993px; height: 482px;" />
+<img alt="../../_images/notebooks_L6_2_coupled_pendula_44_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_44_0.png" style="width: 993px; height: 482px;" />
 </div>
 </div>
 </section>
@@ -725,7 +732,7 @@ state[1] -&gt; velocity
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_2_coupled_pendula_48_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_48_0.png" style="width: 993px; height: 482px;" />
+<img alt="../../_images/notebooks_L6_2_coupled_pendula_49_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_49_0.png" style="width: 993px; height: 482px;" />
 </div>
 </div>
 </section>
@@ -794,7 +801,7 @@ point it’s easily to recognize how the wife is generated. In a set of many cou
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_2_coupled_pendula_53_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_53_0.png" style="width: 993px; height: 482px;" />
+<img alt="../../_images/notebooks_L6_2_coupled_pendula_54_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_54_0.png" style="width: 993px; height: 482px;" />
 </div>
 </div>
 </section>
@@ -827,7 +834,7 @@ point it’s easily to recognize how the wife is generated. In a set of many cou
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_2_coupled_pendula_58_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_58_0.png" style="width: 1043px; height: 469px;" />
+<img alt="../../_images/notebooks_L6_2_coupled_pendula_59_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_59_0.png" style="width: 1043px; height: 469px;" />
 </div>
 </div>
 </section>
@@ -855,7 +862,7 @@ point it’s easily to recognize how the wife is generated. In a set of many cou
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_2_coupled_pendula_60_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_60_0.png" style="width: 1055px; height: 469px;" />
+<img alt="../../_images/notebooks_L6_2_coupled_pendula_61_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_61_0.png" style="width: 1055px; height: 469px;" />
 </div>
 </div>
 </section>
@@ -884,7 +891,7 @@ point it’s easily to recognize how the wife is generated. In a set of many cou
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_2_coupled_pendula_62_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_62_0.png" style="width: 1041px; height: 469px;" />
+<img alt="../../_images/notebooks_L6_2_coupled_pendula_63_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_63_0.png" style="width: 1041px; height: 469px;" />
 </div>
 </div>
 </section>
@@ -914,7 +921,7 @@ point it’s easily to recognize how the wife is generated. In a set of many cou
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_2_coupled_pendula_65_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_65_0.png" style="width: 1051px; height: 477px;" />
+<img alt="../../_images/notebooks_L6_2_coupled_pendula_66_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_66_0.png" style="width: 1051px; height: 477px;" />
 </div>
 </div>
 </section>
@@ -944,7 +951,7 @@ point it’s easily to recognize how the wife is generated. In a set of many cou
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_2_coupled_pendula_68_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_68_0.png" style="width: 1039px; height: 469px;" />
+<img alt="../../_images/notebooks_L6_2_coupled_pendula_69_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_69_0.png" style="width: 1039px; height: 469px;" />
 </div>
 </div>
 <script type="application/vnd.jupyter.widget-state+json">
@@ -959,8 +966,26 @@ point it’s easily to recognize how the wife is generated. In a set of many cou
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="3_fourier_analysis.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Fourier Analysis</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="1_covid19.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">COVID19</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -971,7 +996,7 @@ point it’s easily to recognize how the wife is generated. In a set of many cou
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on May 07, 2024</div>
+              Last updated on May 13, 2024</div>
           </div>
           <div class="right-details">
             

@@ -123,6 +123,16 @@ We will not present a comprehensive list of numerical simulation schemes, but us
    notebooks/L5/3_solving_ODEs.ipynb 
    lectures/L5/assignment_5.rst
 
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 7:
+
+   notebooks/L6/1_covid19.ipynb
+   notebooks/L6/2_coupled_pendula.ipynb   
+   notebooks/L6/3_fourier_analysis.ipynb  
+   
+   
 Indices and tables
 ==================
 

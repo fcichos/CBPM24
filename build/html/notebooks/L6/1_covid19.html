@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Coupled Pendula" href="2_coupled_pendula.html" /><link rel="prev" title="Exercise 5" href="../../lectures/L5/assignment_5.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
         <title>COVID19 - Introduction to Computer-based Physical Modeling 24 documentation</title>
@@ -228,6 +228,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../L5/3_solving_ODEs.html">Solving ODEs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lectures/L5/assignment_5.html">Exercise 5</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 7:</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">COVID19</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_coupled_pendula.html">Coupled Pendula</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_fourier_analysis.html">Fourier Analysis</a></li>
+</ul>
 
 </div>
 </div>
@@ -268,7 +274,8 @@
 </div>
 <section id="COVID19">
 <h1>COVID19<a class="headerlink" href="#COVID19" title="Permalink to this heading">#</a></h1>
-<p>In the previous assignment you have developed a particle based simulation of disease spreading. One infected individual was infecting other individuals when meeting them. The individuals were then recovering after a certain time of being infected and becoming immune to further infections. We now have a look at a model of disease spreading, which describes the same problem in terms of three coupled differential equations. This is the Kermack-McKendrick Model.</p>
+<p><a href="#id1"><span class="problematic" id="id2">`File as PDF &lt;&gt;`__</span></a></p>
+<p>In the previous assignment, you developed a particle-based simulation of disease spread. An infected individual infected other individuals when it encountered them. The individuals then recovered from the infection after a certain time and became immune to further infections. We now take a look at a model of disease spread that describes the same problem in terms of three coupled differential equations. This is the Kermack-McKendrick or SIR (Susceptible-Infected-Removed) model.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
@@ -301,9 +308,9 @@
 </div>
 <section id="The-Kermack-McKendrick-Model">
 <h2>The Kermack-McKendrick Model<a class="headerlink" href="#The-Kermack-McKendrick-Model" title="Permalink to this heading">#</a></h2>
-<p>The Kermack-McKendrick model (KM) was an early compartmental model. It divides the population into three groups: Susceptible (S), Infected (I), and Removed (R). These are often referred to as <strong>SIR</strong> models. In the simple model below, there is, however, no population removed by death or so, but we will implement the removal as well.</p>
-<p>Kermack and McKendrick built their model to deepen their understanding of epidemics where an infected individual enters into a population and suddenly begins spreading the disease. They assumed that the population remains constant (apart from deaths which are represented by the R term in the model), so ignore any effects from birth, non-disease related death, migration in or out of the target area. Moreover, all of the individuals are equally susceptible, so no bonus points for those who are
-healthier or have better hygiene habits in this model. All of these are limitations of the model, but also make it a great starting point for epidemiology studies.</p>
+<p>The Kermack-McKendrick model (KM) was an early compartmental model. It divides the population into three groups: Susceptible (S), Infected (I) and Removed (R). These models are often referred to as <strong>SIR</strong> models. However, in the simple model below, there is no population that is removed by death or so, but we will implement the removal as well.</p>
+<p>Kermack and McKendrick developed their model to further their understanding of epidemics, where an infected individual enters a population and suddenly begins to spread the disease. They assumed that the population remains constant (apart from deaths, which are represented in the model by the term R), so that all effects of births, non-disease-related deaths and migration into or out of the target area are ignored. In addition, all individuals are equally susceptible, so there are no bonus
+points in this model for those who are healthier or have better hygiene habits. These are all limitations of the model, but they also make it an excellent starting point for epidemiological studies.</p>
 <section id="Model-Equation">
 <h3>Model Equation<a class="headerlink" href="#Model-Equation" title="Permalink to this heading">#</a></h3>
 <p>The differential equations of the model are simple rate equations for the susceptibel <span class="math notranslate nohighlight">\(x\)</span>, the infected <span class="math notranslate nohighlight">\(y\)</span> and the recovered <span class="math notranslate nohighlight">\(z\)</span> population. There are two rate constants in the model, one for getting infected <span class="math notranslate nohighlight">\(k_{I}\)</span> and one for recovering <span class="math notranslate nohighlight">\(k_{R}\)</span>. If you look at the equations below, you see that the number of people removed from the suceptible population per timestep is just the infection rate times the number of people that can be infected <span class="math notranslate nohighlight">\(x\)</span> times the
@@ -409,7 +416,7 @@ number of people who are infected <span class="math notranslate nohighlight">\(y
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_1_covid19_19_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_19_0.png" style="width: 904px; height: 703px;" />
+<img alt="../../_images/notebooks_L6_1_covid19_20_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_20_0.png" style="width: 904px; height: 703px;" />
 </div>
 </div>
 </section>
@@ -453,7 +460,7 @@ is a cummulative number.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_1_covid19_25_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_25_0.png" style="width: 879px; height: 703px;" />
+<img alt="../../_images/notebooks_L6_1_covid19_26_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_26_0.png" style="width: 879px; height: 703px;" />
 </div>
 </div>
 </section>
@@ -485,7 +492,7 @@ is a cummulative number.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_1_covid19_28_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_28_0.png" style="width: 879px; height: 703px;" />
+<img alt="../../_images/notebooks_L6_1_covid19_29_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_29_0.png" style="width: 879px; height: 703px;" />
 </div>
 </div>
 </section>
@@ -519,7 +526,7 @@ is a cummulative number.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_1_covid19_31_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_31_0.png" style="width: 883px; height: 703px;" />
+<img alt="../../_images/notebooks_L6_1_covid19_32_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_32_0.png" style="width: 883px; height: 703px;" />
 </div>
 </div>
 </section>
@@ -551,7 +558,7 @@ is a cummulative number.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L6_1_covid19_34_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_34_0.png" style="width: 646px; height: 497px;" />
+<img alt="../../_images/notebooks_L6_1_covid19_35_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_1_covid19_35_0.png" style="width: 646px; height: 497px;" />
 </div>
 </div>
 <script type="application/vnd.jupyter.widget-state+json">
@@ -565,8 +572,26 @@ is a cummulative number.</p>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="2_coupled_pendula.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Coupled Pendula</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../../lectures/L5/assignment_5.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Exercise 5</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -577,7 +602,7 @@ is a cummulative number.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on May 07, 2024</div>
+              Last updated on May 13, 2024</div>
           </div>
           <div class="right-details">
             

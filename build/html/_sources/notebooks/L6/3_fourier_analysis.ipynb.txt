@@ -11,13 +11,13 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "Fourier analysis or the description of functions as s sereies of sine and cosine function could be a very useful tool in the numerical analysis of data as well as in the numerical solution of differential equations. If you look through experiments, fourier transforms are frequently employed. \n",
+    "Fourier analysis, or the approximation of functions as series of sine and cosine functions, can be a very useful tool in the numerical analysis of data as well as in the numerical solution of differential equations. When analyzing experiments, Fourier transforms are frequently used. \n",
     "\n",
-    "* optical tweezers are often characterized by the frequency spectrum of positional fluctuations\n",
-    "* Lock-In detection works by doing a Fourier analysis for a very special frequency of signals\n",
-    "* Optics can be understood in terms of Fourier transforms\n",
+    "* Optical tweezers are often characterised by the frequency spectrum of position fluctuations.\n",
+    "* Lock-in detection works by Fourier analysis for a very specific frequency of signals.\n",
+    "* Optics can be understood with the help of Fourier transforms.\n",
     "\n",
-    "There is a whole bunch of additional fields where the Fourier transform and analysis is important. We are going to have a quick look at Fourier Series and Fourier transforms from a mathematical point of view. We will apply that to analyze the frequency spectrum of the oscillations of our coupled pendula. Later, we will come back to that when we simulate the motion of a Gaussian wavepacket for quantum mechanics."
+    "There are a number of other areas where Fourier transforms and analysis are important. We will take a brief look at Fourier series and Fourier transforms from a mathematical point of view. We will apply them to analyse the frequency spectrum of the oscillations of our coupled pendulum. We will come back to this later when we simulate the motion of a Gaussian wave packet for quantum mechanics."
    ]
   },
   {
