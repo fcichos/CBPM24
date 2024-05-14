@@ -1,0 +1,152 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "f4c8352e-30b1-4cfb-88ab-b532b6d675a6",
+   "metadata": {},
+   "source": [
+    "\n",
+    "## Overview of the Fast Fourier Transform\n",
+    "\n",
+    "The Fast Fourier Transform (FFT) is an efficient algorithm for computing the Discrete Fourier Transform (DFT) of a sequence. The DFT is a mathematical operation that transforms a sequence of complex numbers from the time or spatial domain into the frequency domain. It is widely used in various fields, including signal processing, image processing, and data analysis.\n",
+    "\n",
+    "The DFT is defined as:\n",
+    "\n",
+    "$$\n",
+    "X[k] = \\sum_{n=0}^{N-1} x[n] \\cdot e^{-i 2\\pi kn/N}\n",
+    "$$\n",
+    "\n",
+    "where `x[n]` is the input sequence of length `N`, and `X[k]` is the corresponding frequency-domain representation.\n",
+    "\n",
+    "The direct computation of the DFT has a time complexity of O(N^2), which becomes computationally expensive for large values of N. The FFT algorithm, introduced by Cooley and Tukey in 1965, reduces the time complexity to O(N log N), making it much more efficient for large sequences.\n",
+    "\n",
+    "The key idea behind the FFT algorithm is to exploit the periodicity and symmetry properties of the complex exponentials used in the DFT. It recursively breaks down the DFT of a composite size N into smaller DFTs of sizes N/2, N/4, and so on, until the base cases of size 2 or 1 are reached. These smaller DFTs are then combined to obtain the final result.\n",
+    "\n",
+    "## Python Code Example\n",
+    "\n",
+    "Here's a Python code example that demonstrates the FFT algorithm using the NumPy library:\n",
+    "\n",
+    "```python\n",
+    "import numpy as np\n",
+    "\n",
+    "def fft(x):\n",
+    "    N = len(x)\n",
+    "    if N <= 1:\n",
+    "        return x\n",
+    "    else:\n",
+    "        # Divide the input sequence into even and odd parts\n",
+    "        even = fft(x[::2])\n",
+    "        odd = fft(x[1::2])\n",
+    "        \n",
+    "        # Combine the even and odd parts using the twiddle factors\n",
+    "        factor = np.exp(-2j * np.pi * np.arange(N) / N)\n",
+    "        X = np.concatenate([even + factor[:N//2] * odd,\n",
+    "                             even + factor[N//2:] * odd])\n",
+    "        return X\n",
+    "\n",
+    "# Example usage\n",
+    "x = np.array([1, 1, 1, 1, 0, 0, 0, 0])\n",
+    "X = fft(x)\n",
+    "print(X)\n",
+    "```\n",
+    "\n",
+    "In this example, we define a recursive function `fft` that implements the FFT algorithm. Here's how it works:\n",
+    "\n",
+    "1. The base case is when the input sequence `x` has a length of 0 or 1, in which case we simply return `x`.\n",
+    "2. For longer sequences, we divide `x` into two parts: even-indexed elements (`x[::2]`) and odd-indexed elements (`x[1::2]`).\n",
+    "3. We recursively compute the FFT of the even and odd parts using the `fft` function.\n",
+    "4. We combine the even and odd parts using the twiddle factors (`np.exp(-2j * np.pi * np.arange(N) / N)`), which are the complex exponentials used in the DFT.\n",
+    "5. The final result `X` is obtained by concatenating the combined even and odd parts.\n",
+    "\n",
+    "In the example usage, we create a simple input sequence `x` and compute its FFT using the `fft` function. The output `X` is the frequency-domain representation of `x`.\n",
+    "\n",
+    "Note that this is a simplified implementation for educational purposes. In practice, you would typically use the highly optimized FFT implementations provided by libraries like NumPy (`np.fft.fft`) or SciPy (`scipy.fft.fft`), which are much faster and more efficient.\n",
+    "\n",
+    "The FFT algorithm is a powerful tool for various applications, including signal processing, image processing, and data analysis. By exploiting the symmetries and periodicity of the DFT, it significantly reduces the computational complexity, making it feasible to work with large datasets.\n",
+    "\n",
+    "Citations:\n",
+    "[1] https://math.uchicago.edu/~may/REU2019/REUPapers/Bounchaleun.pdf\n",
+    "[2] https://www.tamps.cinvestav.mx/~wgomez/material/AID/fft_algorithms.pdf\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "2bd488e9-0a49-4c35-a536-2c2d34ba849f",
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[ 4.0000000e+00+0.00000000e+00j  1.0000000e+00-2.41421356e+00j\n",
+      " -1.2246468e-16-1.22464680e-16j  1.0000000e+00-4.14213562e-01j\n",
+      "  0.0000000e+00-2.44929360e-16j  1.0000000e+00+4.14213562e-01j\n",
+      "  1.2246468e-16-1.22464680e-16j  1.0000000e+00+2.41421356e+00j]\n"
+     ]
+    }
+   ],
+   "source": [
+    "import numpy as np\n",
+    "\n",
+    "def fft(x):\n",
+    "    N = len(x)\n",
+    "    if N <= 1:\n",
+    "        return x\n",
+    "    else:\n",
+    "        # Divide the input sequence into even and odd parts\n",
+    "        even = fft(x[::2])\n",
+    "        odd = fft(x[1::2])\n",
+    "        \n",
+    "        # Combine the even and odd parts using the twiddle factors\n",
+    "        factor = np.exp(-2j * np.pi * np.arange(N) / N)\n",
+    "        X = np.concatenate([even + factor[:N//2] * odd,\n",
+    "                             even + factor[N//2:] * odd])\n",
+    "        return X\n",
+    "\n",
+    "# Example usage\n",
+    "x = np.array([1, 1, 1, 1, 0, 0, 0, 0])\n",
+    "X = fft(x)\n",
+    "print(X)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "ff948522-fbde-4dc8-b049-948b8192a1e8",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.16"
+  },
+  "widgets": {
+   "application/vnd.jupyter.widget-state+json": {
+    "state": {},
+    "version_major": 2,
+    "version_minor": 0
+   }
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
