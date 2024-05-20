@@ -234,6 +234,12 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Coupled Pendula</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3_fourier_analysis.html">Fourier Analysis</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../L7/1_spring_pendulum.html">Spring Pendulum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L7/2_planetary_motion.html">Planetary Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L7/3_diffusion_equation.html">Diffusion equation</a></li>
+</ul>
 
 </div>
 </div>
@@ -363,10 +369,10 @@ but with pendulums.</p>
 <h3>Equations of motion<a class="headerlink" href="#Equations-of-motion" title="Permalink to this heading">#</a></h3>
 <p>The equations of motion of the two coupled pendula have the following form:</p>
 <p><span class="math">\begin{eqnarray}
-I_{1}\ddot{\theta_{1}}&=&-m_{1}gL_{1}\sin(\theta_{1})-kc^2[\sin(\theta_{1})-\sin(\theta_{2})]\\
-I_{2}\ddot{\theta_{2}}&=&-m_{2}gL_{2}\sin(\theta_{2})+kc^2[\sin(\theta_{1})-\sin(\theta_{2})]
+I_{1}\ddot{\theta_{1}}&=&-m_{1}gL_{1}\sin(\theta_{1})-kl^2[\sin(\theta_{1})-\sin(\theta_{2})]\\
+I_{2}\ddot{\theta_{2}}&=&-m_{2}gL_{2}\sin(\theta_{2})+kl^2[\sin(\theta_{1})-\sin(\theta_{2})]
 \end{eqnarray}</span></p>
-<p>Here, <span class="math notranslate nohighlight">\(\theta_{1}, \theta_{2}\)</span> measure the angle of the two pendula with the length <span class="math notranslate nohighlight">\(L_{1},L_{2}\)</span>. <span class="math notranslate nohighlight">\(k\)</span> is the spring constant of the spring coupling both pendula. If you use a variable coupling position of the spring name the length of the coupling from the turning point <span class="math notranslate nohighlight">\(c\)</span>.</p>
+<p>Here, <span class="math notranslate nohighlight">\(\theta_{1}, \theta_{2}\)</span> measure the angle of the two pendula with the length <span class="math notranslate nohighlight">\(L_{1},L_{2}\)</span>. <span class="math notranslate nohighlight">\(k\)</span> is the spring constant of the spring coupling both pendula. If you use a variable coupling position of the spring name the length of the coupling from the turning point <span class="math notranslate nohighlight">\(l\)</span>.</p>
 </section>
 </section>
 <section id="Solving-the-problem">
@@ -386,24 +392,24 @@ state[1] -&gt; velocity
 </pre></div>
 </div>
 <p>for a coupled system of different equations, we can now extend the <em>state</em> array. In the case of the coupled system of equations it has the following structure</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def SHO(state, time):
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def CHO(state, time):
     g0 = how the velocity of object 1 depends on the velocities of all objects
     g1 = how the acceleration of object 1 depends on the acceleration of all objects
     g2 = how the velocity of object 2 depends on the velocities of all objects
     g3 = how the acceleration of object 2 depends on the acceleration of all objects
-    return np.array([g0, g1])
+    return np.array([g0, g1, g2, g3])
 </pre></div>
 </div>
 <p>So the state vector just gets longer and the coupling is in the definition of the velocities and accelerations. The results are then the positions and velocities of the objects. Use this type of scheme to define the problem and write a function, which returns the state of the objects as before.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">coupled_pendula</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">CHO</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
     <span class="n">g0</span><span class="o">=</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">g1</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">m</span><span class="o">/</span><span class="n">L1</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">g</span><span class="o">/</span><span class="n">L1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="n">k</span><span class="o">*</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="n">m</span><span class="o">/</span><span class="n">L1</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">g1</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">l</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">m</span><span class="o">/</span><span class="n">L1</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">g</span><span class="o">/</span><span class="n">L1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="n">k</span><span class="o">*</span><span class="n">l</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="n">m</span><span class="o">/</span><span class="n">L1</span><span class="o">**</span><span class="mi">2</span>
     <span class="n">g2</span><span class="o">=</span><span class="n">state</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-    <span class="n">g3</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">m</span><span class="o">/</span><span class="n">L2</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">g</span><span class="o">/</span><span class="n">L2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">+</span><span class="n">k</span><span class="o">*</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">m</span><span class="o">/</span><span class="n">L2</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">g3</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">l</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">m</span><span class="o">/</span><span class="n">L2</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">g</span><span class="o">/</span><span class="n">L2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">+</span><span class="n">k</span><span class="o">*</span><span class="n">l</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">m</span><span class="o">/</span><span class="n">L2</span><span class="o">**</span><span class="mi">2</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">g0</span><span class="p">,</span><span class="n">g1</span><span class="p">,</span><span class="n">g2</span><span class="p">,</span><span class="n">g3</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -413,15 +419,15 @@ state[1] -&gt; velocity
 <h3>Define initial parameters<a class="headerlink" href="#Define-initial-parameters" title="Permalink to this heading">#</a></h3>
 <p>We want to define some parameters of the pendula</p>
 <ul class="simple">
-<li><p>length of the pendulum 1, <span class="math notranslate nohighlight">\(L_1\)</span>=3</p></li>
-<li><p>length of the pendulum 2, <span class="math notranslate nohighlight">\(L_2\)</span>=3</p></li>
-<li><p>gravitational acceleration, <span class="math notranslate nohighlight">\(g=9.81\)</span></p></li>
-<li><p>mass at the end of the pendula, <span class="math notranslate nohighlight">\(m=1\)</span></p></li>
-<li><p>distance where the coupling spring is mounted, <span class="math notranslate nohighlight">\(c=2\)</span></p></li>
-<li><p>spring constant of the coupling spring, <span class="math notranslate nohighlight">\(k=5\)</span></p></li>
+<li><p>length of the pendulum 1, <span class="math notranslate nohighlight">\(L_1\)</span>=3 m</p></li>
+<li><p>length of the pendulum 2, <span class="math notranslate nohighlight">\(L_2\)</span>=3 m</p></li>
+<li><p>gravitational acceleration, <span class="math notranslate nohighlight">\(g=9.81\)</span> m/s<span class="math notranslate nohighlight">\(^2\)</span></p></li>
+<li><p>mass at the end of the pendula, <span class="math notranslate nohighlight">\(m=1\)</span> kg</p></li>
+<li><p>distance where the coupling spring is mounted, <span class="math notranslate nohighlight">\(l=2\)</span> m</p></li>
+<li><p>spring constant of the coupling spring, <span class="math notranslate nohighlight">\(k=5\)</span> N/m</p></li>
 </ul>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initial parameters</span>
@@ -430,14 +436,14 @@ state[1] -&gt; velocity
 <span class="n">L2</span><span class="o">=</span><span class="mi">3</span> <span class="c1"># length of pendulum 2</span>
 <span class="n">g</span><span class="o">=</span><span class="mf">9.81</span> <span class="c1"># gravitational acceleration</span>
 <span class="n">m</span><span class="o">=</span><span class="mi">1</span>    <span class="c1"># mass of at each of the pendula</span>
-<span class="n">c</span><span class="o">=</span><span class="mi">2</span>  <span class="c1"># coupling distance from the mount</span>
+<span class="n">l</span><span class="o">=</span><span class="mi">2</span>  <span class="c1"># coupling distance from the mount</span>
 <span class="n">k</span><span class="o">=</span><span class="mf">0.7</span>    <span class="c1"># coupling spring constant</span>
 </pre></div>
 </div>
 </div>
 <p>As compared to our previous problem of a damped driven pendulum, where we had two initial conditions for the second order differential equation, we have now two second order differential equation. We therefore need 4 initial parameters, which are the initial elongations of both pendula and their corresponding initial angular velocities We will notice, that the solution,i.e. the motion of the pendula, will strongly depend on the initial conditions.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inital angles, initial angular velocities</span>
@@ -458,7 +464,7 @@ state[1] -&gt; velocity
 <h3>Solve the equation of motion<a class="headerlink" href="#Solve-the-equation-of-motion" title="Permalink to this heading">#</a></h3>
 <p>We have to define a timeperiod over which we would like to obtain the solution. We use here a period of 400s where we calculate the solution at 10000 points along the 400s.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution</span>
@@ -470,11 +476,11 @@ state[1] -&gt; velocity
 </div>
 <p>We are now ready to calculate the solution. Finally, we extract also the angles of the individual pendula, their angular velocities and the position of the point masses at the end of the pendulum. This can be then readily used to create some animation.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#solve the differential equations</span>
-<span class="n">answer</span><span class="o">=</span><span class="n">odeint</span><span class="p">(</span><span class="n">coupled_pendula</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+<span class="n">answer</span><span class="o">=</span><span class="n">odeint</span><span class="p">(</span><span class="n">CHO</span><span class="p">,</span><span class="n">state</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
 
 <span class="c1"># angles</span>
 <span class="n">theta1</span><span class="o">=</span><span class="n">answer</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
@@ -497,7 +503,7 @@ state[1] -&gt; velocity
 <h3>Plotting<a class="headerlink" href="#Plotting" title="Permalink to this heading">#</a></h3>
 <p>First, get some impression of how the angles change over time.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting angles over time</span>
@@ -525,7 +531,7 @@ state[1] -&gt; velocity
 <h3>Animation<a class="headerlink" href="#Animation" title="Permalink to this heading">#</a></h3>
 <p>The plot of the angles over time is not always giving a good insight. With our knowledge about animations, we may easily animate the motion of the two pendula as well.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## create our canvas</span>
@@ -535,7 +541,7 @@ state[1] -&gt; velocity
 </div>
 <p>For the physics, it has neven been interesting to define at which distance the pendula are mounted at a ceiling for example. For drawing them we have to do that together with some additional parameters, which define for example the position of where to draw in the canvas and the conversion of <em>meters</em> to <em>pixels</em>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distance</span><span class="o">=</span><span class="mi">2</span> <span class="c1"># distance of the pendula in m</span>
@@ -547,7 +553,7 @@ state[1] -&gt; velocity
 </div>
 <p>The function below will do the drawing for us. We define a function such that we can create a background animation with a <code class="docutils literal notranslate"><span class="pre">thread</span></code>. Note that we have inserted <code class="docutils literal notranslate"><span class="pre">sleep(t[1]-t[0])</span></code> at the end. The drawing of the 4 objects will be pretty fast so that we can wait a certain amount of time until we display the next frame. That means at the end, that our simulation will run in real time.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw</span><span class="p">():</span>
@@ -575,7 +581,7 @@ state[1] -&gt; velocity
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulation</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">draw</span><span class="p">)</span>
@@ -584,7 +590,7 @@ state[1] -&gt; velocity
 </div>
 <p>Looks pretty slow, but remember the pendula are 3 meters long.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
@@ -596,7 +602,7 @@ state[1] -&gt; velocity
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "da820536b6134e7bab018a3d86c09078", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6b03d381e2e348f2854e97c0c64cbbd8", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 </section>
@@ -613,7 +619,7 @@ freedom in total. Each normal mode corresponds to a distinct collective motion p
 <h3>Symmetric Normal Mode<a class="headerlink" href="#Symmetric-Normal-Mode" title="Permalink to this heading">#</a></h3>
 <p>The first one, will create an in-phase motion of the two pendula by setting their initial elongation equal, i.e. <span class="math notranslate nohighlight">\(\theta_{1}(t=0)=\theta_{2}(t=0)\)</span>. Both pendula then oscillate with their natural frequency and the coupling spring is never elongated.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inital angles, initial angular velocities</span>
@@ -630,7 +636,7 @@ freedom in total. Each normal mode corresponds to a distinct collective motion p
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#solve the differential equations</span>
@@ -653,7 +659,7 @@ freedom in total. Each normal mode corresponds to a distinct collective motion p
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting angles over time</span>
@@ -681,7 +687,7 @@ freedom in total. Each normal mode corresponds to a distinct collective motion p
 <h3>Antisymmetric Normal Mode<a class="headerlink" href="#Antisymmetric-Normal-Mode" title="Permalink to this heading">#</a></h3>
 <p>The second normal mode is a motion in which the two pendula are out-of-phase by a phase angle of <span class="math notranslate nohighlight">\(\pi\)</span> , i.e. <span class="math notranslate nohighlight">\(\theta_{1}(t=0)=-\theta_{2}(t=0)\)</span>. Both pendula then oscillate with a frequency higher than their natural frequency. This is due to the fact that there is a higher restoring force due to the action of the spring.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inital angles, initial angular velocities</span>
@@ -698,7 +704,7 @@ freedom in total. Each normal mode corresponds to a distinct collective motion p
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#solve the differential equations</span>
@@ -721,7 +727,7 @@ freedom in total. Each normal mode corresponds to a distinct collective motion p
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting angles over time</span>
@@ -750,7 +756,7 @@ freedom in total. Each normal mode corresponds to a distinct collective motion p
 <p>The last case is not a normal mode, but represents a more general case. We start with two different initial angles, i.e. <span class="math notranslate nohighlight">\(\theta_{1}(t=0)=\pi/12\)</span> and <span class="math notranslate nohighlight">\(\theta_{2}(t=0)=0\)</span>. This is the so-called <em>beat</em> case, in which the pendulums exchange energy. The oscillation, which is initially only in the first pendulum, is then transferred to the second. This energy transfer takes place continuously from one pendulum to the other, as the energy has nowhere to go. From this point it is easy to
 see how a wave is created. In a set of many coupled pendulums, one pendulum starts swinging and transfers its energy to the next and then to the next and then to the next and in this way the energy propagates along all the oscillators.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inital angles, initial angular velocities</span>
@@ -767,7 +773,7 @@ see how a wave is created. In a set of many coupled pendulums, one pendulum star
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#solve the differential equations</span>
@@ -790,7 +796,7 @@ see how a wave is created. In a set of many coupled pendulums, one pendulum star
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting angles over time</span>
@@ -821,7 +827,7 @@ see how a wave is created. In a set of many coupled pendulums, one pendulum star
 <h4>Potential energy of the pendula<a class="headerlink" href="#Potential-energy-of-the-pendula" title="Permalink to this heading">#</a></h4>
 <p>The potential energy plot below nicely shows the exchange of energy between the two pendula in the beat case.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate and plot the potential energies of each pendulum and plot dem independently</span>
@@ -850,11 +856,11 @@ see how a wave is created. In a set of many coupled pendulums, one pendulum star
 <section id="Potential-energy-of-the-spring">
 <h4>Potential energy of the spring<a class="headerlink" href="#Potential-energy-of-the-spring" title="Permalink to this heading">#</a></h4>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[72]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate and plot the potential energy stored in the spring</span>
-<span class="n">d</span><span class="o">=</span><span class="n">c</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta1</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta2</span><span class="p">))</span>
+<span class="n">d</span><span class="o">=</span><span class="n">l</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta1</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta2</span><span class="p">))</span>
 <span class="n">E_spring</span><span class="o">=</span><span class="n">k</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="o">**</span><span class="mi">2</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="n">get_size</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
@@ -878,7 +884,7 @@ see how a wave is created. In a set of many coupled pendulums, one pendulum star
 <section id="Kinetic-energies">
 <h4>Kinetic energies<a class="headerlink" href="#Kinetic-energies" title="Permalink to this heading">#</a></h4>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[73]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate and plot the kinetic energies of each pendulum and plot dem independently</span>
@@ -908,7 +914,7 @@ see how a wave is created. In a set of many coupled pendulums, one pendulum star
 <h4>Total energy<a class="headerlink" href="#Total-energy" title="Permalink to this heading">#</a></h4>
 <p>As the total energy in the system shall nbe conserved, the sum of all energy contributions should yield a flat line.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[75]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate the total energy of the system</span>
@@ -938,7 +944,7 @@ see how a wave is created. In a set of many coupled pendulums, one pendulum star
 <h4>Total energy exchange of the pendula<a class="headerlink" href="#Total-energy-exchange-of-the-pendula" title="Permalink to this heading">#</a></h4>
 <p>While the graph above shows the total energy of both pendulums, we can now take a look at the total energy in each pendulum. The graphs clearly show that the energy is exchanged between the two pendulums. The ripple in the curve is due to the fact that we are excluding the potential energy stored in the spring.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[76]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate the total energy of the system</span>
@@ -963,16 +969,8 @@ see how a wave is created. In a set of many coupled pendulums, one pendulum star
 <img alt="../../_images/notebooks_L6_2_coupled_pendula_69_0.png" class="no-scaled-link" src="../../_images/notebooks_L6_2_coupled_pendula_69_0.png" style="width: 669px; height: 311px;" />
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"3f9574b1f859494d931941d46528ab84": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasManagerModel", "state": {"_model_module_version": "^0.13", "_view_module": null, "_view_module_version": ""}}, "5d8c8399b5774bd5aa90f924948725db": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "da820536b6134e7bab018a3d86c09078": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_3f9574b1f859494d931941d46528ab84", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 200, "layout": "IPY_MODEL_5d8c8399b5774bd5aa90f924948725db", "width": 300}}}, "version_major": 2, "version_minor": 0}
+{"state": {"3f9574b1f859494d931941d46528ab84": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasManagerModel", "state": {"_model_module_version": "^0.13", "_view_module": null, "_view_module_version": ""}}, "5d8c8399b5774bd5aa90f924948725db": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "6b03d381e2e348f2854e97c0c64cbbd8": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_3f9574b1f859494d931941d46528ab84", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 200, "layout": "IPY_MODEL_fd5d3334315c482f844a95f524fab5b1", "width": 300}}, "da820536b6134e7bab018a3d86c09078": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_3f9574b1f859494d931941d46528ab84", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 200, "layout": "IPY_MODEL_5d8c8399b5774bd5aa90f924948725db", "width": 300}}, "fd5d3334315c482f844a95f524fab5b1": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}}, "version_major": 2, "version_minor": 0}
 </script></section>
 </section>
 </section>
@@ -1013,7 +1011,7 @@ see how a wave is created. In a set of many coupled pendulums, one pendulum star
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on May 14, 2024</div>
+              Last updated on May 20, 2024</div>
           </div>
           <div class="right-details">
             
