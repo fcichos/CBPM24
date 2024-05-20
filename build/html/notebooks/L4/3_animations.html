@@ -234,6 +234,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../L6/2_coupled_pendula.html">Coupled Pendula</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L6/3_fourier_analysis.html">Fourier Analysis</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../L7/1_spring_pendulum.html">Spring Pendulum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L7/2_planetary_motion.html">Planetary Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L7/3_diffusion_equation.html">Diffusion equation</a></li>
+</ul>
 
 </div>
 </div>
@@ -412,7 +418,7 @@ from ipycanvas import MultiCanvas, hold_canvas,Canvas
 <div class="output_area docutils container">
 <script type="application/vnd.jupyter.widget-view+json">{"model_id": "9d4fdea22f6c4bb88105f68dfc688a96", "version_major": 2, "version_minor": 0}</script></div>
 </div>
-<img alt="particles" src="../../_images/particles.png" />
+<p><img alt="particles" src="../../_images/particles.png" /></p>
 <p>We realize the drawing in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, which is first updating all particle positions and then drawing all the particles.</p>
 <p>The loop contains one interesting statement, which is the <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">hold_canvas(canvas):</span></code>. Its useful to know that this statement halts the execution of all subsequent drawing comments in the following code block to create a “batch” of drawing commands send at one to the <code class="docutils literal notranslate"><span class="pre">ipycanvas</span></code> module. This will allow fast drawing of the whole scene. All the rest of the commands are shortly explained in the loop comments.</p>
 <div class="nbinput nblast docutils container">
@@ -496,7 +502,7 @@ simulation.start()
 <div class="output_area docutils container">
 <script type="application/vnd.jupyter.widget-view+json">{"model_id": "23d1e39e9bdd40bf90017104123730b8", "version_major": 2, "version_minor": 0}</script></div>
 </div>
-<img alt="particles" src="../../_images/particles.png" />
+<p><img alt="particles" src="../../_images/particles.png" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
@@ -689,7 +695,7 @@ Doing something
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on May 14, 2024</div>
+              Last updated on May 20, 2024</div>
           </div>
           <div class="right-details">
             

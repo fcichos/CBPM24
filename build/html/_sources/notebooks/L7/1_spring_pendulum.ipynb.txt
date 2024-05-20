@@ -13,6 +13,13 @@
   },
   {
    "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "[File as PDF](https://github.com/fcichos/CBPM24/blob/af788152d3a7f185cb6e098f52d7663107948042/source/notebooks/L7/1_spring_pendulum.pdf)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
@@ -30,6 +37,7 @@
      "end_time": "2018-06-05T13:35:06.900890Z",
      "start_time": "2018-06-05T13:35:06.100022Z"
     },
+    "collapsed": false,
     "jupyter": {
      "outputs_hidden": false
     },
@@ -255,6 +263,7 @@
      "end_time": "2018-06-05T13:36:22.511012Z",
      "start_time": "2018-06-05T13:36:22.329470Z"
     },
+    "collapsed": false,
     "jupyter": {
      "outputs_hidden": false
     },
@@ -299,6 +308,7 @@
      "end_time": "2018-06-05T13:36:23.414218Z",
      "start_time": "2018-06-05T13:36:23.230109Z"
     },
+    "collapsed": false,
     "jupyter": {
      "outputs_hidden": false
     },
@@ -342,6 +352,7 @@
      "end_time": "2018-06-05T13:36:23.969597Z",
      "start_time": "2018-06-05T13:36:23.784132Z"
     },
+    "collapsed": false,
     "jupyter": {
      "outputs_hidden": false
     },
@@ -396,6 +407,7 @@
      "end_time": "2018-06-05T13:36:51.854378Z",
      "start_time": "2018-06-05T13:36:51.498893Z"
     },
+    "collapsed": false,
     "jupyter": {
      "outputs_hidden": false
     },

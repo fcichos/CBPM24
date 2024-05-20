@@ -234,6 +234,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../L6/2_coupled_pendula.html">Coupled Pendula</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L6/3_fourier_analysis.html">Fourier Analysis</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../L7/1_spring_pendulum.html">Spring Pendulum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L7/2_planetary_motion.html">Planetary Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L7/3_diffusion_equation.html">Diffusion equation</a></li>
+</ul>
 
 </div>
 </div>
@@ -305,7 +311,7 @@
 </div>
 <section id="Box-method">
 <h2>Box method<a class="headerlink" href="#Box-method" title="Permalink to this heading">#</a></h2>
-<img alt="box" src="../../_images/box.png" />
+<p><img alt="box" src="../../_images/box.png" /></p>
 <p>The simplest method for the numerical integration of a function <span class="math notranslate nohighlight">\(f(x)\)</span> is the box method. There you approximate the function in a certain intervall <span class="math notranslate nohighlight">\(\Delta x\)</span> by a horizontal line at the function value of the left edge of the intervall for example.</p>
 <p><span class="math">\begin{equation}
 \int_{a}^{b}f(x)\approx \sum_{i}f(x_{i})\Delta x
@@ -370,7 +376,7 @@
 </section>
 <section id="Trapezoid-method">
 <h2>Trapezoid method<a class="headerlink" href="#Trapezoid-method" title="Permalink to this heading">#</a></h2>
-<img alt="../../_images/trapez.png" src="../../_images/trapez.png" />
+<p><img alt="image0" src="../../_images/trapez.png" /></p>
 <p>The trapezoid method is taking the next step of function approximation in the interval <span class="math notranslate nohighlight">\(\Delta x\)</span>. It is approximating it with a linear function.</p>
 <p><span class="math">\begin{equation}
 \int_{a}^{b}f(x)dx=\sum_{i=1}^{N}\frac{f(x_i)+f(x_{i-1})}{2}\Delta x
@@ -440,7 +446,7 @@
 g_{i}(x)=[A]x^2+[B]x+[C]
 \end{equation}</span></p>
 <p>where the <span class="math notranslate nohighlight">\([A],[B],[C]\)</span> depends only on the function values at the edges of the slice.</p>
-<img alt="Simpson" src="../../_images/simpson.png" />
+<p><img alt="Simpson" src="../../_images/simpson.png" /></p>
 <p>After some extensive algebra, which we do not want to do in detail, we arrive at</p>
 <p><span class="math">\begin{equation}
 \int_{a}^{b}f(x)dx \approx\frac{\Delta x}{3}\sum_{i={\rm odd}}^{N-1}(f(x_{i-1})+f(x_{i})+f(x_{i+1}))
@@ -553,7 +559,7 @@ g_{i}(x)=[A]x^2+[B]x+[C]
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on May 14, 2024</div>
+              Last updated on May 20, 2024</div>
           </div>
           <div class="right-details">
             

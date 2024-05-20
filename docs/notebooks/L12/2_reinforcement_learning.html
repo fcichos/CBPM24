@@ -234,6 +234,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../L6/2_coupled_pendula.html">Coupled Pendula</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L6/3_fourier_analysis.html">Fourier Analysis</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../L7/1_spring_pendulum.html">Spring Pendulum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L7/2_planetary_motion.html">Planetary Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L7/3_diffusion_equation.html">Diffusion equation</a></li>
+</ul>
 
 </div>
 </div>
@@ -320,7 +326,7 @@ learning. We will do that in a way that you calculate as much as possible in pur
 <li><p>unsupervised learning: let the system figure out what is right or wrong</p></li>
 </ul>
 <p>The graphics below gives a small summary. In our course, we cannot cover all methods. We will focus on <strong>Reinforcement Learning</strong> and <strong>Neural Networks</strong> just to show you, how things could look in Python.</p>
-<img alt="../../_images/ml_overview.png" src="../../_images/ml_overview.png" />
+<p><img alt="image0" src="../../_images/ml_overview.png" /></p>
 <p>Image taken from F. Cichos et al. Nature Machine Intelligence (2020).</p>
 </section>
 <section id="Reinforcement-Learning">
@@ -328,7 +334,7 @@ learning. We will do that in a way that you calculate as much as possible in pur
 <p>Reinforcement learning is learning what to do—how to map situations to actions—so as to maximize a numerical reward signal. The learner or agent is not told which actions to take, as in most forms of machine learning, but instead must discover which actions yield the most reward by trying them. In the most interesting and challenging cases, actions may affect not only the immediate reward but also the next situation and, through that, all subsequent rewards. These two
 characteristics—trial-and-error search and delayed reward—are the two most important distinguishing features of reinforcement learning.</p>
 <p>It has been around since the 1950s but gained momentum only in 2013 with the demonstrations of DeepMind on how to learn play Atari games like pong. The graphic below shows some of its applications in the field of robotics and gaming.</p>
-<img alt="overview_rl" src="../../_images/overview_RL.png" />
+<p><img alt="overview_rl" src="../../_images/overview_RL.png" /></p>
 <section id="Markov-Decision-Process">
 <h3>Markov Decision Process<a class="headerlink" href="#Markov-Decision-Process" title="Permalink to this heading">#</a></h3>
 <p>The key element of reinforcement learning is the so-called Markov Decision Process. The Markov decision process (MDP) denotes a formalism of planning actions in the face of uncertainty. A MDP consist formally of</p>
@@ -341,7 +347,7 @@ characteristics—trial-and-error search and delayed reward—are the two most i
 <li><p><span class="math notranslate nohighlight">\(R\)</span>: A reward function</p></li>
 </ul>
 <p>We begin in an initial state <span class="math notranslate nohighlight">\(s_{i,j}\)</span> drawn from the distribution <span class="math notranslate nohighlight">\(D\)</span>. At each time step <span class="math notranslate nohighlight">\(t\)</span>, we then have to pick an action, for example <span class="math notranslate nohighlight">\(a_1(t)\)</span> , as a result of which our state transitions to some state <span class="math notranslate nohighlight">\(s_{i,j+1}\)</span>. The states do not nessecarily correspond to spatial positions, however, as we talk about the gridworld later we may use this example to understand the procedures.</p>
-<img alt="gw_with_path" src="../../_images/gw_with_path.png" />
+<p><img alt="gw_with_path" src="../../_images/gw_with_path.png" /></p>
 <p>By repeatedly picking actions, we traverse some sequence of states</p>
 <div class="math-wrapper docutils container">
 <div class="math notranslate nohighlight">
@@ -388,9 +394,9 @@ we would like to explore in a small Python program, which is not too difficult.<
 <h2>Navigating a Grid World<a class="headerlink" href="#Navigating-a-Grid-World" title="Permalink to this heading">#</a></h2>
 <p>For our Python course we will have a look at the standard problem of reinforcement learning, which is the navigation in a grid world. Each of the grid cells below represents a state <span class="math notranslate nohighlight">\(s\)</span> in which an object could reside. In each of these states, the object can take several actions. If it may step to left, right, up or down, there are 4 actions, which we may call <span class="math notranslate nohighlight">\(a_{1},a_{2},a_{3}\)</span> and <span class="math notranslate nohighlight">\(a_{4}\)</span>.</p>
 <p>This image below shows our gridworld, with 25 states, where the shaded state is the goal state where we want the agent to go to independent of its intial state.</p>
-<img alt="gridworld" src="../../_images/gridworld.png" />
+<p><img alt="gridworld" src="../../_images/gridworld.png" /></p>
 <p>In each of these state, we have 4 possible action as depicted below</p>
-<img alt="actions" src="../../_images/state_n_action.png" />
+<p><img alt="actions" src="../../_images/state_n_action.png" /></p>
 <section id="Initialize-Reinforcement-Learning">
 <h3>Initialize Reinforcement Learning<a class="headerlink" href="#Initialize-Reinforcement-Learning" title="Permalink to this heading">#</a></h3>
 <p>At first we would like to initialize our problem. We have as depicted above 25 states, where one state is the goal state. We would like to use 4 actions to move between the states so our Q-value matrix has 100 entries. We would like to give a penalty of <span class="math notranslate nohighlight">\(R=-1\)</span> for all states except for the goal state where we give a reward of <span class="math notranslate nohighlight">\(R=10\)</span>.</p>
@@ -583,7 +589,7 @@ we would like to explore in a small Python program, which is not too difficult.<
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on May 14, 2024</div>
+              Last updated on May 20, 2024</div>
           </div>
           <div class="right-details">
             

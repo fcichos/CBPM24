@@ -234,6 +234,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../L6/2_coupled_pendula.html">Coupled Pendula</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L6/3_fourier_analysis.html">Fourier Analysis</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../L7/1_spring_pendulum.html">Spring Pendulum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L7/2_planetary_motion.html">Planetary Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L7/3_diffusion_equation.html">Diffusion equation</a></li>
+</ul>
 
 </div>
 </div>
@@ -304,7 +310,7 @@ by <strong>Martin Fränzl</strong>.</p>
 </div>
 </div>
 <p>In this lecture we are going to build a neural network from scratch using Python and NumPy (The high-level libaries like Keras and TensorFlow will be covered in Part 2). We will build a network to recognize hand-written digits, using the famous MNIST data set.</p>
-<img alt="MNIS" src="../../_images/MNIST.png" />
+<p><img alt="MNIS" src="../../_images/MNIST.png" /></p>
 <p>We will start with the simplest possible “network”: A single node that recognizes just the digit 0. This is actually just an implementation of logistic regression, but it will help us understand some of the key components before things get more complicated. Then we’ll extend that into a network with one hidden layer, still recognizing just 0. Finally, we will extend the network to recognize all the digits 0 through 9. That will give us a 92% accurate digit-recognizer.</p>
 <section id="The-MNIST-Data-Set">
 <h2>The MNIST Data Set<a class="headerlink" href="#The-MNIST-Data-Set" title="Permalink to this heading">#</a></h2>
@@ -432,7 +438,7 @@ label:  3
 <section id="A-Single-Neuron">
 <h2>A Single Neuron<a class="headerlink" href="#A-Single-Neuron" title="Permalink to this heading">#</a></h2>
 <p>The basic unit of a neural network is a neuron. A neuron takes inputs, does some math with them, and produces one output. The neuron below does that with two inputs.</p>
-<img alt="image" src="../../_images/neuron.png" />
+<p><img alt="image" src="../../_images/neuron.png" /></p>
 <section id="Forward-Propogation">
 <h3>Forward Propogation<a class="headerlink" href="#Forward-Propogation" title="Permalink to this heading">#</a></h3>
 <p>The neuron does now three things.</p>
@@ -678,7 +684,7 @@ Final loss: 0.041332921148394014
 </pre></div></div>
 </div>
 <p>We do not really now how to judge the quality of our trained network. At least we saw that the loss is decreasing, which is good. We may judge the quality of our trained network by calculating the so-called <strong>confusion matrix</strong>. The confusion matrix is creating a matrix giving reports the actual values in the rows and the predicted values in the columns.</p>
-<img alt="confusion_matrix" src="../../_images/confusion_matrix.png" />
+<p><img alt="confusion_matrix" src="../../_images/confusion_matrix.png" /></p>
 <p>The entries in the matrix are called <strong>true positives</strong> (TP), <strong>false positives</strong> (FP), <strong>false negatives</strong> (FN), and <strong>true negatives</strong> (TN). Fortunately we can use a method of the <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> module to calculate the confusion matrix. We just have to supply the predictions and the actual labels to it. To do so, we use the testing data set <code class="docutils literal notranslate"><span class="pre">X_test</span></code> which we have splitted earlier.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
@@ -780,7 +786,7 @@ False
 <section id="Network-with-Hidden-Layers">
 <h2>Network with Hidden Layers<a class="headerlink" href="#Network-with-Hidden-Layers" title="Permalink to this heading">#</a></h2>
 <p>In our example above, we just had an input layer and a single output neuron. More complex neural networks are containing many layers between the input layer and the output layer. These inbetween layers are called hidden layers. Here is a simple example of a neural network with a single hidden layer.</p>
-<img alt="hidden" src="../../_images/image.png" />
+<p><img alt="hidden" src="../../_images/image.png" /></p>
 <p>So we have now and input layer with 784 inputs that are connected to 64 units in the hidden layer and 1 neuron in the output layer. We will not go through the derivations of all the formulas for the forward and backward passes this time. The code is a simple extension of what we did before and I hope easy to read.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[71]:
@@ -1202,7 +1208,7 @@ weighted avg       0.83      0.83      0.83     10000
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on May 14, 2024</div>
+              Last updated on May 20, 2024</div>
           </div>
           <div class="right-details">
             

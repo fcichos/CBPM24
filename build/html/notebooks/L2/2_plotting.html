@@ -234,6 +234,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../L6/2_coupled_pendula.html">Coupled Pendula</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L6/3_fourier_analysis.html">Fourier Analysis</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 8:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../L7/1_spring_pendulum.html">Spring Pendulum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L7/2_planetary_motion.html">Planetary Motion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L7/3_diffusion_equation.html">Diffusion equation</a></li>
+</ul>
 
 </div>
 </div>
@@ -672,7 +678,7 @@ p(x)dx=\frac{1}{\pi \Delta x}\frac{dx}{\sqrt{1-\left (\frac{x(t)}{\Delta x}\righ
 </div>
 </div>
 <p>If you look at the resulting array, you will find, that the entries have not been removed but replaced by <code class="docutils literal notranslate"><span class="pre">--</span></code>, so the values are not existent and thefore not plotted.</p>
-<p><img alt="4fb6cf91fb3749719bad34b778d29d08" class="no-scaled-link" src="../../_images/masked.png" style="width: 400px;" /></p>
+<p><img alt="53f27b58122d4ee880a532ae813667ed" class="no-scaled-link" src="../../_images/masked.png" style="width: 400px;" /></p>
 </section>
 </section>
 </section>
@@ -817,7 +823,7 @@ U(r,t)=U_{0}\frac{e^{-i\,k r}}{r}e^{i\omega t}
 \end{equation}</span></p>
 <p>We will however ignore the temporal factor, as we are interested in the spatial interference pattern with a time-averaged intensity.</p>
 <p>To show interference, we just use two of those monochromatic waves located at <span class="math notranslate nohighlight">\(\vec{r}_{1}\)</span> and <span class="math notranslate nohighlight">\(\vec{r}_{2}\)</span>.</p>
-<img alt="interference" src="../../_images/interference.png" />
+<p><img alt="interference" src="../../_images/interference.png" /></p>
 <p>To obtain the total amplitude we have to sum up the wavefunctions of the two sources.</p>
 <p><span class="math">\begin{equation}
 U(\vec{r})=U_{01}\frac{e^{-i\,k |\vec{r}-\vec{r}_1|}}{|\vec{r}-\vec{r}_1|}+U_{02}\frac{e^{-i\,k |\vec{r}-\vec{r}_2|}}{|\vec{r}-\vec{r}_2|}
@@ -913,7 +919,7 @@ I(r)\propto |U(r)|^2
 <h2>Additional Plotting - Explicit Version<a class="headerlink" href="#Additional-Plotting---Explicit-Version" title="Permalink to this heading">#</a></h2>
 <p>While we have so far largely relied on the default setting and the automatic arrangement of plots, there is also a way to precisely design your plot. Python provides the tools of object oriented programming and thus modules provide classes which can be instanced into objects. This explicit interfaces allows you to control all details without the automatisms of <code class="docutils literal notranslate"><span class="pre">pyplot</span></code>.</p>
 <p>The figure below, which is taken from the matplotlib documentation website shows the sets of commands and the objects in the figure, the commands refer to. It is a nice reference, when creating a figure.</p>
-<img alt="anatomy of a figure" src="../../_images/anatomy_oaf.png" />
+<p><img alt="anatomy of a figure" src="../../_images/anatomy_oaf.png" /></p>
 <section id="Plots-with-Multiple-Spines">
 <h3>Plots with Multiple Spines<a class="headerlink" href="#Plots-with-Multiple-Spines" title="Permalink to this heading">#</a></h3>
 <p>Sometimes it is very useful to plot different quantities in the same plot with the same x-axis but with different y-axes. Here is some example, where each line plot has its own y-axis.</p>
@@ -1255,7 +1261,7 @@ I(r)\propto |U(r)|^2
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on May 14, 2024</div>
+              Last updated on May 20, 2024</div>
           </div>
           <div class="right-details">
             
