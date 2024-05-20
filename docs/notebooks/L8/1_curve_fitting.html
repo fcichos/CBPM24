@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="Diffusion equation" href="../L7/3_diffusion_equation.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
         <title>Curve fitting - Introduction to Computer-based Physical Modeling 24 documentation</title>
@@ -235,10 +235,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../L6/3_fourier_analysis.html">Fourier Analysis</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Lecture 8:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../L7/1_spring_pendulum.html">Spring Pendulum</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L7/2_planetary_motion.html">Planetary Motion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L7/3_diffusion_equation.html">Diffusion equation</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Curve fitting</a></li>
 </ul>
 
 </div>
@@ -280,10 +281,11 @@
 </div>
 <section id="Curve-fitting">
 <h1>Curve fitting<a class="headerlink" href="#Curve-fitting" title="Permalink to this heading">#</a></h1>
+<p><a href="#id1"><span class="problematic" id="id2">`File as PDF &lt;&gt;`__</span></a></p>
 <p>We stop for the moment the physics related stuff and have a look at a different important topic, which is curve fitting. We demonstrate the least-square fitting of a quadratic function with three parameters to experimental data. You may of course also have more complex function or even a simple linear function. For some fitting functions you may write down explicit estimators of the parameters and you do not have to stress the fitting procedure. So before you fit, think about how to obtain a
 good estimate of your model parameters. For those of you, who are interested a bit more in that topic, have a look at maximum likelihood estimation for example.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -507,7 +509,7 @@ y=ax^2+bx+c
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L8_1_curve_fitting_30_0.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_30_0.png" style="width: 528px; height: 385px;" />
+<img alt="../../_images/notebooks_L8_1_curve_fitting_32_0.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_32_0.png" style="width: 528px; height: 385px;" />
 </div>
 </div>
 <section id="\chi-squared-value">
@@ -553,7 +555,7 @@ r_i=100\left (\frac{y_i-f(x_{i},a)}{y_i}\right )
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L8_1_curve_fitting_37_0.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_37_0.png" style="width: 511px; height: 385px;" />
+<img alt="../../_images/notebooks_L8_1_curve_fitting_39_0.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_39_0.png" style="width: 511px; height: 385px;" />
 </div>
 </div>
 </section>
@@ -600,7 +602,7 @@ r_i=100\left (\frac{y_i-f(x_{i},a)}{y_i}\right )
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L8_1_curve_fitting_41_0.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_41_0.png" style="width: 517px; height: 385px;" />
+<img alt="../../_images/notebooks_L8_1_curve_fitting_43_0.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_43_0.png" style="width: 517px; height: 385px;" />
 </div>
 </div>
 <p>We may therefore want to characterize how much the individual parameters vary with each other. In other word, this means that we want to know whether the fit parameters are independent or not, which is a good quality measure of our model. For this pupose we use a generalization of the variance definition</p>
@@ -731,7 +733,7 @@ Text(0, 0.5, &#39;parameter b&#39;)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L8_1_curve_fitting_53_1.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_53_1.png" style="width: 522px; height: 385px;" />
+<img alt="../../_images/notebooks_L8_1_curve_fitting_55_1.png" class="no-scaled-link" src="../../_images/notebooks_L8_1_curve_fitting_55_1.png" style="width: 522px; height: 385px;" />
 </div>
 </div>
 <p>This correlation of parameters means, that the parameter <code class="docutils literal notranslate"><span class="pre">b</span></code> is not independent from <code class="docutils literal notranslate"><span class="pre">a</span></code> but rather strongly linearly dependent on it. We might want to find a better model containing more independent parameters. We may write down a different model</p>
@@ -833,7 +835,17 @@ y=a(x-b)^2 +c
         
         <div class="related-pages">
           
-          
+          <a class="prev-page" href="../L7/3_diffusion_equation.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Diffusion equation</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
