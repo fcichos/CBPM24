@@ -241,6 +241,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../L7/3_diffusion_equation.html">Diffusion equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L8/1_curve_fitting.html">Curve fitting</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 9:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../L9/1_plane_waves.html">Plane Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L9/2_spherical_waves.html">Spherical waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L9/3_huygens_principle.html">Huygens principle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L9/4_gaussian_beams.html">Gaussian Beam</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 10:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../L10/1_quantum_mechanics.html">Quantum Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L10/2_particle_in_a_box.html">Particle in a box</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L10/3_harmonic_oscillator.html">Harmonic Oscillator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L10/4_periodic_potential.html">Periodic Potential</a></li>
+</ul>
 
 </div>
 </div>
@@ -282,7 +296,6 @@ You can directly download the pdf-version of this page using the link below.
 </div>
 <section id="Random-numbers">
 <h1>Random numbers<a class="headerlink" href="#Random-numbers" title="Permalink to this heading">#</a></h1>
-<p><a class="reference external" href="https://github.com/fcichos/CBPM24/blob/ab29d2f9a566d5402ae9deca1cecd51592c81117/source/notebooks/L2/3_randomnumbers.pdf">File as PDF</a></p>
 <p>Random numbers are widely used in science and engineering computations. They can be used to simulate noisy data, or to model physical phenomena like the distribution of velocities of molecules in a gas, or to act like the roll of dice in a game. Monte Carlo simulation techniques, which will be part of a later theory lecture rely heavily and random number. Processes like single photon emission or Brownian motion are stochastic processes, with an intrisic randomness as well. But there are even
 methods for numerically evaluating multi-dimensional integrals using random numbers.</p>
 <p>The basic idea of a random number generator is that it should be able to produce a sequence of numbers that are distributed according to some predetermined distribution function. NumPy provides a number of such random number generators in its library <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>.</p>
@@ -372,7 +385,7 @@ array([0.51248173, 0.88147001, 0.41514453, 0.07683703, 0.11279454])
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_3_randomnumbers_9_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_3_randomnumbers_9_0.png" style="width: 532px; height: 401px;" />
+<img alt="../../_images/notebooks_L2_3_randomnumbers_8_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_3_randomnumbers_8_0.png" style="width: 532px; height: 401px;" />
 </div>
 </div>
 </section>
@@ -397,7 +410,7 @@ p(x)dx=\frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}dx
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_3_randomnumbers_12_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_3_randomnumbers_12_0.png" style="width: 544px; height: 401px;" />
+<img alt="../../_images/notebooks_L2_3_randomnumbers_11_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_3_randomnumbers_11_0.png" style="width: 544px; height: 401px;" />
 </div>
 </div>
 <p>If you want to create a normal distribution with different standard deviation and mean value, you have to multiply by the new standard deviation and add the mean.</p>
@@ -456,7 +469,7 @@ y(N)=\sum_{i=1}^{N}\Delta y_{i}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_3_randomnumbers_20_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_3_randomnumbers_20_0.png" style="width: 484px; height: 438px;" />
+<img alt="../../_images/notebooks_L2_3_randomnumbers_19_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_3_randomnumbers_19_0.png" style="width: 484px; height: 438px;" />
 </div>
 </div>
 </section>
@@ -529,7 +542,7 @@ array([1.23963345, 0.25625115, 1.56007389, ..., 0.34832722, 1.05943601,
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_3_randomnumbers_27_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_3_randomnumbers_27_0.png" style="width: 532px; height: 401px;" />
+<img alt="../../_images/notebooks_L2_3_randomnumbers_26_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_3_randomnumbers_26_0.png" style="width: 532px; height: 401px;" />
 </div>
 </div>
 </section>
@@ -587,7 +600,7 @@ array([1.23963345, 0.25625115, 1.56007389, ..., 0.34832722, 1.05943601,
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L2_3_randomnumbers_30_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_3_randomnumbers_30_0.png" style="width: 883px; height: 702px;" />
+<img alt="../../_images/notebooks_L2_3_randomnumbers_29_0.png" class="no-scaled-link" src="../../_images/notebooks_L2_3_randomnumbers_29_0.png" style="width: 883px; height: 702px;" />
 </div>
 </div>
 </section>

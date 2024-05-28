@@ -13,13 +13,6 @@
   },
   {
    "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "[File as PDF](https://github.com/fcichos/CBPM24/blob/ab29d2f9a566d5402ae9deca1cecd51592c81117/source/notebooks/L2/3_randomnumbers.pdf)"
-   ]
-  },
-  {
-   "cell_type": "markdown",
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"

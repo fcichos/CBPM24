@@ -13,13 +13,6 @@
   },
   {
    "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "[File as PDF](https://github.com/fcichos/CBPM24/blob/7bbed8e18b859cef508e5b763a58b21aef6f7fe4/source/notebooks/L4/2_brownian_motion.pdf)"
-   ]
-  },
-  {
-   "cell_type": "markdown",
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"

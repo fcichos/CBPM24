@@ -140,6 +140,25 @@ We will not present a comprehensive list of numerical simulation schemes, but us
    notebooks/L7/2_planetary_motion.ipynb   
    notebooks/L7/3_diffusion_equation.ipynb     
    notebooks/L8/1_curve_fitting.ipynb
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 9:
+
+   notebooks/L9/1_plane_waves.ipynb
+   notebooks/L9/2_spherical_waves.ipynb
+   notebooks/L9/3_huygens_principle.ipynb
+   notebooks/L9/4_gaussian_beams.ipynb
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 10:
+
+   notebooks/L10/1_quantum_mechanics.ipynb
+   notebooks/L10/2_particle_in_a_box.ipynb
+   notebooks/L10/3_harmonic_oscillator.ipynb
+   notebooks/L10/4_periodic_potential.ipynb
+   
    
 Indices and tables
 ==================

@@ -14,13 +14,6 @@
   },
   {
    "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "[File as PDF](https://github.com/fcichos/CBPM24/blob/9ae6b49daa37762aff3057ce5fab3c5190b25ada/source/notebooks/L3/3_functions.pdf)"
-   ]
-  },
-  {
-   "cell_type": "markdown",
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"

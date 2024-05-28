@@ -13,13 +13,6 @@
   },
   {
    "cell_type": "markdown",
-   "metadata": {},
-   "source": [
-    "[File as PDF](https://github.com/fcichos/CBPM24/blob/296e1887d11b721b328f977a4f5f4d33bc2a86e3/source/notebooks/L6/1_covid19.pdf)"
-   ]
-  },
-  {
-   "cell_type": "markdown",
    "metadata": {
     "slideshow": {
      "slide_type": "fragment"
