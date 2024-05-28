@@ -277,7 +277,8 @@
           <div class="admonition note">
 <p>This page was generated from <cite>notebooks/L7/1_spring_pendulum.ipynb</cite>.
 <span class="raw-html"><br/><a href="https://colab.research.google.com/github/fcichos/CBPM24/blob/master/source/notebooks/L7/1_spring_pendulum.ipynb"><img alt="Binder badge" src="https://img.shields.io/badge/launch-%20colab-green.svg" style="vertical-align:text-bottom"></a></span>
-<span class="raw-html"><br/><a href="https://mybinder.org/v2/gh/fcichos/CBPM24.git/master?labpath=source/notebooks/L7/1_spring_pendulum.ipynb"><img alt="Binder badge" src="https://img.shields.io/badge/launch-%20myBinder-red.svg" style="vertical-align:text-bottom"></a></span></p>
+You can directly download the pdf-version of this page using the link below.
+<span class="raw-html"><br/><a href="https://raw.githubusercontent.com/fcichos/CBPM24/master/source/notebooks/L7/1_spring_pendulum.pdf">download</a></span></p>
 </div>
 <section id="Spring-Pendulum">
 <h1>Spring Pendulum<a class="headerlink" href="#Spring-Pendulum" title="Permalink to this heading">#</a></h1>
@@ -285,7 +286,7 @@
 <p>In the last lectures, we have explored the use the <strong>scipy</strong> module <strong>odeint</strong> to do the work of solving differential equations for us. We have studied coupled pendula and explored the details of the solutions. This time we have two more projects ahead of us. We first want to consider the motion of a spring pendulum and then come from that to the motion of planets. Both are examples where we have not only a tangential accelaration but also a radial component. Otherwise, these problems do look
 similar than the ones we considered before.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -327,7 +328,7 @@ similar than the ones we considered before.</p>
 \end{eqnarray}</span></p>
 <p>Write a program that plots the motion of the mass for some initial <span class="math notranslate nohighlight">\(\theta\neq0\)</span>. Explore different solutions.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this defines the equation of motions</span>
@@ -348,7 +349,7 @@ similar than the ones we considered before.</p>
 <section id="Initial-parameters">
 <h3>Initial parameters<a class="headerlink" href="#Initial-parameters" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mass m1, m2, length of pendula L1, L2, position of the coupling, spring constant k, gravitational acceleration</span>
@@ -379,7 +380,7 @@ similar than the ones we considered before.</p>
 <section id="Solution">
 <h3>Solution<a class="headerlink" href="#Solution" title="Permalink to this heading">#</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">answer</span> <span class="o">=</span> <span class="n">odeint</span> <span class="p">(</span> <span class="n">spring_pendulum</span> <span class="p">,</span> <span class="n">state</span> <span class="p">,</span> <span class="n">time</span> <span class="p">)</span>
@@ -393,11 +394,11 @@ similar than the ones we considered before.</p>
 <section id="Plotting">
 <h3>Plotting<a class="headerlink" href="#Plotting" title="Permalink to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span><span class="n">ydata</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">[:</span><span class="mi">200</span><span class="p">],</span><span class="n">ydata</span><span class="p">[:</span><span class="mi">200</span><span class="p">],</span> <span class="s1">&#39;r-&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Horizontal position&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Vertical position&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
@@ -411,11 +412,11 @@ similar than the ones we considered before.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L7_1_spring_pendulum_14_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_1_spring_pendulum_14_0.png" style="width: 356px; height: 338px;" />
+<img alt="../../_images/notebooks_L7_1_spring_pendulum_14_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_1_spring_pendulum_14_0.png" style="width: 494px; height: 477px;" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
@@ -432,11 +433,11 @@ similar than the ones we considered before.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L7_1_spring_pendulum_15_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_1_spring_pendulum_15_0.png" style="width: 375px; height: 352px;" />
+<img alt="../../_images/notebooks_L7_1_spring_pendulum_15_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_1_spring_pendulum_15_0.png" style="width: 520px; height: 497px;" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
@@ -453,13 +454,13 @@ similar than the ones we considered before.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L7_1_spring_pendulum_16_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_1_spring_pendulum_16_0.png" style="width: 376px; height: 352px;" />
+<img alt="../../_images/notebooks_L7_1_spring_pendulum_16_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_1_spring_pendulum_16_0.png" style="width: 521px; height: 497px;" />
 </div>
 </div>
 <section id="Angle-and-Length-over-Time">
 <h4>Angle and Length over Time<a class="headerlink" href="#Angle-and-Length-over-Time" title="Permalink to this heading">#</a></h4>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the angle of the spring as a function of time</span>
@@ -481,7 +482,15 @@ similar than the ones we considered before.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L7_1_spring_pendulum_18_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_1_spring_pendulum_18_0.png" style="width: 852px; height: 348px;" />
+<img alt="../../_images/notebooks_L7_1_spring_pendulum_18_0.png" class="no-scaled-link" src="../../_images/notebooks_L7_1_spring_pendulum_18_0.png" style="width: 1185px; height: 485px;" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
 </div>
 </div>
 <script type="application/vnd.jupyter.widget-state+json">
@@ -526,7 +535,7 @@ similar than the ones we considered before.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on May 20, 2024</div>
+              Last updated on May 28, 2024</div>
           </div>
           <div class="right-details">
             

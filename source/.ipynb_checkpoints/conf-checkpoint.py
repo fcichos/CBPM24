@@ -130,7 +130,8 @@ nbsphinx_prolog = r"""
     .. nbinfo::
         This page was generated from `{{ docname }}`.        
         :raw-html:`<br/><a href="https://colab.research.google.com/github/fcichos/CBPM24/blob/master/source/{{ docname }}"><img alt="Binder badge" src="https://img.shields.io/badge/launch-%20colab-green.svg" style="vertical-align:text-bottom"></a>`
-        :raw-html:`<br/><a href="https://mybinder.org/v2/gh/fcichos/CBPM24.git/master?labpath=source/{{ docname }}"><img alt="Binder badge" src="https://img.shields.io/badge/launch-%20myBinder-red.svg" style="vertical-align:text-bottom"></a>` 
+        You can directly download the pdf-version of this page using the link below.
+        :raw-html:`<br/><a href="https://raw.githubusercontent.com/fcichos/CBPM24/master/source/{{ docname.rsplit('.', 1)[0] + '.pdf' }}">download</a>`
         
 
 .. only:: latex
