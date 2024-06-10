@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Gaussian Beam" href="4_gaussian_beams.html" /><link rel="prev" title="Spherical waves" href="2_spherical_waves.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
         <title>Huygens principle - Introduction to Computer-based Physical Modeling 24 documentation</title>
@@ -241,6 +241,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../L7/3_diffusion_equation.html">Diffusion equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L8/1_curve_fitting.html">Curve fitting</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 9:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_plane_waves.html">Plane Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_spherical_waves.html">Spherical waves</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Huygens principle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_gaussian_beams.html">Gaussian Beam</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 10:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../L10/1_quantum_mechanics.html">Quantum Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L10/2_particle_in_a_box.html">Particle in a box</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L10/3_harmonic_oscillator.html">Harmonic Oscillator</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 11:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../L10/4_periodic_potential.html">Periodic Potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L11/1_quantum_dynamics.html">Time Dependent Quantum Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L11/2_particle_in_a_box.html">Wavepacket in a Potential Box</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L11/3_tunneling.html">Tunneling through a barrier</a></li>
+</ul>
 
 </div>
 </div>
@@ -284,13 +304,14 @@ You can directly download the pdf-version of this page using the link below.
 <h1>Huygens principle<a class="headerlink" href="#Huygens-principle" title="Permalink to this heading">#</a></h1>
 <p>The Huygens principle states, that each point is space which which is experiencing an electromagnetic wave is the source of a spherical wave. This means nothing else, that any wave can be expanded into a superposition of spherical waves, which is the fundamental of Mie scattering for example. Yet, the overall statement of this principle is a bit unphysical. Classically, accelerated charges are the source of electromagnetic waves. If there is no accelerated charge, there is no wave.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span><span class="n">time</span>
 <span class="kn">from</span> <span class="nn">ipycanvas</span> <span class="kn">import</span> <span class="n">MultiCanvas</span><span class="p">,</span> <span class="n">hold_canvas</span><span class="p">,</span><span class="n">Canvas</span>
+<span class="kn">from</span> <span class="nn">scipy.fft</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">fftshift</span><span class="p">,</span> <span class="n">ifft</span><span class="p">,</span> <span class="n">ifftshift</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
 
@@ -298,27 +319,33 @@ You can directly download the pdf-version of this page using the link below.
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
 
-<span class="c1"># default values for plotting</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.labelpad&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
                      <span class="s1">&#39;lines.linewidth&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                     <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                     <span class="s1">&#39;xtick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
-                     <span class="s1">&#39;ytick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+                     <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                     <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                     <span class="s1">&#39;axes.labelpad&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+                     <span class="s1">&#39;xtick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                     <span class="s1">&#39;ytick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                     <span class="s1">&#39;legend.fontsize&#39;</span> <span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                     <span class="s1">&#39;contour.linewidth&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
                      <span class="s1">&#39;xtick.top&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
                      <span class="s1">&#39;xtick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span>
                      <span class="s1">&#39;ytick.right&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-                     <span class="s1">&#39;ytick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,})</span>
-<br/><br/></pre></div>
+                     <span class="s1">&#39;ytick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                     <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span>
+                     <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span> <span class="mi">150</span> <span class="p">})</span>
+
+<span class="k">def</span> <span class="nf">get_size</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span><span class="p">((</span><span class="n">w</span><span class="o">/</span><span class="mf">2.54</span><span class="p">,</span><span class="n">h</span><span class="o">/</span><span class="mf">2.54</span><span class="p">))</span>
+<br/></pre></div>
 </div>
 </div>
 <section id="Diffraction-pattern-of-a-single-slit">
 <h2>Diffraction pattern of a single slit<a class="headerlink" href="#Diffraction-pattern-of-a-single-slit" title="Permalink to this heading">#</a></h2>
 <p>Here we would like to have a look at the Huygens principle by playing around with the interference from multiple sources arranged on a line. Using this way we can simulate the diffraction patterns from a slit. So here is our spherical wave function again.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">spherical_wave</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">omega</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">r0</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
@@ -330,7 +357,7 @@ You can directly download the pdf-version of this page using the link below.
 </div>
 <p>The next cell defines the space for our calculation again. The value of <span class="math notranslate nohighlight">\(d\)</span> denotes the slit width, which we want to vary to see the effect of changing slit width vs. wavelength, which we chose to be <span class="math notranslate nohighlight">\(\lambda=532\)</span> nm.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[87]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">5e-6</span><span class="p">,</span><span class="mf">5e-6</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
@@ -351,7 +378,7 @@ You can directly download the pdf-version of this page using the link below.
 </div>
 <p>The next cell sums up the electric field of 200 spherical waves in the x-z plane such that we can plot the intensity or the field in space.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">slit</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">r</span><span class="p">):</span>
@@ -367,13 +394,13 @@ You can directly download the pdf-version of this page using the link below.
 </div>
 <p>Let us plot the wavefronts and the intensity pattern in space. As the intensity decays strongly with distance from the slit, we do that by taking the log of the intensity.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[89]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">extent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mf">1e6</span>
 <span class="n">d</span><span class="o">=</span><span class="mf">5e-6</span>
 <span class="n">field</span><span class="o">=</span><span class="n">slit</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">r</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">get_size</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">transpose</span><span class="p">()),</span><span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;z [µm]&#39;</span><span class="p">)</span>
@@ -393,16 +420,16 @@ You can directly download the pdf-version of this page using the link below.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L9_3_huygens_principle_10_0.png" class="no-scaled-link" src="../../_images/notebooks_L9_3_huygens_principle_10_0.png" style="width: 718px; height: 334px;" />
+<img alt="../../_images/notebooks_L9_3_huygens_principle_10_0.png" class="no-scaled-link" src="../../_images/notebooks_L9_3_huygens_principle_10_0.png" style="width: 633px; height: 303px;" />
 </div>
 </div>
 </section>
 <section id="Farfield-vs.-nearfield">
 <h2>Farfield vs. nearfield<a class="headerlink" href="#Farfield-vs.-nearfield" title="Permalink to this heading">#</a></h2>
-<p>You might remember that there is a difference between the nearfield and the farfield intensity pattern begind a slit or in general. The farfield approximation is the usual approximation which we deal with in the undergraduate lectures. It measures the intensity at large distance. The Fresnel approximation is looking at the near fields, where the wavefronts are curved and this is of relevance for the diffraction pattern. Let us look at two distances, <span class="math notranslate nohighlight">\(d=1\)</span> µm and <span class="math notranslate nohighlight">\(d=100\)</span> µm to show
+<p>You might remember that there is a difference between the nearfield and the farfield intensity pattern begind a slit or in general. The farfield approximation is the usual approximation which we deal with in the undergraduate lectures. It measures the intensity at large distance. The Fresnel approximation is looking at the near fields, where the wavefronts are curved and this is of relevance for the diffraction pattern. Let us look at two distances, <span class="math notranslate nohighlight">\(z=1\)</span> µm and <span class="math notranslate nohighlight">\(z=100\)</span> µm to show
 the difference between both intensity patterns.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[95]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">10e-6</span><span class="p">,</span><span class="mf">10e-6</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
@@ -426,10 +453,10 @@ the difference between both intensity patterns.</p>
 </div>
 <p>The two plots below show the drastic difference between the diffraction pattern in the near field and the far field. The near field resembles to be a shadow picture, while the far field intensity pattern is considerable wider than the slit. This even becomes worse, if we make the slit narrower.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[96]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">get_size</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">field</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=-</span><span class="n">d</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
@@ -457,7 +484,7 @@ the difference between both intensity patterns.</p>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L9_3_huygens_principle_15_0.png" class="no-scaled-link" src="../../_images/notebooks_L9_3_huygens_principle_15_0.png" style="width: 853px; height: 348px;" />
+<img alt="../../_images/notebooks_L9_3_huygens_principle_15_0.png" class="no-scaled-link" src="../../_images/notebooks_L9_3_huygens_principle_15_0.png" style="width: 694px; height: 280px;" />
 </div>
 </div>
 </section>
@@ -472,7 +499,7 @@ I=I_{0}\left (\frac{\sin(\delta)}{\delta}\right )^2
 \end{equation}</span></p>
 <p>and <span class="math notranslate nohighlight">\(d\)</span> is the slit width. <span class="math notranslate nohighlight">\(\theta\)</span> is the diffraction angle. So lets compare our numerical calculation with the analytical prediction.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[97]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">single_slit</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
@@ -483,7 +510,7 @@ I=I_{0}\left (\frac{\sin(\delta)}{\delta}\right )^2
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[98]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">intensity</span><span class="o">=</span><span class="n">single_slit</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="mf">100e-6</span><span class="p">,</span><span class="n">x2</span><span class="p">)</span>
@@ -492,7 +519,7 @@ I=I_{0}\left (\frac{\sin(\delta)}{\delta}\right )^2
 </div>
 <p>The plot below nicely shows that we are not to bad with our numerical simulation and the 200 sources. You may want to further explore how the number of sources used changes the result. How many sources would be enough?</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[99]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">field1</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;k-.&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
@@ -507,7 +534,7 @@ I=I_{0}\left (\frac{\sin(\delta)}{\delta}\right )^2
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L9_3_huygens_principle_22_0.png" class="no-scaled-link" src="../../_images/notebooks_L9_3_huygens_principle_22_0.png" style="width: 407px; height: 280px;" />
+<img alt="../../_images/notebooks_L9_3_huygens_principle_22_0.png" class="no-scaled-link" src="../../_images/notebooks_L9_3_huygens_principle_22_0.png" style="width: 553px; height: 422px;" />
 </div>
 </div>
 <p>You may also want to explore what the wavelength and the slit width change on the diffraction pattern. The next step would be to show the diffraction pattern from a grating or even to show the diffraction from a spherical particles, where the sources are spread over spherical region is space. I would leave this effort to you and your project.</p>
@@ -519,8 +546,73 @@ I=I_{0}\left (\frac{\sin(\delta)}{\delta}\right )^2\left (\frac{\sin(N\gamma)}{\
 \gamma=\frac{\pi D}{\lambda}\sin(\theta)
 \end{equation}</span></p>
 <p>and <span class="math notranslate nohighlight">\(N\)</span> is the number of slits.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="mf">20e-6</span>  <span class="c1"># Length of the spatial domain (meters)</span>
+<span class="n">Nx</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="mi">2048</span>  <span class="c1"># Number of spatial points</span>
+<span class="n">slit_width</span> <span class="o">=</span> <span class="mf">5e-6</span>  <span class="c1"># Width of the slit (meters)</span>
+<span class="n">wavelength</span> <span class="o">=</span> <span class="mf">532e-9</span>  <span class="c1"># Wavelength of light (meters)</span>
+<span class="n">distance</span> <span class="o">=</span> <span class="mf">2e-6</span>  <span class="c1"># Distance from the slit to the observation screen (meters)</span>
+
+<span class="n">dx</span> <span class="o">=</span> <span class="n">L</span> <span class="o">/</span> <span class="n">Nx</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">Nx</span><span class="p">)</span>
+
+<span class="n">slit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">slit</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">slit_width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">slit_fft</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">slit</span><span class="p">))</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">wavelength</span>  <span class="c1"># Wave number</span>
+
+<span class="n">fx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">Nx</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">dx</span><span class="p">)</span>
+<span class="n">fx</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">fx</span><span class="p">)</span>  <span class="c1"># Shift zero frequency to the center</span>
+
+<span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">wavelength</span> <span class="o">*</span> <span class="n">distance</span> <span class="o">*</span> <span class="n">fx</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">U1</span> <span class="o">=</span> <span class="n">slit_fft</span> <span class="o">*</span> <span class="n">H</span>
+
+<span class="n">U2</span> <span class="o">=</span> <span class="n">ifft</span><span class="p">(</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">U1</span><span class="p">))</span>
+
+<span class="n">intensity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">U2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">get_size</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">slit</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Slit Function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x [µm]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Plot intensity pattern at the observation screen</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">intensity</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Intensity Pattern at Screen&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x [µ~´m]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Intensity&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_L9_3_huygens_principle_25_0.png" class="no-scaled-link" src="../../_images/notebooks_L9_3_huygens_principle_25_0.png" style="width: 694px; height: 338px;" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {}, "version_major": 2, "version_minor": 0}
+{"state": {"4f67cb96556344d1a80ab1ae17af2d37": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasManagerModel", "state": {"_model_module_version": "^0.13", "_view_module": null, "_view_module_version": ""}}}, "version_major": 2, "version_minor": 0}
 </script></section>
 </section>
 
@@ -529,8 +621,26 @@ I=I_{0}\left (\frac{\sin(\delta)}{\delta}\right )^2\left (\frac{\sin(N\gamma)}{\
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="4_gaussian_beams.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Gaussian Beam</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="2_spherical_waves.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Spherical waves</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -541,7 +651,7 @@ I=I_{0}\left (\frac{\sin(\delta)}{\delta}\right )^2\left (\frac{\sin(N\gamma)}{\
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on May 28, 2024</div>
+              Last updated on Jun 10, 2024</div>
           </div>
           <div class="right-details">
             

@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Periodic Potential" href="4_periodic_potential.html" /><link rel="prev" title="Particle in a box" href="2_particle_in_a_box.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
         <title>Harmonic Oscillator - Introduction to Computer-based Physical Modeling 24 documentation</title>
@@ -241,6 +241,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../L7/3_diffusion_equation.html">Diffusion equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L8/1_curve_fitting.html">Curve fitting</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 9:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../L9/1_plane_waves.html">Plane Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L9/2_spherical_waves.html">Spherical waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L9/3_huygens_principle.html">Huygens principle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L9/4_gaussian_beams.html">Gaussian Beam</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 10:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="1_quantum_mechanics.html">Quantum Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_particle_in_a_box.html">Particle in a box</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Harmonic Oscillator</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 11:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="4_periodic_potential.html">Periodic Potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L11/1_quantum_dynamics.html">Time Dependent Quantum Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L11/2_particle_in_a_box.html">Wavepacket in a Potential Box</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L11/3_tunneling.html">Tunneling through a barrier</a></li>
+</ul>
 
 </div>
 </div>
@@ -284,7 +304,7 @@ You can directly download the pdf-version of this page using the link below.
 <h1>Harmonic Oscillator<a class="headerlink" href="#Harmonic-Oscillator" title="Permalink to this heading">#</a></h1>
 <p>The harmonic oscillator is certainly one of the working horses of physics. In quantum mechanics, it resembles to be a good model for the motion of two bound atoms, i.e. bond vibrations, which are of relevance for al types of molecules and solids.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -295,20 +315,26 @@ You can directly download the pdf-version of this page using the link below.
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
 
-<span class="c1"># default values for plotting</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.labelpad&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
                      <span class="s1">&#39;lines.linewidth&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                     <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                     <span class="s1">&#39;xtick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
-                     <span class="s1">&#39;ytick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+                     <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                     <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                     <span class="s1">&#39;axes.labelpad&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+                     <span class="s1">&#39;xtick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                     <span class="s1">&#39;ytick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                     <span class="s1">&#39;legend.fontsize&#39;</span> <span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                     <span class="s1">&#39;contour.linewidth&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
                      <span class="s1">&#39;xtick.top&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
                      <span class="s1">&#39;xtick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span>
                      <span class="s1">&#39;ytick.right&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-                     <span class="s1">&#39;ytick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,})</span>
-</pre></div>
+                     <span class="s1">&#39;ytick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                     <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span>
+                     <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span> <span class="mi">150</span> <span class="p">})</span>
+
+<span class="k">def</span> <span class="nf">get_size</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span><span class="p">((</span><span class="n">w</span><span class="o">/</span><span class="mf">2.54</span><span class="p">,</span><span class="n">h</span><span class="o">/</span><span class="mf">2.54</span><span class="p">))</span>
+<br/></pre></div>
 </div>
 </div>
 <p>As compared to the particle in a box, we have to change the potential in the Hamilton operator to solve the harmonic oscillator. The potential energy of the harmonic oscillator is given as</p>
@@ -328,7 +354,7 @@ V(x)=\frac{k}{2}x^2
 <li><p>we will use the mass of the carbon atom</p></li>
 </ul>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define some useful constants</span>
@@ -350,7 +376,7 @@ V(x)=\frac{k}{2}x^2
 <h3>Potential energy<a class="headerlink" href="#Potential-energy" title="Permalink to this heading">#</a></h3>
 <p>We first define the diagonal potential energy matrix.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># potential energy for the harmonic oscillator</span>
@@ -366,7 +392,7 @@ V(x)=\frac{k}{2}x^2
 <h3>Kinetic energy<a class="headerlink" href="#Kinetic-energy" title="Permalink to this heading">#</a></h3>
 <p>Next are the derivatives of the kinetic energy matrix.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># T is the finite difference2 representation of the second derivative in the kinetic energy</span>
@@ -376,7 +402,7 @@ V(x)=\frac{k}{2}x^2
 </div>
 <p>An finally the total Hamilton operator matrix again.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sum of kinetic and potential energy</span>
@@ -389,7 +415,7 @@ V(x)=\frac{k}{2}x^2
 <h3>Solution<a class="headerlink" href="#Solution" title="Permalink to this heading">#</a></h3>
 <p>The last step is to solve the system of coupled equations using the <code class="docutils literal notranslate"><span class="pre">eigsh</span></code> method of the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> module again.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># diagonalize the matrix and take the first n eigenvalues and eigenvectors</span>
@@ -402,7 +428,7 @@ V(x)=\frac{k}{2}x^2
 <section id="Plotting">
 <h3>Plotting<a class="headerlink" href="#Plotting" title="Permalink to this heading">#</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define some scaling to make a nice plot</span>
@@ -410,7 +436,7 @@ V(x)=\frac{k}{2}x^2
 <span class="n">escale</span><span class="o">=</span><span class="mf">6.242e18</span> <span class="c1"># energy scale in eV</span>
 <span class="n">psiscale</span><span class="o">=</span><span class="mi">1</span> <span class="c1"># wavefunction scale</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">get_size</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">vec</span> <span class="o">=</span> <span class="n">vecs</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
@@ -432,7 +458,7 @@ V(x)=\frac{k}{2}x^2
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L10_3_harmonic_oscillator_17_0.png" class="no-scaled-link" src="../../_images/notebooks_L10_3_harmonic_oscillator_17_0.png" style="width: 653px; height: 509px;" />
+<img alt="../../_images/notebooks_L10_3_harmonic_oscillator_17_0.png" class="no-scaled-link" src="../../_images/notebooks_L10_3_harmonic_oscillator_17_0.png" style="width: 571px; height: 453px;" />
 </div>
 </div>
 </section>
@@ -445,10 +471,10 @@ E_{n}=\left (n+\frac{1}{2} \right )\hbar \omega
 \end{equation}</span></p>
 <p>where <span class="math notranslate nohighlight">\(n\)</span> is the quantum number running from <span class="math notranslate nohighlight">\(0,\ldots,\)</span> and <span class="math notranslate nohighlight">\(\omega\)</span> is the frequency of the bond vibration, i.e. <span class="math notranslate nohighlight">\(\omega=\sqrt{k/m}\)</span>. The graph below compares the</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">get_size</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$E$ [eV]&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">vals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">escale</span><span class="p">)</span>
@@ -463,7 +489,7 @@ E_{n}=\left (n+\frac{1}{2} \right )\hbar \omega
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L10_3_harmonic_oscillator_21_0.png" class="no-scaled-link" src="../../_images/notebooks_L10_3_harmonic_oscillator_21_0.png" style="width: 429px; height: 394px;" />
+<img alt="../../_images/notebooks_L10_3_harmonic_oscillator_21_0.png" class="no-scaled-link" src="../../_images/notebooks_L10_3_harmonic_oscillator_21_0.png" style="width: 386px; height: 348px;" />
 </div>
 </div>
 </section>
@@ -487,8 +513,26 @@ V(x)=V_{0}\left (1-e^{-\alpha(x-x_0)}\right)^2
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="4_periodic_potential.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Periodic Potential</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="2_particle_in_a_box.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Particle in a box</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -499,7 +543,7 @@ V(x)=V_{0}\left (1-e^{-\alpha(x-x_0)}\right)^2
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on May 28, 2024</div>
+              Last updated on Jun 10, 2024</div>
           </div>
           <div class="right-details">
             

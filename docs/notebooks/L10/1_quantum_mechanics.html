@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Particle in a box" href="2_particle_in_a_box.html" /><link rel="prev" title="Gaussian Beam" href="../L9/4_gaussian_beams.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
         <title>Quantum Mechanics - Introduction to Computer-based Physical Modeling 24 documentation</title>
@@ -241,6 +241,26 @@
 <li class="toctree-l1"><a class="reference internal" href="../L7/3_diffusion_equation.html">Diffusion equation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../L8/1_curve_fitting.html">Curve fitting</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 9:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../L9/1_plane_waves.html">Plane Waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L9/2_spherical_waves.html">Spherical waves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L9/3_huygens_principle.html">Huygens principle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L9/4_gaussian_beams.html">Gaussian Beam</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 10:</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Quantum Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_particle_in_a_box.html">Particle in a box</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_harmonic_oscillator.html">Harmonic Oscillator</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lecture 11:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="4_periodic_potential.html">Periodic Potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L11/1_quantum_dynamics.html">Time Dependent Quantum Mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L11/2_particle_in_a_box.html">Wavepacket in a Potential Box</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../L11/3_tunneling.html">Tunneling through a barrier</a></li>
+</ul>
 
 </div>
 </div>
@@ -285,7 +305,7 @@ You can directly download the pdf-version of this page using the link below.
 <p>In the last lecture, we have modeled electromagnetic waves not by solving the wave equation, but by taking the solutions of wave equations like a plane wave or a spherical wave. Today we will solve a wave equation, but not for electromagnetic waves, but for matter waves. We will solve the stationary Schrödinger equation with the implicit solution scheme, which we have already applied for the diffusion equation. With the help of that we will tackle the particle in a box, the harmonic oscillator
 and the periodic potential. All of these problems have also analytical solutions, thus we do not need the numerical solution in principle. But it will give us some practice on how to tackle such problems. As not all of you might be familiar with the physical description of quantum mechanics, we will give a short introduction into this field first.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -296,19 +316,25 @@ and the periodic potential. All of these problems have also analytical solutions
 <span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
 
-<span class="c1"># default values for plotting</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
-                     <span class="s1">&#39;axes.labelpad&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
                      <span class="s1">&#39;lines.linewidth&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                     <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-                     <span class="s1">&#39;xtick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
-                     <span class="s1">&#39;ytick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+                     <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                     <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                     <span class="s1">&#39;axes.labelpad&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+                     <span class="s1">&#39;xtick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                     <span class="s1">&#39;ytick.labelsize&#39;</span> <span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+                     <span class="s1">&#39;legend.fontsize&#39;</span> <span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+                     <span class="s1">&#39;contour.linewidth&#39;</span> <span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
                      <span class="s1">&#39;xtick.top&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
                      <span class="s1">&#39;xtick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span>
                      <span class="s1">&#39;ytick.right&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-                     <span class="s1">&#39;ytick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,})</span>
+                     <span class="s1">&#39;ytick.direction&#39;</span> <span class="p">:</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+                     <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span>
+                     <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span> <span class="mi">150</span> <span class="p">})</span>
+
+<span class="k">def</span> <span class="nf">get_size</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span><span class="p">((</span><span class="n">w</span><span class="o">/</span><span class="mf">2.54</span><span class="p">,</span><span class="n">h</span><span class="o">/</span><span class="mf">2.54</span><span class="p">))</span>
 <br/></pre></div>
 </div>
 </div>
@@ -388,14 +414,6 @@ propagation of probability density of the quantum mechanical wave. The wavefunct
 \end{bmatrix}
 \end{equation}</span></p>
 <p>where I skipped the prefactor <span class="math notranslate nohighlight">\(-\hbar^2/2m\)</span>, to fit the matrices on one line. Yet I did not succeed. This is the final system of coupled equations which we can supply to any matrix solver. We will use a solver from the <em>scipy.linalg</em> module. In case we have special boundary conditions, we need to take them into account and replace the first and the last line for example with the particular boundary conditions.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
 <script type="application/vnd.jupyter.widget-state+json">
 {"state": {}, "version_major": 2, "version_minor": 0}
 </script></section>
@@ -407,8 +425,26 @@ propagation of probability density of the quantum mechanical wave. The wavefunct
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="2_particle_in_a_box.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Particle in a box</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../L9/4_gaussian_beams.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Gaussian Beam</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -419,7 +455,7 @@ propagation of probability density of the quantum mechanical wave. The wavefunct
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on May 28, 2024</div>
+              Last updated on Jun 10, 2024</div>
           </div>
           <div class="right-details">
             
