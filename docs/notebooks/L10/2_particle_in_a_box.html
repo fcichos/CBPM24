@@ -304,6 +304,21 @@ You can directly download the pdf-version of this page using the link below.
 <h1>Particle in a box<a class="headerlink" href="#Particle-in-a-box" title="Permalink to this heading">#</a></h1>
 <p>Let’s apply the whole thing to the problem of a particle in a box. This means, we look at a quantum mechanical object in a potential well.</p>
 <div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+  <span class="kn">import</span> <span class="nn">google.colab</span>
+  <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">ipycanvas</span><span class="o">==</span><span class="m">0</span>.11
+  <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">output</span>
+  <span class="n">output</span><span class="o">.</span><span class="n">enable_custom_widget_manager</span><span class="p">()</span>
+  <span class="n">IN_COLAB</span><span class="o">=</span><span class="kc">True</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">IN_COLAB</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
@@ -454,7 +469,7 @@ You can directly download the pdf-version of this page using the link below.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L10_2_particle_in_a_box_16_0.png" class="no-scaled-link" src="../../_images/notebooks_L10_2_particle_in_a_box_16_0.png" style="width: 547px; height: 442px;" />
+<img alt="../../_images/notebooks_L10_2_particle_in_a_box_17_0.png" class="no-scaled-link" src="../../_images/notebooks_L10_2_particle_in_a_box_17_0.png" style="width: 547px; height: 442px;" />
 </div>
 </div>
 <p>The diagram shows the corresponding energy states (the eigenvalues of the solution) and the value <span class="math notranslate nohighlight">\(|\Psi|^2\)</span>, which gives the probability to find the particle inside the box. The latter shows, that in contrast to what we expect from classical theory, where we would expect the particle to be with equal probability found at all positions inside the box, we get in quantum mechanics only certain positions at which we would find the particle. Also, the higher the energy state, the more equally
@@ -487,7 +502,7 @@ is the particle distributed over the box. For a finite box depth, however, we ge
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L10_2_particle_in_a_box_19_1.png" class="no-scaled-link" src="../../_images/notebooks_L10_2_particle_in_a_box_19_1.png" style="width: 362px; height: 394px;" />
+<img alt="../../_images/notebooks_L10_2_particle_in_a_box_20_1.png" class="no-scaled-link" src="../../_images/notebooks_L10_2_particle_in_a_box_20_1.png" style="width: 362px; height: 394px;" />
 </div>
 </div>
 </section>
@@ -544,7 +559,7 @@ is the particle distributed over the box. For a finite box depth, however, we ge
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Jun 10, 2024</div>
+              Last updated on Jun 11, 2024</div>
           </div>
           <div class="right-details">
             

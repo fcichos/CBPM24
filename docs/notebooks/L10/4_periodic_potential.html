@@ -307,6 +307,21 @@ You can directly download the pdf-version of this page using the link below.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+  <span class="kn">import</span> <span class="nn">google.colab</span>
+  <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">ipycanvas</span><span class="o">==</span><span class="m">0</span>.11
+  <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">output</span>
+  <span class="n">output</span><span class="o">.</span><span class="n">enable_custom_widget_manager</span><span class="p">()</span>
+  <span class="n">IN_COLAB</span><span class="o">=</span><span class="kc">True</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">IN_COLAB</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">diags</span>
 <span class="kn">from</span> <span class="nn">scipy.sparse.linalg</span> <span class="kn">import</span> <span class="n">eigsh</span>
@@ -454,7 +469,7 @@ You can directly download the pdf-version of this page using the link below.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L10_4_periodic_potential_18_0.png" class="no-scaled-link" src="../../_images/notebooks_L10_4_periodic_potential_18_0.png" style="width: 854px; height: 389px;" />
+<img alt="../../_images/notebooks_L10_4_periodic_potential_19_0.png" class="no-scaled-link" src="../../_images/notebooks_L10_4_periodic_potential_19_0.png" style="width: 854px; height: 389px;" />
 </div>
 </div>
 <p>In this case, it might be more instructive to look at individual wavefunctions, what are plotted below. It reveals that we have two effects.</p>
@@ -493,7 +508,7 @@ You can directly download the pdf-version of this page using the link below.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L10_4_periodic_potential_20_0.png" class="no-scaled-link" src="../../_images/notebooks_L10_4_periodic_potential_20_0.png" style="width: 849px; height: 389px;" />
+<img alt="../../_images/notebooks_L10_4_periodic_potential_21_0.png" class="no-scaled-link" src="../../_images/notebooks_L10_4_periodic_potential_21_0.png" style="width: 849px; height: 389px;" />
 </div>
 </div>
 <p>One effect comes from the finite size of the periodic structure. This creates an envelope which is similar to the shape of the wavefunction we had for the particle in a box. The second effect comes from the periodic structure itself, when the wavefunction is localized in the individual potential wells. The close spacing of the wells lets all wells interact with each other which creates energy bands.</p>
@@ -520,7 +535,7 @@ You can directly download the pdf-version of this page using the link below.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L10_4_periodic_potential_24_0.png" class="no-scaled-link" src="../../_images/notebooks_L10_4_periodic_potential_24_0.png" style="width: 405px; height: 497px;" />
+<img alt="../../_images/notebooks_L10_4_periodic_potential_25_0.png" class="no-scaled-link" src="../../_images/notebooks_L10_4_periodic_potential_25_0.png" style="width: 405px; height: 497px;" />
 </div>
 </div>
 </section>
@@ -567,7 +582,7 @@ You can directly download the pdf-version of this page using the link below.
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Jun 10, 2024</div>
+              Last updated on Jun 11, 2024</div>
           </div>
           <div class="right-details">
             

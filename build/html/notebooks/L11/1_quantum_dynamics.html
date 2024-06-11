@@ -304,6 +304,21 @@ You can directly download the pdf-version of this page using the link below.
 <h1>Time Dependent Quantum Mechanics<a class="headerlink" href="#Time-Dependent-Quantum-Mechanics" title="Permalink to this heading">#</a></h1>
 <p>In Lecture 10, we developed some solutions for the stationary Schrödinger equation. We solved the harmonic oscillator or the particle in a box model. All of this did not give any dynamics of particles in potentials but rather a static picture. Today we would like to consider the time dependent Schrödinger equations which yields the dynamics of the system. We will develop a solution based on Fourier transforms, as we still have to practice that a bit.</p>
 <div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+  <span class="kn">import</span> <span class="nn">google.colab</span>
+  <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">ipycanvas</span><span class="o">==</span><span class="m">0</span>.11
+  <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">output</span>
+  <span class="n">output</span><span class="o">.</span><span class="n">enable_custom_widget_manager</span><span class="p">()</span>
+  <span class="n">IN_COLAB</span><span class="o">=</span><span class="kc">True</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">IN_COLAB</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
@@ -412,7 +427,7 @@ You can directly download the pdf-version of this page using the link below.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L11_1_quantum_dynamics_9_0.png" class="no-scaled-link" src="../../_images/notebooks_L11_1_quantum_dynamics_9_0.png" style="width: 1000px; height: 549px;" />
+<img alt="../../_images/notebooks_L11_1_quantum_dynamics_10_0.png" class="no-scaled-link" src="../../_images/notebooks_L11_1_quantum_dynamics_10_0.png" style="width: 1000px; height: 549px;" />
 </div>
 </div>
 </section>
@@ -472,7 +487,7 @@ You can directly download the pdf-version of this page using the link below.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L11_1_quantum_dynamics_17_0.png" class="no-scaled-link" src="../../_images/notebooks_L11_1_quantum_dynamics_17_0.png" style="width: 1015px; height: 539px;" />
+<img alt="../../_images/notebooks_L11_1_quantum_dynamics_18_0.png" class="no-scaled-link" src="../../_images/notebooks_L11_1_quantum_dynamics_18_0.png" style="width: 1015px; height: 539px;" />
 </div>
 </div>
 </section>
@@ -513,7 +528,7 @@ You can directly download the pdf-version of this page using the link below.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L11_1_quantum_dynamics_20_0.png" class="no-scaled-link" src="../../_images/notebooks_L11_1_quantum_dynamics_20_0.png" style="width: 1031px; height: 539px;" />
+<img alt="../../_images/notebooks_L11_1_quantum_dynamics_21_0.png" class="no-scaled-link" src="../../_images/notebooks_L11_1_quantum_dynamics_21_0.png" style="width: 1031px; height: 539px;" />
 </div>
 </div>
 </section>
@@ -607,7 +622,7 @@ plt.close()
 </div>
 </div>
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"50e924ea0faa49d5b0d99bfed0ac572b": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "80dc8dd62d894fb985e27a5719c04bc8": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "81c6c38ab54e4aa5bd4733de391b7082": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_f0cfa14afaa241f3a7e2f81f073c6abd", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 200, "layout": "IPY_MODEL_b5b78891f6e04a9e9fc138b0ab969baa", "width": 800}}, "91cabdf7784c4107a884e98f303d559b": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_f0cfa14afaa241f3a7e2f81f073c6abd", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 300, "layout": "IPY_MODEL_e4d9489558484f4f8b7dd8b3395ae851", "width": 800}}, "9f6ba9f8e87a40ddade404680fa13399": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_f0cfa14afaa241f3a7e2f81f073c6abd", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 200, "layout": "IPY_MODEL_50e924ea0faa49d5b0d99bfed0ac572b", "width": 800}}, "b5b78891f6e04a9e9fc138b0ab969baa": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "ce43fe4e323a49369d366df134b31bd1": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_f0cfa14afaa241f3a7e2f81f073c6abd", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 300, "layout": "IPY_MODEL_80dc8dd62d894fb985e27a5719c04bc8", "width": 800}}, "e4d9489558484f4f8b7dd8b3395ae851": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "f0cfa14afaa241f3a7e2f81f073c6abd": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasManagerModel", "state": {"_model_module_version": "^0.13", "_view_module": null, "_view_module_version": ""}}}, "version_major": 2, "version_minor": 0}
+{"state": {}, "version_major": 2, "version_minor": 0}
 </script></section>
 </section>
 
@@ -646,7 +661,7 @@ plt.close()
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Jun 10, 2024</div>
+              Last updated on Jun 11, 2024</div>
           </div>
           <div class="right-details">
             

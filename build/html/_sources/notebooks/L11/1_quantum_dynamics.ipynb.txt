@@ -25,6 +25,24 @@
   },
   {
    "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "try:\n",
+    "  import google.colab\n",
+    "  !pip install ipycanvas==0.11\n",
+    "  from google.colab import output\n",
+    "  output.enable_custom_widget_manager()\n",
+    "  IN_COLAB=True\n",
+    "except:\n",
+    "  IN_COLAB = False"
+   ]
+  },
+  {
+   "cell_type": "code",
    "execution_count": 16,
    "metadata": {
     "slideshow": {
@@ -630,94 +648,7 @@
   },
   "widgets": {
    "application/vnd.jupyter.widget-state+json": {
-    "state": {
-     "50e924ea0faa49d5b0d99bfed0ac572b": {
-      "model_module": "@jupyter-widgets/base",
-      "model_module_version": "2.0.0",
-      "model_name": "LayoutModel",
-      "state": {}
-     },
-     "80dc8dd62d894fb985e27a5719c04bc8": {
-      "model_module": "@jupyter-widgets/base",
-      "model_module_version": "2.0.0",
-      "model_name": "LayoutModel",
-      "state": {}
-     },
-     "81c6c38ab54e4aa5bd4733de391b7082": {
-      "model_module": "ipycanvas",
-      "model_module_version": "^0.13",
-      "model_name": "CanvasModel",
-      "state": {
-       "_canvas_manager": "IPY_MODEL_f0cfa14afaa241f3a7e2f81f073c6abd",
-       "_model_module_version": "^0.13",
-       "_view_module_version": "^0.13",
-       "height": 200,
-       "layout": "IPY_MODEL_b5b78891f6e04a9e9fc138b0ab969baa",
-       "width": 800
-      }
-     },
-     "91cabdf7784c4107a884e98f303d559b": {
-      "model_module": "ipycanvas",
-      "model_module_version": "^0.13",
-      "model_name": "CanvasModel",
-      "state": {
-       "_canvas_manager": "IPY_MODEL_f0cfa14afaa241f3a7e2f81f073c6abd",
-       "_model_module_version": "^0.13",
-       "_view_module_version": "^0.13",
-       "height": 300,
-       "layout": "IPY_MODEL_e4d9489558484f4f8b7dd8b3395ae851",
-       "width": 800
-      }
-     },
-     "9f6ba9f8e87a40ddade404680fa13399": {
-      "model_module": "ipycanvas",
-      "model_module_version": "^0.13",
-      "model_name": "CanvasModel",
-      "state": {
-       "_canvas_manager": "IPY_MODEL_f0cfa14afaa241f3a7e2f81f073c6abd",
-       "_model_module_version": "^0.13",
-       "_view_module_version": "^0.13",
-       "height": 200,
-       "layout": "IPY_MODEL_50e924ea0faa49d5b0d99bfed0ac572b",
-       "width": 800
-      }
-     },
-     "b5b78891f6e04a9e9fc138b0ab969baa": {
-      "model_module": "@jupyter-widgets/base",
-      "model_module_version": "2.0.0",
-      "model_name": "LayoutModel",
-      "state": {}
-     },
-     "ce43fe4e323a49369d366df134b31bd1": {
-      "model_module": "ipycanvas",
-      "model_module_version": "^0.13",
-      "model_name": "CanvasModel",
-      "state": {
-       "_canvas_manager": "IPY_MODEL_f0cfa14afaa241f3a7e2f81f073c6abd",
-       "_model_module_version": "^0.13",
-       "_view_module_version": "^0.13",
-       "height": 300,
-       "layout": "IPY_MODEL_80dc8dd62d894fb985e27a5719c04bc8",
-       "width": 800
-      }
-     },
-     "e4d9489558484f4f8b7dd8b3395ae851": {
-      "model_module": "@jupyter-widgets/base",
-      "model_module_version": "2.0.0",
-      "model_name": "LayoutModel",
-      "state": {}
-     },
-     "f0cfa14afaa241f3a7e2f81f073c6abd": {
-      "model_module": "ipycanvas",
-      "model_module_version": "^0.13",
-      "model_name": "CanvasManagerModel",
-      "state": {
-       "_model_module_version": "^0.13",
-       "_view_module": null,
-       "_view_module_version": ""
-      }
-     }
-    },
+    "state": {},
     "version_major": 2,
     "version_minor": 0
    }

@@ -307,6 +307,21 @@ You can directly download the pdf-version of this page using the link below.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+  <span class="kn">import</span> <span class="nn">google.colab</span>
+  <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">ipycanvas</span><span class="o">==</span><span class="m">0</span>.11
+  <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">output</span>
+  <span class="n">output</span><span class="o">.</span><span class="n">enable_custom_widget_manager</span><span class="p">()</span>
+  <span class="n">IN_COLAB</span><span class="o">=</span><span class="kc">True</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">IN_COLAB</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="o">*</span>
@@ -386,7 +401,7 @@ C_n(t)=C_{0n} e^{\lambda t}
 <p>For this project <span class="math notranslate nohighlight">\(\Psi(x,t=0)\)</span> shall be assumed to be a Gaussian wave packet centered at a specific position in the box. Also other initial conditions such as triangular shaped wavepackets may be considered. For the Gaussian wavepacket, we will use a simpler way, then the superposition. We will just assume a Gaussian envelope of our plane wave, which is actually totally equivalent to our previous superposition. For simplicity assume that the mass of the particle is just 1 as well as
 <span class="math notranslate nohighlight">\(\hbar=1\)</span>. Our Gaussian wavepacket will be centered in the box and we will not supply any momentum in any direction.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gauss_x</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">k0</span><span class="p">):</span>
@@ -398,7 +413,7 @@ C_n(t)=C_{0n} e^{\lambda t}
 </div>
 <p>Let’s plot this wavefunction.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
@@ -416,14 +431,14 @@ C_n(t)=C_{0n} e^{\lambda t}
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L11_2_particle_in_a_box_14_0.png" class="no-scaled-link" src="../../_images/notebooks_L11_2_particle_in_a_box_14_0.png" style="width: 433px; height: 280px;" />
+<img alt="../../_images/notebooks_L11_2_particle_in_a_box_15_0.png" class="no-scaled-link" src="../../_images/notebooks_L11_2_particle_in_a_box_15_0.png" style="width: 645px; height: 456px;" />
 </div>
 </div>
 <section id="Eigenfunctions">
 <h3>Eigenfunctions<a class="headerlink" href="#Eigenfunctions" title="Permalink to this heading">#</a></h3>
 <p>To obtain the initial wavepacket as a representation of eigenfunctions, we just need a function that generates the eigenfunctions of the stationary solution <span class="math notranslate nohighlight">\(\Psi_{n}(x)\)</span>.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">eigen_f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">):</span>
@@ -437,7 +452,7 @@ C_{0n}=\int_{0}^{d}\Psi(x,t=0)\Psi_{n}(x)dx
 \end{equation}</span></p>
 <p>For that purpose, we just write a simple function <code class="docutils literal notranslate"><span class="pre">integrate</span></code> that integrates with our box method. <code class="docutils literal notranslate"><span class="pre">integrate</span></code> takes as arguments the function to integrate, the boundaries for the integration as well as additional parameters for the function.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">integrate</span><span class="p">(</span><span class="n">fun</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">k0</span><span class="p">,</span><span class="o">*</span><span class="n">params</span><span class="p">):</span>
@@ -450,7 +465,7 @@ C_{0n}=\int_{0}^{d}\Psi(x,t=0)\Psi_{n}(x)dx
 </div>
 <p>With the help of this function, we can calculate an array of initial coefficients <span class="math notranslate nohighlight">\(C_{0n}\)</span> for a certain number of of eigenfunctions.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">num</span><span class="p">):</span>
@@ -463,7 +478,7 @@ C_{0n}=\int_{0}^{d}\Psi(x,t=0)\Psi_{n}(x)dx
 </div>
 <p>The values are then calculated by the <code class="docutils literal notranslate"><span class="pre">init</span></code> function and stored in the array <code class="docutils literal notranslate"><span class="pre">c0n</span></code>. Let us try 20 eigenfunctions for the moment.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
@@ -476,7 +491,7 @@ C_{0n}=\int_{0}^{d}\Psi(x,t=0)\Psi_{n}(x)dx
 <h3>Quality of the coefficients<a class="headerlink" href="#Quality-of-the-coefficients" title="Permalink to this heading">#</a></h3>
 <p>We may have a look at the quality of the approximated initial conditions. Above we used 20 of the eigenfunctions. To calculate the final <span class="math notranslate nohighlight">\(\Psi(x,t)\)</span> we still need a function which does that.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">w_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">c0n</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
@@ -489,7 +504,7 @@ C_{0n}=\int_{0}^{d}\Psi(x,t=0)\Psi_{n}(x)dx
 </div>
 <p>The plot below shows that the 20 eigenfunctions are not really enough. We should use more. Turns out, that 30 gives a better approximation of the initial conditions.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wv</span><span class="o">=</span><span class="n">w_func</span><span class="p">(</span><span class="n">xp</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">c0n</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
@@ -506,7 +521,7 @@ C_{0n}=\int_{0}^{d}\Psi(x,t=0)\Psi_{n}(x)dx
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../../_images/notebooks_L11_2_particle_in_a_box_28_0.png" class="no-scaled-link" src="../../_images/notebooks_L11_2_particle_in_a_box_28_0.png" style="width: 428px; height: 280px;" />
+<img alt="../../_images/notebooks_L11_2_particle_in_a_box_29_0.png" class="no-scaled-link" src="../../_images/notebooks_L11_2_particle_in_a_box_29_0.png" style="width: 640px; height: 456px;" />
 </div>
 </div>
 </section>
@@ -516,12 +531,12 @@ C_{0n}=\int_{0}^{d}\Psi(x,t=0)\Psi_{n}(x)dx
 <p>Ok, we are only here to make things move. We want to see the animated wavepacket bouncing back from the walls. This is now a piece of cake, as we have used the animation feature already in the section before.</p>
 <p>Just plot the wavefunction without showing it.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">+</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.02</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
@@ -539,11 +554,11 @@ C_{0n}=\int_{0}^{d}\Psi(x,t=0)\Psi_{n}(x)dx
 </div>
 <p>Then animate everything. The simulation nicely demonstrates that the wavepacket falls apart due to the different time dependence of the prefactors <span class="math notranslate nohighlight">\(C_{n}\)</span>. Yet, the wave packet is restored after a certain time.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## setup the canvas</span>
-<span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">380</span><span class="p">,</span><span class="n">sync_image_data</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">850</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span><span class="n">sync_image_data</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -552,10 +567,10 @@ C_{0n}=\int_{0}^{d}\Psi(x,t=0)\Psi_{n}(x)dx
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b41d4cd08e1a4f60abfc6a150d97f14b", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "daa749b2069a43cbbc030b1a7bf8d54b", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1000</span><span class="p">):</span>
@@ -586,7 +601,7 @@ C_{0n}=\int_{0}^{d}\Psi(x,t=0)\Psi_{n}(x)dx
 <h2>Where to go from here?<a class="headerlink" href="#Where-to-go-from-here?" title="Permalink to this heading">#</a></h2>
 <p>The calculations above just included a Gaussian wavepacket without momentum in a box. It is not moving in any direction. A task you may want to tackle is the inclusion of a momentum to see how the particle bounces back and forth.</p>
 <script type="application/vnd.jupyter.widget-state+json">
-{"state": {"0316b83d6b504871aeeb19735c79f73e": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasManagerModel", "state": {"_model_module_version": "^0.13", "_view_module": null, "_view_module_version": ""}}, "5b947f4347c24d0c891404ad53bad4e7": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_0316b83d6b504871aeeb19735c79f73e", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 380, "layout": "IPY_MODEL_83008ededf7d4c6e82d8b3c1df2eed59", "width": 800}}, "83008ededf7d4c6e82d8b3c1df2eed59": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "a5ff7d70ac254b5098a935ce4322d503": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "c1ce8113394e4c7ca3c6ef18ca974bbe": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_0316b83d6b504871aeeb19735c79f73e", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 480, "layout": "IPY_MODEL_a5ff7d70ac254b5098a935ce4322d503", "width": 800}}}, "version_major": 2, "version_minor": 0}
+{"state": {"014f1744d25d4a06b886f01d07f44a30": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_73347982e01d4a828c54067ca05e025d", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 680, "layout": "IPY_MODEL_869467d1aeae45069d11245d359af8ae", "width": 850}}, "1c17db726e314a4e8c308527d60f919e": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_73347982e01d4a828c54067ca05e025d", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 680, "layout": "IPY_MODEL_bf4d4d3c7fb6465f9186da18dc90cdeb", "width": 850}}, "2bf90d503e094d7db9f5d8585a5048c8": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_73347982e01d4a828c54067ca05e025d", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 680, "layout": "IPY_MODEL_8dc7f381b084464cb7fec0c152c27aaf", "width": 800}}, "474a940a73914af983bf967a6c778880": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_73347982e01d4a828c54067ca05e025d", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 380, "layout": "IPY_MODEL_992be23e53e14197abbeeb7aba92aea8", "width": 800}}, "73347982e01d4a828c54067ca05e025d": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasManagerModel", "state": {"_model_module_version": "^0.13", "_view_module": null, "_view_module_version": ""}}, "869467d1aeae45069d11245d359af8ae": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "8dc7f381b084464cb7fec0c152c27aaf": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "992be23e53e14197abbeeb7aba92aea8": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "bf4d4d3c7fb6465f9186da18dc90cdeb": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "daa749b2069a43cbbc030b1a7bf8d54b": {"model_module": "ipycanvas", "model_module_version": "^0.13", "model_name": "CanvasModel", "state": {"_canvas_manager": "IPY_MODEL_73347982e01d4a828c54067ca05e025d", "_model_module_version": "^0.13", "_view_module_version": "^0.13", "height": 480, "layout": "IPY_MODEL_dcddaffa3eb54f72a6ff1a36863124bd", "width": 850}}, "dcddaffa3eb54f72a6ff1a36863124bd": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}}, "version_major": 2, "version_minor": 0}
 </script></section>
 </section>
 
@@ -625,7 +640,7 @@ C_{0n}=\int_{0}^{d}\Psi(x,t=0)\Psi_{n}(x)dx
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             <div class="last-updated">
-              Last updated on Jun 10, 2024</div>
+              Last updated on Jun 11, 2024</div>
           </div>
           <div class="right-details">
             
