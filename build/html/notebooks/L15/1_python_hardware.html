@@ -586,7 +586,7 @@ You can directly download the pdf-version of this page using the link below.
 <p><img alt="oscilloscope" src="../../_images/oscilloscope.gif" /></p>
 <p>The rest is just easy for us. We create a buffer <code class="docutils literal notranslate"><span class="pre">data</span></code> where we store the voltage value for each x point in the canvas (here 800 px). If we have read 800 values, we will shift the data in the array to the left such that we can insert the new point as the rightmost entry. In addition, I have inserted some autoscaling of the data and a display of the minimum and maximum voltage of the current signal trace. There is much room for improvement.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[131]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">canvas</span><span class="o">.</span><span class="n">width</span><span class="p">)</span>
@@ -623,16 +623,22 @@ You can directly download the pdf-version of this page using the link below.
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-131-f7bc658ca79a&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">     22</span>         <span class="ansi-green-fg">for</span> j <span class="ansi-green-fg">in</span> range<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">-</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">     23</span>             canvas<span class="ansi-blue-fg">.</span>move_to<span class="ansi-blue-fg">(</span>j<span class="ansi-blue-fg">,</span>canvas<span class="ansi-blue-fg">.</span>height<span class="ansi-blue-fg">-</span><span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">[</span>j<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">-</span>min<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">*</span>canvas<span class="ansi-blue-fg">.</span>height<span class="ansi-blue-fg">/</span><span class="ansi-blue-fg">(</span>max<span class="ansi-blue-fg">-</span>min<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">---&gt; 24</span><span class="ansi-red-fg">             </span>canvas<span class="ansi-blue-fg">.</span>line_to<span class="ansi-blue-fg">(</span>j<span class="ansi-blue-fg">+</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">,</span>canvas<span class="ansi-blue-fg">.</span>height<span class="ansi-blue-fg">-</span><span class="ansi-blue-fg">(</span>data<span class="ansi-blue-fg">[</span>j<span class="ansi-blue-fg">+</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">-</span>min<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">*</span>canvas<span class="ansi-blue-fg">.</span>height<span class="ansi-blue-fg">/</span><span class="ansi-blue-fg">(</span>max<span class="ansi-blue-fg">-</span>min<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     25</span>         canvas<span class="ansi-blue-fg">.</span>stroke<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">     26</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[1], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> data<span style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">np</span><span style="color: rgb(98,98,98)">.</span>zeros(canvas<span style="color: rgb(98,98,98)">.</span>width)
+<span class="ansi-green-intense-fg ansi-bold">      2</span> i<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">0</span>
+<span class="ansi-green-intense-fg ansi-bold">      4</span> <span class="ansi-bold" style="color: rgb(0,135,0)">while</span> <span class="ansi-bold" style="color: rgb(0,135,0)">True</span>:
 
-<span class="ansi-red-fg">KeyboardInterrupt</span>:
+<span class="ansi-red-fg">NameError</span>: name &#39;np&#39; is not defined
 </pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 <script type="application/vnd.jupyter.widget-state+json">
 {"state": {}, "version_major": 2, "version_minor": 0}
