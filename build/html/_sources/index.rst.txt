@@ -183,6 +183,16 @@ We will not present a comprehensive list of numerical simulation schemes, but us
    notebooks/L13/2_deep_learning_keras.ipynb
    notebooks/L14/1_CNN.ipynb   
    
+   
+.. toctree::
+   :maxdepth: 2
+   :caption: Lecture 14:
+   
+   notebooks/L14/2_AutoEncoder.ipynb
+   notebooks/L15/1_python_hardware.ipynb
+   notebooks/L15/2_project_template.ipynb
+   
+   
 Indices and tables
 ==================
 
